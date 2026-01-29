@@ -1,0 +1,2 @@
+/Users/parthivdungarani/Documents/Harshil/Dhandhuka-Taluka/android/app/.cxx/Debug/1eo1c146/x86/CMakeFiles/edit_cache.dir
+/Users/parthivdungarani/Documents/Harshil/Dhandhuka-Taluka/android/app/.cxx/Debug/1eo1c146/x86/CMakeFiles/rebuild_cache.dir

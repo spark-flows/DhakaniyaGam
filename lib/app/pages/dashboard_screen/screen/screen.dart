@@ -1,0 +1,15 @@
+export 'dashboard_screen.dart';
+export 'sabhay_yadi.dart/sabhay_yadi.dart';
+export 'salahakar_samiti_screen.dart';
+export 'karobari_samiti_screen.dart';
+export 'village_representativ_screen.dart';
+export 'donors/donors.dart';
+export 'upload_result/upload_result.dart';
+export 'qualify_prizes/qualify_prizes.dart';
+export 'qualify_stationery/qualify_stationery.dart';
+export 'hodedar_screens/hodedar_screen.dart';
+export 'yuva_sayojak_screen.dart';
+export 'sevakiy_parvuti_screen.dart';
+export 'hodedar_screens/hodedar.dart';
+export 'gallery/gallery.dart';
+export 'village_yadi/village_vadi.dart';

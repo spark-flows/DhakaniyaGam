@@ -1,0 +1,13 @@
+export 'splashScreen/splash_page.dart';
+export 'authScreen/auth_pages.dart';
+export 'register_screen/register_page.dart';
+export 'home_screen/home_page.dart';
+export 'parivarik_vigat_screen/parivar_vigat_page.dart';
+export 'parivar_sabhay_vigat_screen/parivar_sabhay_vigat_page.dart';
+export 'videsh_sabhay_vigat_screen/videsh_sabhay_vigat_page.dart';
+export 'select_language_screen/select_language_page.dart';
+export 'dashboard_screen/dashboard_page.dart';
+export 'bottom_bar_screen/bottom_bar_page.dart';
+export 'notificationScreen/notification_page.dart';
+export 'profileScreen/profile_page.dart';
+export 'sevaoScreen/sevao_page.dart';

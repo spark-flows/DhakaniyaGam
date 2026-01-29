@@ -1,0 +1,155 @@
+// coverage:ignore-file
+part of 'app_pages.dart';
+
+/// A chunks of routes and the path names which will be used to create
+/// routes in [AppPages].
+abstract class Routes {
+  static const splashScreen = _Paths.splashScreen;
+  static const introFirstScreen = _Paths.introFirstScreen;
+  static const introSecondScreen = _Paths.introSecondScreen;
+  static const introThreeScreen = _Paths.introThreeScreen;
+  static const LoginScreen = _Paths.LoginScreen;
+  static const registerScreen = _Paths.registerScreen;
+  static const homeScreen = _Paths.homeScreen;
+  static const parivarikVigatScreen = _Paths.parivarikVigatScreen;
+  static const parivarSabhayVigatScreen = _Paths.parivarSabhayVigatScreen;
+  static const parivarSabhayVigatListScreen =
+      _Paths.parivarSabhayVigatListScreen;
+  static const videshSabhayVigatScreen = _Paths.videshSabhayVigatScreen;
+  static const videshSabhayVigatListScreen = _Paths.videshSabhayVigatListScreen;
+  static const otherDetailsScreen = _Paths.otherDetailsScreen;
+  static const selectLanguageScreen = _Paths.selectLanguageScreen;
+  static const dashboardScreen = _Paths.dashboardScreen;
+  static const sabhayYadiScreen = _Paths.sabhayYadiScreen;
+  static const salahakarSamitiScreen = _Paths.salahakarSamitiScreen;
+  static const talukaRepresentativeScreen = _Paths.talukaRepresentativeScreen;
+  static const villageRepresentativScreen = _Paths.villageRepresentativScreen;
+  static const donorsScreen = _Paths.donorsScreen;
+  static const donorsDetails = _Paths.donorsDetails;
+  static const uploadResultScreen = _Paths.uploadResultScreen;
+  static const uploadResultListScreen = _Paths.uploadResultListScreen;
+  static const qualifyPrizeScreen = _Paths.qualifyPrizeScreen;
+  static const qualifyPrizeListScreen = _Paths.qualifyPrizeListScreen;
+  static const qualifyStationeryScreen = _Paths.qualifyStationeryScreen;
+  static const qualifyStationeryListScreen = _Paths.qualifyStationeryListScreen;
+  static const otpScreen = _Paths.otpScreen;
+  static const bottomBarScreen = _Paths.bottomBarScreen;
+  static const notificationScreen = _Paths.notificationScreen;
+  static const profileScreen = _Paths.profileScreen;
+  static const sabhyFeeRasidScreen = _Paths.sabhyFeeRasidScreen;
+  static const sevaoScreen = _Paths.sevaoScreen;
+  static const sekshanikSahayYojnaScreen = _Paths.sekshanikSahayYojnaScreen;
+  static const sabhyVigatScreen = _Paths.sabhyVigatScreen;
+  static const abhyasKartiDikriScreen = _Paths.abhyasKartiDikriScreen;
+  static const sabhayYadiDeatilsScreen = _Paths.sabhayYadiDeatilsScreen;
+  static const verifyIdentityScreen = _Paths.verifyIdentityScreen;
+  static const addabhyasKartiDikriScreen = _Paths.addabhyaskartiDikriScreen;
+  static const bhalamanKarnarScreen = _Paths.bhalamanKarnarScreen;
+  static const bidanVigatScreen = _Paths.bidanVigatScreen;
+  static const valiNiBankDetailScreen = _Paths.valiniBankDetailScreen;
+  static const vidhvaSahayYojnaScreen = _Paths.vidhvaSahayYojnaScreen;
+  static const vidhvaBenniVigatScreen = _Paths.vidhvaBennivigatScreen;
+  static const balkoNivigatScreen = _Paths.balkoNiVigatScreen;
+  static const addBalkoScreen = _Paths.addBalkoScreen;
+  static const anyaVigatScreen = _Paths.anyaVigatScreen;
+  static const kutumbMaKamataSabhy = _Paths.kutumbMaKamataSabhyoScreen;
+  static const vagerVyajLoanYojnaScreen = _Paths.vagerVyajLoanYojnaScreen;
+  static const vidhyarthiniAbhyasVigatScreen =
+      _Paths.vidhyarthiniAbhyasVigatScreen;
+  static const loanniVigatScreen = _Paths.loanniVigatScreen;
+  static const vidhyarthiniAbhyasniVigatScreen =
+      _Paths.vidhyarthiniAbhyasniVigatScreen;
+  static const addVidhyarthiniAbhyasniVigatScreen =
+      _Paths.addVidhyarthiniAbhyasniVigatScreen;
+  static const abhyasKramNiVigatScreen = _Paths.abhyasKramNiVigatScreen;
+  static const kharchNiVigatScreen = _Paths.kharchNiVigatScreen;
+  static const addKamataSabhyScreen = _Paths.addKamataSabhyScreen;
+  static const khetiNiVigatScreen = _Paths.khetiNiVigatScreen;
+  static const hodedarScreen = _Paths.hodedarScreen;
+  static const yuvaSayojakScreen = _Paths.yuvaSayojakScreen;
+  static const sevaKiyParvutiScreen = _Paths.sevaKiyParvutiScreen;
+  static const vidhvaSahayYojna = _Paths.vidhvaSahayYojna;
+  static const vidhavaOtherDetailsScreen = _Paths.vidhavaOtherDetailsScreen;
+  static const presidentScreen = _Paths.presidentScreen;
+  static const addKhetiVigatScreen = _Paths.addKhetiVigatScreen;
+  static const galleryScreen = _Paths.galleryScreen;
+  static const showFullScareenImage = _Paths.showFullScareenImage;
+  static const villageYadiListScreen = _Paths.villageYadiListScreen;
+  static const villageYadiDetailScreen = _Paths.villageYadiDetailScreen;
+  static const galleryDetailsScreen = _Paths.galleryDetailsScreen;
+  static const notificationDetailsScreen = _Paths.notificationDetailsScreen;
+}
+
+abstract class _Paths {
+  static const splashScreen = '/splashScreen';
+  static const introFirstScreen = '/introFirstScreen';
+  static const introSecondScreen = '/introSecondScreen';
+  static const introThreeScreen = '/introThreeScreen';
+  static const LoginScreen = '/LoginScreen';
+  static const registerScreen = '/registerScreen';
+  static const homeScreen = '/homeScreen';
+  static const parivarikVigatScreen = '/parivarikVigatScreen';
+  static const parivarSabhayVigatScreen = '/parivarSabhayVigatScreen';
+  static const parivarSabhayVigatListScreen = '/parivarSabhayVigatListScreen';
+  static const videshSabhayVigatScreen = '/videshSabhayVigatScreen';
+  static const videshSabhayVigatListScreen = '/videshSabhayVigatListScreen';
+  static const otherDetailsScreen = '/otherDetailsScreen';
+  static const selectLanguageScreen = '/selectLanguageScreen';
+  static const dashboardScreen = '/dashboardScreen';
+  static const sabhayYadiScreen = '/sabhayYadiScreen';
+  static const salahakarSamitiScreen = '/salahakarSamitiScreen';
+  static const talukaRepresentativeScreen = '/talukaRepresentativeScreen';
+  static const villageRepresentativScreen = '/villageRepresentativScreen';
+  static const donorsScreen = '/donorsScreen';
+  static const donorsDetails = '/donorsDetails';
+  static const uploadResultScreen = '/uploadResultScreen';
+  static const uploadResultListScreen = '/uploadResultListScreen';
+  static const qualifyPrizeScreen = '/qualifyPrizeScreen';
+  static const qualifyPrizeListScreen = '/qualifyPrizeListScreen';
+  static const qualifyStationeryScreen = '/qualifyStationeryScreen';
+  static const qualifyStationeryListScreen = '/qualifyStationeryListScreen';
+  static const otpScreen = '/otpScreen';
+  static const bottomBarScreen = '/bottomBarScreen';
+  static const notificationScreen = '/notificationScreen';
+  static const profileScreen = '/profileScreen';
+  static const sabhyFeeRasidScreen = '/SabhyFeeRasidScreen';
+  static const sevaoScreen = '/sevaoScreen';
+  static const sekshanikSahayYojnaScreen = '/SekshanikSahayYojnaScreen';
+  static const sabhyVigatScreen = '/SabhyVigatScreen';
+  static const abhyasKartiDikriScreen = '/abhyasKartiDikriScreen';
+  static const sabhayYadiDeatilsScreen = '/sabhayYadiDeatilsScreen';
+  static const verifyIdentityScreen = '/verifyIdentityScreen';
+  static const addabhyaskartiDikriScreen = '/addabhyasKartiDikri';
+  static const bhalamanKarnarScreen = '/bhalamanKarnarScreen';
+  static const bidanVigatScreen = '/bidanVigatScreen';
+  static const valiniBankDetailScreen = '/valiniBankDetail';
+  static const vidhvaSahayYojnaScreen = '/vidhvaSahayYojnaScreen';
+  static const vidhvaBennivigatScreen = '/vidhvaBenniVigat';
+  static const balkoNiVigatScreen = '/BalkoNiVigatScreen';
+  static const addBalkoScreen = '/AddBalkoScreen';
+  static const anyaVigatScreen = '/AnyaVigatScreen';
+  static const vagerVyajLoanYojnaScreen = '/vagerVyajLoanYojnaScreen';
+  static const vidhyarthiniAbhyasVigatScreen = '/VidhyarthiniAbhyasVigatScreen';
+  static const loanniVigatScreen = '/LoanniVigatScreen';
+  static const vidhyarthiniAbhyasniVigatScreen = '/VidhyarthiniAbhyasNiVigat';
+  static const addVidhyarthiniAbhyasniVigatScreen =
+      '/AddVidhyarthiniAbhyasNiVigat';
+  static const kutumbMaKamataSabhyoScreen = '/kutumbMaKamataSabhyoScreen';
+  static const abhyasKramNiVigatScreen = '/AbhyasKramNiVigatScreen';
+  static const kharchNiVigatScreen = '/kharchNiVigatScreen';
+  static const addKamataSabhyScreen = '/addKamataSabhyoScreen';
+  static const khetiNiVigatScreen = '/khetiNiVigatScreen';
+  static const hodedarScreen = '/hodedarScreen';
+  static const yuvaSayojakScreen = '/yuvaSayojakScreen';
+  static const sevaKiyParvutiScreen = '/sevaKiyParvutiScreen';
+  static const vidhvaSahayYojna = '/vidhvaSahayYojna';
+  static const vidhavaOtherDetailsScreen = '/vidhavaOtherDetailsScreen';
+  static const presidentScreen = '/presidentScreen';
+  static const addKhetiVigatScreen = '/addKhetiVigatScreen';
+  static const galleryScreen = '/galleryScreen';
+  static const showFullScareenImage = '/showFullScareenImage';
+  static const villageYadiListScreen = '/villageYadiListScreen';
+  static const galleryDetailsScreen = '/galleryDetailsScreen';
+  static const villageYadiDetailScreen = '/villageYadiDetailScreen';
+  static const notificationDetailsScreen = '/notificationDetailsScreen';
+}
