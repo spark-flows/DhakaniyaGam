@@ -12,22 +12,22 @@ class BottomBarScreen extends StatelessWidget {
     return GetBuilder<BottomBarController>(
       builder: (controller) {
         return Scaffold(
-          floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerDocked,
-          floatingActionButton: FloatingActionButton(
-            backgroundColor: ColorsValue.maincolor,
-            elevation: 0,
-            onPressed: () {
-              RouteManagement.goToSevaoScreen();
-            },
-            shape: RoundedRectangleBorder(
-              side: BorderSide(width: 5, color: ColorsValue.lightMainColor),
-              borderRadius: BorderRadius.circular(100),
-            ),
-            child: SvgPicture.asset(
-              AssetConstants.ic_service,
-            ),
-          ),
+          // floatingActionButtonLocation:
+          //     FloatingActionButtonLocation.centerDocked,
+          // floatingActionButton: FloatingActionButton(
+          //   backgroundColor: ColorsValue.maincolor,
+          //   elevation: 0,
+          //   onPressed: () {
+          //     RouteManagement.goToSevaoScreen();
+          //   },
+          //   shape: RoundedRectangleBorder(
+          //     side: BorderSide(width: 5, color: ColorsValue.lightMainColor),
+          //     borderRadius: BorderRadius.circular(100),
+          //   ),
+          //   child: SvgPicture.asset(
+          //     AssetConstants.ic_service,
+          //   ),
+          // ),
           bottomNavigationBar: BottomNavigationBar(
             showSelectedLabels: false,
             showUnselectedLabels: false,

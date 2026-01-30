@@ -13,8 +13,8 @@ import 'package:http_parser/src/media_type.dart' as media_type;
 
 /// API WRAPPER to call all the APIs and handle the error status codes
 class ApiWrapper {
-  final String _baseUrl = 'https://apis.bdhtppm.com/';
-   static String baseUrl = 'https://apis.bdhtppm.com/';
+  final String _baseUrl = 'https://api.dhankaniya.com/';
+  static String baseUrl = 'https://api.dhankaniya.com/';
   static String imageUrl = 'https://dhandhuka.s3.ap-south-1.amazonaws.com/';
 
   /// Method to make all the requests inside the app like GET, POST, PUT, Delete

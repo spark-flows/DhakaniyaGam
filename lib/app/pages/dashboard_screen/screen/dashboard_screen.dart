@@ -148,33 +148,33 @@ class DashboardScreen extends StatelessWidget {
                 return InkWell(
                   onTap: () {
                     switch (index) {
+                      // case 0:
+                      //   RouteManagement.goToVillageYadiListScreen();
                       case 0:
-                        RouteManagement.goToVillageYadiListScreen();
-                      case 1:
                         RouteManagement.goToSevaKiyParvutiScreen();
-                      case 2:
+                      case 1:
                         RouteManagement.goToYuvaSayojakScreen();
-                      case 3:
+                      case 2:
                         RouteManagement.goToSabhayYadiScreen();
-                      case 4:
-                        RouteManagement.goToSalahakarSamitiScreen();
-                      case 5:
+                      // case 4:
+                      //   RouteManagement.goToSalahakarSamitiScreen();
+                      case 3:
                         RouteManagement.goToHodedarScreen();
-                      case 6:
+                      case 4:
                         RouteManagement.goToTalukaRepresentativeScreen();
-                      case 7:
+                      case 5:
                         RouteManagement.goToVillageRepresentativScreen();
-                      case 8:
+                      case 6:
                         RouteManagement.goToDonorsScreen();
-                      case 9:
+                      case 7:
                         RouteManagement.goToUploadResultListScreen();
-                      case 10:
+                      case 8:
                         RouteManagement.goToQualifyPrizeListScreen();
-                      case 11:
+                      case 9:
                         RouteManagement.goToQualifyStationeryListScreen();
-                      case 12:
+                      case 10:
                         RouteManagement.goToParivarSabhayVigatListScreen();
-                      case 13:
+                      case 11:
                         RouteManagement.goToGalleryScreen();
                     }
                   },

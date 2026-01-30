@@ -53,7 +53,7 @@ class SabhyFeeRasid extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "શ્રી ધંધુકા તાલુકા પટેલ પ્રગતિ મંડળ-સુરત.",
+                            "શ્રી ઢાંકણીયા ગામ પ્રગતિ મંડળ-સુરત.",
                             style: Styles.color1D1E2070018,
                           ),
                           Dimens.boxHeight20,

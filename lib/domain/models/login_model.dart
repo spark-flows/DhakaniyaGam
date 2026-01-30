@@ -1,3 +1,7 @@
+// To parse this JSON data, do
+//
+//     final loginModel = loginModelFromJson(jsonString);
+
 import 'dart:convert';
 
 LoginModel loginModelFromJson(String str) =>
@@ -7,7 +11,7 @@ String loginModelToJson(LoginModel data) => json.encode(data.toJson());
 
 class LoginModel {
   String? message;
-  LoginData? data;
+  Data? data;
   int? status;
   bool? isSuccess;
 
@@ -18,11 +22,22 @@ class LoginModel {
     this.isSuccess,
   });
 
+  LoginModel copyWith({
+    String? message,
+    Data? data,
+    int? status,
+    bool? isSuccess,
+  }) =>
+      LoginModel(
+        message: message ?? this.message,
+        data: data ?? this.data,
+        status: status ?? this.status,
+        isSuccess: isSuccess ?? this.isSuccess,
+      );
+
   factory LoginModel.fromJson(Map<String, dynamic> json) => LoginModel(
         message: json["Message"],
-        data: json["Data"] == null || json["Data"] == 0
-            ? null
-            : LoginData.fromJson(json["Data"]),
+        data: json["Data"] == null ? null : Data.fromJson(json["Data"]),
         status: json["Status"],
         isSuccess: json["IsSuccess"],
       );
@@ -35,18 +50,43 @@ class LoginModel {
       };
 }
 
-class LoginData {
-  String? key;
+class Data {
+  String? accessToken;
+  bool? isApproved;
+  bool? isCommitteeMember;
+  String? channelid;
 
-  LoginData({
-    this.key,
+  Data({
+    this.accessToken,
+    this.isApproved,
+    this.isCommitteeMember,
+    this.channelid,
   });
 
-  factory LoginData.fromJson(Map<String, dynamic> json) => LoginData(
-        key: json["key"],
+  Data copyWith({
+    String? accessToken,
+    bool? isApproved,
+    bool? isCommitteeMember,
+    String? channelid,
+  }) =>
+      Data(
+        accessToken: accessToken ?? this.accessToken,
+        isApproved: isApproved ?? this.isApproved,
+        isCommitteeMember: isCommitteeMember ?? this.isCommitteeMember,
+        channelid: channelid ?? this.channelid,
+      );
+
+  factory Data.fromJson(Map<String, dynamic> json) => Data(
+        accessToken: json["accessToken"],
+        isApproved: json["is_approved"],
+        isCommitteeMember: json["isCommitteeMember"],
+        channelid: json["channelid"],
       );
 
   Map<String, dynamic> toJson() => {
-        "key": key,
+        "accessToken": accessToken,
+        "is_approved": isApproved,
+        "isCommitteeMember": isCommitteeMember,
+        "channelid": channelid,
       };
 }

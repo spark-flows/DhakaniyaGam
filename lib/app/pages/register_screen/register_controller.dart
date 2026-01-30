@@ -180,7 +180,7 @@ class RegisterController extends GetxController {
     );
     if (response?.data != null) {
       RouteManagement.goToOtpScreen(
-          mobileNumberController.text, response?.data?.key ?? "");
+          mobileNumberController.text, response?.data?.accessToken ?? "");
     } else {
       Utility.errorMessage(response?.message ?? "");
     }

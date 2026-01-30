@@ -19,10 +19,10 @@ class AuthController extends GetxController {
   @override
   void onInit() async {
     print(Get.find<Repository>().getStringValue(LocalKeys.authToken));
-    await firebaseMessaging.getToken().then((token) async {
-      fcmToken = token;
-      update();
-    });
+    // await firebaseMessaging.getToken().then((token) async {
+    //   fcmToken = token;
+    //   update();
+    // });
     super.onInit();
   }
 
@@ -69,7 +69,7 @@ class AuthController extends GetxController {
   }
 
   VerifyData verifyData = VerifyData();
-  var firebaseMessaging = FirebaseMessaging.instance;
+  // var firebaseMessaging = FirebaseMessaging.instance;
 
   String? otpKey;
   String? otpMobile;
@@ -110,14 +110,17 @@ class AuthController extends GetxController {
     );
     if (response?.status == 200) {
       isLoginLoading = false;
-      if (phoneNumberController.text.contains("9723631058")) {
-        isOtpLoading = true;
-        verifyOtpApi(response?.data?.key ?? "", isSend);
-      } else {
-        isOtpLoading = false;
-        RouteManagement.goToOtpScreen(
-            phoneNumberController.text, response?.data?.key ?? "");
-      }
+      Get.find<Repository>()
+          .saveValue(LocalKeys.authToken, response?.data?.accessToken);
+      RouteManagement.goToBottomBarScreen();
+      // if (phoneNumberController.text.contains("9723631058")) {
+      //   isOtpLoading = true;
+      //   verifyOtpApi(response?.data?.key ?? "", isSend);
+      // } else {
+      //   isOtpLoading = false;
+      //   RouteManagement.goToOtpScreen(
+      //       phoneNumberController.text, response?.data?.key ?? "");
+      // }
     } else {
       isLoginLoading = false;
       Utility.errorMessage(response?.message ?? "");

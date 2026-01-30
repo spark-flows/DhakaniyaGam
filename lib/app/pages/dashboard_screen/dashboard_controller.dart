@@ -13,7 +13,7 @@ class DashboardController extends GetxController {
   @override
   void onInit() {
     // getFullFamily();
-    villagesApi();
+    // villagesApi();
     businessCategoriesApi();
     getStudies();
     getAds();
@@ -30,11 +30,11 @@ class DashboardController extends GetxController {
   ];
 
   List<String> titleList = [
-    "taluka_gam_yadi".tr,
+    // "taluka_gam_yadi".tr,
     "service_activity".tr,
     "youth_coordinator_mr".tr,
     "list_of_members".tr,
-    "advisory_committee".tr,
+    // "advisory_committee".tr,
     "incumbent".tr,
     "executive".tr,
     "village_representativ".tr,
@@ -155,7 +155,7 @@ class DashboardController extends GetxController {
     );
     if (response?.data != null) {
       Utility.downloadAndSavePDF(
-          response?.data?.stationeryCouponPath ?? "", "Dhandhuka Taluka", 1);
+          response?.data?.stationeryCouponPath ?? "", "DhakaniyaGam", 1);
     }
     update();
   }
@@ -167,7 +167,7 @@ class DashboardController extends GetxController {
     );
     if (response?.data != null) {
       Utility.downloadAndSavePDF(
-          response?.data?.prizeCouponPath ?? "", "Dhandhuka Taluka", 1);
+          response?.data?.prizeCouponPath ?? "", "DhakaniyaGam", 1);
     }
     update();
   }
