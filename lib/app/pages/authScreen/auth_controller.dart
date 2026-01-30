@@ -19,10 +19,10 @@ class AuthController extends GetxController {
   @override
   void onInit() async {
     print(Get.find<Repository>().getStringValue(LocalKeys.authToken));
-    // await firebaseMessaging.getToken().then((token) async {
-    //   fcmToken = token;
-    //   update();
-    // });
+    await firebaseMessaging.getToken().then((token) async {
+      fcmToken = token;
+      update();
+    });
     super.onInit();
   }
 
@@ -69,7 +69,7 @@ class AuthController extends GetxController {
   }
 
   VerifyData verifyData = VerifyData();
-  // var firebaseMessaging = FirebaseMessaging.instance;
+  var firebaseMessaging = FirebaseMessaging.instance;
 
   String? otpKey;
   String? otpMobile;

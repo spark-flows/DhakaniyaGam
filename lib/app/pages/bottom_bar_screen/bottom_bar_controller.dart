@@ -16,7 +16,7 @@ class BottomBarController extends GetxController {
   @override
   void onInit() {
     SocketConnection.initSocket();
-    // FirebaseApi().initNotification();
+    FirebaseApi().initNotification();
 
     getProfileApi();
     super.onInit();

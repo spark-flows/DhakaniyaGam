@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1005307780330",
+    "project_id": "dhakaniya-c03ec",
+    "storage_bucket": "dhakaniya-c03ec.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1005307780330:android:702c424d1b716fccb2cb93",
+        "android_client_info": {
+          "package_name": "com.dhakaniya.dhakaniya_gam"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXUUv09s8FH2piU5L6vPcWF9PJ-L_jxW8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

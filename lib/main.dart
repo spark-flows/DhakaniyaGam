@@ -4,7 +4,10 @@ import 'package:dhakaniya_gam/app/utils/utils.dart';
 import 'package:dhakaniya_gam/data/data.dart';
 import 'package:dhakaniya_gam/device/repositories/device_repositories.dart';
 import 'package:dhakaniya_gam/domain/domain.dart';
+import 'package:dhakaniya_gam/firebase_options.dart';
 import 'package:dhakaniya_gam/models/child_model.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,8 +18,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initServices();
   // await Firebase.initializeApp();
-  // await FirebaseMessaging.instance.setAutoInitEnabled(true);
-  // FirebaseApi.initilizeNotification();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await FirebaseMessaging.instance.setAutoInitEnabled(true);
+  FirebaseApi.initilizeNotification();
   Hive.registerAdapter(ChildsModelAdapter());
   // Hive.registerAdapter(EarningMemberModelAdapter());
 
