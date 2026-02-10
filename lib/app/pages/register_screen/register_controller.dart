@@ -86,8 +86,7 @@ class RegisterController extends GetxController {
                 "allow".tr,
                 style: Styles.redColorGuj60014,
               ),
-              onPressed: () async {
-                Get.back();
+              onPressed: () async {Navigator.pop(context);
                 await openAppSettings();
               },
             ),
@@ -96,8 +95,7 @@ class RegisterController extends GetxController {
                 "deny".tr,
                 style: Styles.blackGuj60014,
               ),
-              onPressed: () {
-                Get.back();
+              onPressed: () {Navigator.pop(context);
               },
             )
           ],

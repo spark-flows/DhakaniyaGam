@@ -29,7 +29,7 @@ class OtpScreen extends StatelessWidget {
             child: IconButton(
               icon: SvgPicture.asset(AssetConstants.ic_left_arrow),
               onPressed: () {
-                Get.back();
+                Navigator.pop(context);
               },
             ),
           ),

@@ -21,7 +21,7 @@ class ParivarikVigatScreen extends StatelessWidget {
           centerTitle: true,
           leading: InkWell(
             onTap: () {
-              Get.back();
+              Navigator.pop(context);
             },
             child: Padding(
               padding: Dimens.edgeInsets12,
@@ -73,8 +73,7 @@ class ParivarikVigatScreen extends StatelessWidget {
                                         Align(
                                           alignment: Alignment.topRight,
                                           child: InkWell(
-                                            onTap: () {
-                                              Get.back();
+                                            onTap: () {Navigator.pop(context);
                                             },
                                             child: const Icon(
                                               Icons.close,
@@ -86,8 +85,7 @@ class ParivarikVigatScreen extends StatelessWidget {
                                               MainAxisAlignment.center,
                                           children: [
                                             InkWell(
-                                              onTap: () async {
-                                                Get.back();
+                                              onTap: () async {Navigator.pop(context);
                                                 if (await controller
                                                     .imagePermissionCheack(
                                                         context)) {
@@ -129,8 +127,7 @@ class ParivarikVigatScreen extends StatelessWidget {
                                             ),
                                             Dimens.boxWidth60,
                                             InkWell(
-                                              onTap: () async {
-                                                Get.back();
+                                              onTap: () async {Navigator.pop(context);
                                                 if (await controller
                                                     .imagePermissionCheack(
                                                         context)) {
@@ -686,154 +683,154 @@ class ParivarikVigatScreen extends StatelessWidget {
                   //     },
                   //   ),
                   // ),
-                  Dimens.boxHeight20,
-                  CustomTextFormField(
-                    fillColor: ColorsValue.greyEEEEEE,
-                    text: 'beginning_married_life'.tr,
-                    isGujarati: true,
-                    textInputAction: TextInputAction.next,
-                    keybordtype: TextInputType.emailAddress,
-                    controller: controller.marriedDatesController,
-                    // validation: (value) {
-                    //   if (value!.isEmpty) {
-                    //     return 'enter_beginning_married_life'.tr;
-                    //   }
-                    //   return null;
-                    // },
-                    suffixIcon: InkWell(
-                      onTap: () async {
-                        final DateTime? picked = await showDatePicker(
-                          builder: (context, child) {
-                            return Theme(
-                              data: Theme.of(context).copyWith(
-                                colorScheme: ColorScheme.light(
-                                  primary: ColorsValue.maincolor,
-                                  onPrimary: ColorsValue.white,
-                                  onSurface: ColorsValue.maincolor,
-                                ),
-                                textButtonTheme: TextButtonThemeData(
-                                  style: TextButton.styleFrom(
-                                    foregroundColor: ColorsValue.maincolor,
-                                  ),
-                                ),
-                              ),
-                              child: child!,
-                            );
-                          },
-                          context: context,
-                          initialDate: controller.selectedMarriedDate,
-                          firstDate: DateTime(1920),
-                          lastDate: DateTime(2100),
-                        );
-                        if (picked != null &&
-                            picked != controller.selectedMarriedDate) {
-                          controller.selectedMarriedDate = picked;
-                          controller.marriedDatesController.text =
-                              DateFormat("dd-MM-yyyy")
-                                  .format(controller.selectedMarriedDate);
-                          controller.selectDomDate =
-                              DateFormat("yyyy-MM-dd").format(picked);
-                          controller.update();
-                        }
-                      },
-                      child: Padding(
-                        padding: Dimens.edgeInsets10,
-                        child: SvgPicture.asset(
-                          AssetConstants.ic_calendar,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Dimens.boxHeight20,
-                  CustomTextFormField(
-                    fillColor: ColorsValue.greyEEEEEE,
-                    text: 'father_law_surname'.tr,
-                    isGujarati: true,
-                    textInputAction: TextInputAction.next,
-                    keybordtype: TextInputType.emailAddress,
-                    controller: controller.fatherLawSurnameController,
-                    // validation: (value) {
-                    //   if (value!.isEmpty) {
-                    //     return 'enter_father_law_surname'.tr;
-                    //   }
-                    //   return null;
-                    // },
-                  ),
-                  Dimens.boxHeight20,
-                  CustomTextFormField(
-                    fillColor: ColorsValue.greyEEEEEE,
-                    text: 'father_law_name'.tr,
-                    isGujarati: true,
-                    textInputAction: TextInputAction.next,
-                    keybordtype: TextInputType.emailAddress,
-                    controller: controller.fatherLawNameController,
-                    // validation: (value) {
-                    //   if (value!.isEmpty) {
-                    //     return 'enter_father_law_name'.tr;
-                    //   }
-                    //   return null;
-                    // },
-                  ),
-                  Dimens.boxHeight20,
-                  CustomTextFormField(
-                    fillColor: ColorsValue.greyEEEEEE,
-                    text: 'father_law_father_name'.tr,
-                    isGujarati: true,
-                    textInputAction: TextInputAction.next,
-                    keybordtype: TextInputType.emailAddress,
-                    controller: controller.fatherLawFatherNameController,
-                    // validation: (value) {
-                    //   if (value!.isEmpty) {
-                    //     return 'enter_father_law_father_name'.tr;
-                    //   }
-                    //   return null;
-                    // },
-                  ),
-                  Dimens.boxHeight20,
-                  CustomTextFormField(
-                    fillColor: ColorsValue.greyEEEEEE,
-                    text: 'father_law_village'.tr,
-                    isGujarati: true,
-                    textInputAction: TextInputAction.next,
-                    keybordtype: TextInputType.emailAddress,
-                    controller: controller.fatherLawVillageNameController,
-                    // validation: (value) {
-                    //   if (value!.isEmpty) {
-                    //     return 'enter_father_law_village'.tr;
-                    //   }
-                    //   return null;
-                    // },
-                  ),
-                  Dimens.boxHeight20,
-                  CustomTextFormField(
-                    fillColor: ColorsValue.greyEEEEEE,
-                    text: 'father_law_taluka'.tr,
-                    isGujarati: true,
-                    textInputAction: TextInputAction.next,
-                    keybordtype: TextInputType.emailAddress,
-                    controller: controller.fatherLawTalukaController,
-                    // validation: (value) {
-                    //   if (value!.isEmpty) {
-                    //     return 'enter_father_law_taluka'.tr;
-                    //   }
-                    //   return null;
-                    // },
-                  ),
-                  Dimens.boxHeight20,
-                  CustomTextFormField(
-                    fillColor: ColorsValue.greyEEEEEE,
-                    text: 'father_law_district'.tr,
-                    isGujarati: true,
-                    textInputAction: TextInputAction.next,
-                    keybordtype: TextInputType.emailAddress,
-                    controller: controller.fatherLawDistrictController,
-                    // validation: (value) {
-                    //   if (value!.isEmpty) {
-                    //     return 'enter_father_law_district'.tr;
-                    //   }
-                    //   return null;
-                    // },
-                  ),
+                  // Dimens.boxHeight20,
+                  // CustomTextFormField(
+                  //   fillColor: ColorsValue.greyEEEEEE,
+                  //   text: 'beginning_married_life'.tr,
+                  //   isGujarati: true,
+                  //   textInputAction: TextInputAction.next,
+                  //   keybordtype: TextInputType.emailAddress,
+                  //   controller: controller.marriedDatesController,
+                  //   // validation: (value) {
+                  //   //   if (value!.isEmpty) {
+                  //   //     return 'enter_beginning_married_life'.tr;
+                  //   //   }
+                  //   //   return null;
+                  //   // },
+                  //   suffixIcon: InkWell(
+                  //     onTap: () async {
+                  //       final DateTime? picked = await showDatePicker(
+                  //         builder: (context, child) {
+                  //           return Theme(
+                  //             data: Theme.of(context).copyWith(
+                  //               colorScheme: ColorScheme.light(
+                  //                 primary: ColorsValue.maincolor,
+                  //                 onPrimary: ColorsValue.white,
+                  //                 onSurface: ColorsValue.maincolor,
+                  //               ),
+                  //               textButtonTheme: TextButtonThemeData(
+                  //                 style: TextButton.styleFrom(
+                  //                   foregroundColor: ColorsValue.maincolor,
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //             child: child!,
+                  //           );
+                  //         },
+                  //         context: context,
+                  //         initialDate: controller.selectedMarriedDate,
+                  //         firstDate: DateTime(1920),
+                  //         lastDate: DateTime(2100),
+                  //       );
+                  //       if (picked != null &&
+                  //           picked != controller.selectedMarriedDate) {
+                  //         controller.selectedMarriedDate = picked;
+                  //         controller.marriedDatesController.text =
+                  //             DateFormat("dd-MM-yyyy")
+                  //                 .format(controller.selectedMarriedDate);
+                  //         controller.selectDomDate =
+                  //             DateFormat("yyyy-MM-dd").format(picked);
+                  //         controller.update();
+                  //       }
+                  //     },
+                  //     child: Padding(
+                  //       padding: Dimens.edgeInsets10,
+                  //       child: SvgPicture.asset(
+                  //         AssetConstants.ic_calendar,
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                  // Dimens.boxHeight20,
+                  // CustomTextFormField(
+                  //   fillColor: ColorsValue.greyEEEEEE,
+                  //   text: 'father_law_surname'.tr,
+                  //   isGujarati: true,
+                  //   textInputAction: TextInputAction.next,
+                  //   keybordtype: TextInputType.emailAddress,
+                  //   controller: controller.fatherLawSurnameController,
+                  //   // validation: (value) {
+                  //   //   if (value!.isEmpty) {
+                  //   //     return 'enter_father_law_surname'.tr;
+                  //   //   }
+                  //   //   return null;
+                  //   // },
+                  // ),
+                  // Dimens.boxHeight20,
+                  // CustomTextFormField(
+                  //   fillColor: ColorsValue.greyEEEEEE,
+                  //   text: 'father_law_name'.tr,
+                  //   isGujarati: true,
+                  //   textInputAction: TextInputAction.next,
+                  //   keybordtype: TextInputType.emailAddress,
+                  //   controller: controller.fatherLawNameController,
+                  //   // validation: (value) {
+                  //   //   if (value!.isEmpty) {
+                  //   //     return 'enter_father_law_name'.tr;
+                  //   //   }
+                  //   //   return null;
+                  //   // },
+                  // ),
+                  // Dimens.boxHeight20,
+                  // CustomTextFormField(
+                  //   fillColor: ColorsValue.greyEEEEEE,
+                  //   text: 'father_law_father_name'.tr,
+                  //   isGujarati: true,
+                  //   textInputAction: TextInputAction.next,
+                  //   keybordtype: TextInputType.emailAddress,
+                  //   controller: controller.fatherLawFatherNameController,
+                  //   // validation: (value) {
+                  //   //   if (value!.isEmpty) {
+                  //   //     return 'enter_father_law_father_name'.tr;
+                  //   //   }
+                  //   //   return null;
+                  //   // },
+                  // ),
+                  // Dimens.boxHeight20,
+                  // CustomTextFormField(
+                  //   fillColor: ColorsValue.greyEEEEEE,
+                  //   text: 'father_law_village'.tr,
+                  //   isGujarati: true,
+                  //   textInputAction: TextInputAction.next,
+                  //   keybordtype: TextInputType.emailAddress,
+                  //   controller: controller.fatherLawVillageNameController,
+                  //   // validation: (value) {
+                  //   //   if (value!.isEmpty) {
+                  //   //     return 'enter_father_law_village'.tr;
+                  //   //   }
+                  //   //   return null;
+                  //   // },
+                  // ),
+                  // Dimens.boxHeight20,
+                  // CustomTextFormField(
+                  //   fillColor: ColorsValue.greyEEEEEE,
+                  //   text: 'father_law_taluka'.tr,
+                  //   isGujarati: true,
+                  //   textInputAction: TextInputAction.next,
+                  //   keybordtype: TextInputType.emailAddress,
+                  //   controller: controller.fatherLawTalukaController,
+                  //   // validation: (value) {
+                  //   //   if (value!.isEmpty) {
+                  //   //     return 'enter_father_law_taluka'.tr;
+                  //   //   }
+                  //   //   return null;
+                  //   // },
+                  // ),
+                  // Dimens.boxHeight20,
+                  // CustomTextFormField(
+                  //   fillColor: ColorsValue.greyEEEEEE,
+                  //   text: 'father_law_district'.tr,
+                  //   isGujarati: true,
+                  //   textInputAction: TextInputAction.next,
+                  //   keybordtype: TextInputType.emailAddress,
+                  //   controller: controller.fatherLawDistrictController,
+                  //   // validation: (value) {
+                  //   //   if (value!.isEmpty) {
+                  //   //     return 'enter_father_law_district'.tr;
+                  //   //   }
+                  //   //   return null;
+                  //   // },
+                  // ),
                   // Dimens.boxHeight20,
                   // Align(
                   //   alignment: Alignment.centerLeft,

@@ -38,7 +38,7 @@ class SevaKiyParvutiScreen extends StatelessWidget {
             centerTitle: true,
             leading: InkWell(
               onTap: () {
-                Get.back();
+                Navigator.pop(context);
               },
               child: Padding(
                 padding: Dimens.edgeInsets12,

@@ -106,9 +106,9 @@ class FamilyMembersDatum {
         otherBusiness: json["other_business"],
         isMarried: json["is_married"],
         dom: json["dom"],
-        fatherInLaw: json["father_in_law"] == null
-            ? null
-            : FatherInLaw.fromJson(json["father_in_law"]),
+        // fatherInLaw: json["father_in_law"] == null
+        //     ? null
+        //     : FatherInLaw.fromJson(json["father_in_law"]),
         isParent: json["is_parent"],
         parent: json["parent"],
         status: json["status"],
@@ -138,7 +138,7 @@ class FamilyMembersDatum {
         "other_business": otherBusiness,
         "is_married": isMarried,
         "dom": dom,
-        "father_in_law": fatherInLaw?.toJson(),
+        // "father_in_law": fatherInLaw?.toJson(),
         "is_parent": isParent,
         "parent": parent,
         "status": status,

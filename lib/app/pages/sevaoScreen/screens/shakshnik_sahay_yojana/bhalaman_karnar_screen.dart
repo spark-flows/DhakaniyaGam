@@ -26,8 +26,7 @@ class BhalamanKarnarScreen extends StatelessWidget {
           elevation: Dimens.ten,
           centerTitle: false,
           leading: InkWell(
-            onTap: () {
-              Get.back();
+            onTap: () {Navigator.pop(context);
             },
             child: Padding(
               padding: Dimens.edgeInsets12,
@@ -49,8 +48,7 @@ class BhalamanKarnarScreen extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: CustomButton(
-                  onPressed: () {
-                    Get.back();
+                  onPressed: () {Navigator.pop(context);
                   },
                   text: 'go_back'.tr,
                   textStyle: Styles.mainGuj70018,

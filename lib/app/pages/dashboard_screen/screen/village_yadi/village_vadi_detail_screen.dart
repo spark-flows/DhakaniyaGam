@@ -40,8 +40,7 @@ class VillageYadiDetailScreen extends StatelessWidget {
           elevation: Dimens.ten,
           centerTitle: true,
           leading: InkWell(
-            onTap: () {
-              Get.back();
+            onTap: () {Navigator.pop(context);
             },
             child: Padding(
               padding: Dimens.edgeInsets12,
@@ -273,8 +272,7 @@ class VillageYadiDetailScreen extends StatelessWidget {
                                                   "Select BloodGroup";
                                               controller
                                                   .pagingVillageCommitteeController
-                                                  .refresh();
-                                              Get.back();
+                                                  .refresh();Navigator.pop(context);
                                             },
                                             style: ElevatedButton.styleFrom(
                                               fixedSize: Size(
@@ -298,8 +296,7 @@ class VillageYadiDetailScreen extends StatelessWidget {
                                         Dimens.boxWidth20,
                                         Expanded(
                                           child: ElevatedButton(
-                                            onPressed: () {
-                                              Get.back();
+                                            onPressed: () {Navigator.pop(context);
                                               controller
                                                   .pagingVillageCommitteeController
                                                   .refresh();

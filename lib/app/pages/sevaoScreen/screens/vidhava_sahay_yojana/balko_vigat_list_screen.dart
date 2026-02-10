@@ -29,8 +29,7 @@ class BalkoNiVigatScreen extends StatelessWidget {
           centerTitle: true,
           leading: InkWell(
             onTap: () {
-              Get.back();
-            },
+              Navigator.pop(context);},
             child: Padding(
               padding: Dimens.edgeInsets12,
               child: SvgPicture.asset(
@@ -66,8 +65,7 @@ class BalkoNiVigatScreen extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: CustomButton(
-                  onPressed: () {
-                    Get.back();
+                  onPressed: () {Navigator.pop(context);
                   },
                   text: 'go_back'.tr,
                   textStyle: Styles.mainGuj70018,

@@ -34,8 +34,7 @@ class AddBalkoScreen extends StatelessWidget {
             elevation: Dimens.ten,
             centerTitle: true,
             leading: InkWell(
-              onTap: () {
-                Get.back();
+              onTap: () {Navigator.pop(context);
               },
               child: Padding(
                 padding: Dimens.edgeInsets12,
@@ -418,7 +417,7 @@ class AddBalkoScreen extends StatelessWidget {
                         await controller.box.put(Get.arguments[1], childModel);
                         await controller.getAllBalkoList();
                         controller.allDataEmptyBalko();
-                        Get.back();
+                        Navigator.pop(context);
                       } else if (!data) {
                         var childModel = ChildsModel()
                           ..familymember = controller.selectAddChildValue
@@ -436,8 +435,7 @@ class AddBalkoScreen extends StatelessWidget {
                               controller.otherChildBusinessController.text;
                         await controller.box.add(childModel);
                         await controller.getAllBalkoList();
-                        controller.allDataEmptyBalko();
-                        Get.back();
+                        controller.allDataEmptyBalko();Navigator.pop(context);
                       } else {
                         Utility.errorMessage("બાળક ઉમેરો");
                       }

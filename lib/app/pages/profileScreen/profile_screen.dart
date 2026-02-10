@@ -26,8 +26,7 @@ class ProfileScreen extends StatelessWidget {
             elevation: Dimens.ten,
             centerTitle: true,
             leading: InkWell(
-              onTap: () {
-                Get.back();
+              onTap: () {Navigator.pop(context);
               },
               child: Padding(
                 padding: Dimens.edgeInsets12,
@@ -207,7 +206,7 @@ class ProfileScreen extends StatelessWidget {
                 InkWell(
                   onTap: () {
                     Utility.launchLinkURL(
-                        "https://dhandhukataluka.blogspot.com/2024/05/dhandhuka-taluka.html");
+                        "https://sparkflow854.blogspot.com/2026/02/dhakaniya-gam.html");
                   },
                   child: Container(
                     height: Dimens.sixtySix,
@@ -257,8 +256,7 @@ class ProfileScreen extends StatelessWidget {
                                 "Yes",
                                 style: Styles.redColor50014,
                               ),
-                              onPressed: () async {
-                                Get.back();
+                              onPressed: () async {Navigator.pop(context);
                                 Get.find<DeviceRepository>().deleteBox();
                                 RouteManagement.goToLoginScreen();
                               },
@@ -268,8 +266,7 @@ class ProfileScreen extends StatelessWidget {
                                 "No",
                                 style: Styles.black2E363F50014,
                               ),
-                              onPressed: () {
-                                Get.back();
+                              onPressed: () {Navigator.pop(context);
                               },
                             )
                           ],

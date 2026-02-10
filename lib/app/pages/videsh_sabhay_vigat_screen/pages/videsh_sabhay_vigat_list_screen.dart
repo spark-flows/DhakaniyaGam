@@ -20,8 +20,7 @@ class VideshSabhayVigatListScreen extends StatelessWidget {
           appBar: AppBar(
             centerTitle: true,
             leading: InkWell(
-              onTap: () {
-                Get.back();
+              onTap: () {Navigator.pop(context);
               },
               child: Padding(
                 padding: Dimens.edgeInsets12,

@@ -15,7 +15,7 @@ import 'package:http_parser/src/media_type.dart' as media_type;
 class ApiWrapper {
   final String _baseUrl = 'https://api.dhankaniya.com/';
   static String baseUrl = 'https://api.dhankaniya.com/';
-  static String imageUrl = 'https://dhandhuka.s3.ap-south-1.amazonaws.com/';
+  static String imageUrl = ''; // https://dhandhuka.s3.ap-south-1.amazonaws.com/
 
   /// Method to make all the requests inside the app like GET, POST, PUT, Delete
   Future<ResponseModel> makeRequest(

@@ -43,7 +43,7 @@ class ParivarSabhayVigatScreen extends StatelessWidget {
           centerTitle: true,
           leading: InkWell(
             onTap: () {
-              Get.back();
+              Navigator.pop(context);
             },
             child: Padding(
               padding: Dimens.edgeInsets12,
@@ -53,7 +53,7 @@ class ParivarSabhayVigatScreen extends StatelessWidget {
             ),
           ),
           title: Text(
-            'add_member'.tr,
+            (controller.isEdit ?? false) ? 'update_member'.tr : 'add_member'.tr,
             style: Styles.mainGuj90020,
           ),
         ),

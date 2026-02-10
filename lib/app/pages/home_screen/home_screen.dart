@@ -17,8 +17,7 @@ class HomeScreen extends StatelessWidget {
           elevation: Dimens.ten,
           centerTitle: true,
           leading: InkWell(
-            onTap: () {
-              Get.back();
+            onTap: () {Navigator.pop(context);
             },
             child: Padding(
               padding: Dimens.edgeInsets12,

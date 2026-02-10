@@ -988,8 +988,7 @@ class SevaoController extends GetxController {
                           Dimens.boxHeight20,
                           ElevatedButton(
                             onPressed: () {
-                              if (isTrems) {
-                                Get.back();
+                              if (isTrems) {Navigator.pop(context);
                               }
                             },
                             style: ElevatedButton.styleFrom(

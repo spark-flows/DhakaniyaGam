@@ -33,7 +33,7 @@ class VidhvaBenNiVigatScreen extends StatelessWidget {
           centerTitle: true,
           leading: InkWell(
             onTap: () {
-              Get.back();
+              Navigator.pop(context);
             },
             child: Padding(
               padding: Dimens.edgeInsets12,
@@ -56,7 +56,7 @@ class VidhvaBenNiVigatScreen extends StatelessWidget {
                 flex: 2,
                 child: CustomButton(
                   onPressed: () {
-                    Get.back();
+                    Navigator.pop(context);
                   },
                   text: 'go_back'.tr,
                   textStyle: Styles.mainGuj70018,
@@ -109,7 +109,7 @@ class VidhvaBenNiVigatScreen extends StatelessWidget {
                                     alignment: Alignment.topRight,
                                     child: InkWell(
                                       onTap: () {
-                                        Get.back();
+                                        Navigator.pop(context);
                                       },
                                       child: const Icon(
                                         Icons.close,
@@ -121,7 +121,7 @@ class VidhvaBenNiVigatScreen extends StatelessWidget {
                                     children: [
                                       InkWell(
                                         onTap: () async {
-                                          Get.back();
+                                          Navigator.pop(context);
                                           if (await Utility
                                               .imagePermissionCheack(context)) {
                                             controller.uploadProfilePic(
@@ -161,7 +161,7 @@ class VidhvaBenNiVigatScreen extends StatelessWidget {
                                       Dimens.boxWidth60,
                                       InkWell(
                                         onTap: () async {
-                                          Get.back();
+                                          Navigator.pop(context);
                                           if (await Utility
                                               .imagePermissionCheack(context)) {
                                             controller.uploadProfilePic(

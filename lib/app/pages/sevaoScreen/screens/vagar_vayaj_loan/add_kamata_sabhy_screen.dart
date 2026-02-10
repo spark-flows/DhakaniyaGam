@@ -27,8 +27,7 @@ class AddKamataSabhyScreen extends StatelessWidget {
             elevation: Dimens.ten,
             centerTitle: true,
             leading: InkWell(
-              onTap: () {
-                Get.back();
+              onTap: () {Navigator.pop(context);
               },
               child: Padding(
                 padding: Dimens.edgeInsets12,
@@ -192,8 +191,7 @@ class AddKamataSabhyScreen extends StatelessWidget {
                     Dimens.boxHeight50,
                     CustomButton(
                       onPressed: () async {
-                        controller.addNote();
-                        Get.back();
+                        controller.addNote();Navigator.pop(context);
                         controller.update();
                       },
                       text: 'સબમિટ કરો',

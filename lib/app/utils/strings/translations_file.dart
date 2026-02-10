@@ -80,6 +80,7 @@ class TranslationsFile extends Translations {
           'enter_father_law_district': 'સસરાના જિલ્લાનું નામ દાખલ કરો',
           'save': 'Save',
           'add_member': 'કુટુંબના સભ્યો ઉમેરો',
+          'update_member': 'કુટુંબના સભ્યો અપડેટ કરો',
           'member_name': 'સભ્યનું નામ',
           'enter_member_name': 'સભ્યનું નામ દાખલ કરો',
           'relationship': 'સબંધ',

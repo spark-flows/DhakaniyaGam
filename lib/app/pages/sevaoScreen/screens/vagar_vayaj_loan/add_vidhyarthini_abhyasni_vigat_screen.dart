@@ -30,8 +30,7 @@ class VidhyarthiniAbhyasNiVigat extends StatelessWidget {
             elevation: Dimens.ten,
             centerTitle: true,
             leading: InkWell(
-              onTap: () {
-                Get.back();
+              onTap: () {Navigator.pop(context);
               },
               child: Padding(
                 padding: Dimens.edgeInsets12,
@@ -53,8 +52,7 @@ class VidhyarthiniAbhyasNiVigat extends StatelessWidget {
                 Expanded(
                   flex: 2,
                   child: CustomButton(
-                    onPressed: () {
-                      Get.back();
+                    onPressed: () {Navigator.pop(context);
                     },
                     text: 'go_back'.tr,
                     textStyle: Styles.mainGuj70018,

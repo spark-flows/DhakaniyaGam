@@ -32,8 +32,7 @@ class AddLoanNiVigatAddScreen extends StatelessWidget {
             elevation: Dimens.ten,
             centerTitle: true,
             leading: InkWell(
-              onTap: () {
-                Get.back();
+              onTap: () {Navigator.pop(context);
               },
               child: Padding(
                 padding: Dimens.edgeInsets12,
@@ -55,8 +54,7 @@ class AddLoanNiVigatAddScreen extends StatelessWidget {
                 Expanded(
                   flex: 2,
                   child: CustomButton(
-                    onPressed: () {
-                      Get.back();
+                    onPressed: () {Navigator.pop(context);
                     },
                     text: 'go_back'.tr,
                     textStyle: Styles.mainGuj70018,
@@ -122,8 +120,7 @@ class AddLoanNiVigatAddScreen extends StatelessWidget {
                                         Align(
                                           alignment: Alignment.topRight,
                                           child: InkWell(
-                                            onTap: () {
-                                              Get.back();
+                                            onTap: () {Navigator.pop(context);
                                             },
                                             child: const Icon(
                                               Icons.close,
@@ -135,8 +132,7 @@ class AddLoanNiVigatAddScreen extends StatelessWidget {
                                               MainAxisAlignment.center,
                                           children: [
                                             InkWell(
-                                              onTap: () async {
-                                                Get.back();
+                                              onTap: () async {Navigator.pop(context);
                                                 if (await Utility
                                                     .imagePermissionCheack(
                                                         context)) {
@@ -178,8 +174,7 @@ class AddLoanNiVigatAddScreen extends StatelessWidget {
                                             ),
                                             Dimens.boxWidth60,
                                             InkWell(
-                                              onTap: () async {
-                                                Get.back();
+                                              onTap: () async {Navigator.pop(context);
                                                 if (await Utility
                                                     .imagePermissionCheack(
                                                         context)) {

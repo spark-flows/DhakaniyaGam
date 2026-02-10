@@ -151,7 +151,7 @@ class ConnectHelper {
       'mobile': mobile,
       'country_wise_contact': {
         "number": mobile.isEmpty ? "" : "0$mobile",
-        "internationalNumber": "$countryCode $mobile",
+        "internationalNumber": "$countryCode$mobile",
         "nationalNumber": "0$mobile",
         "e164Number": countryCode + mobile,
         "countryCode": PhoneNumber.getISO2CodeByPrefix(countryCode),
@@ -338,14 +338,14 @@ class ConnectHelper {
       'business_address': business_address,
       'business_details': business_details,
       'dom': dom,
-      'father_in_law': {
-        "surname": surnameLaw,
-        "name": nameLaw,
-        "fathername": fathernameLaw,
-        "village": village,
-        "taluka": taluka,
-        "district": district,
-      },
+      // 'father_in_law': {
+      //   "surname": surnameLaw,
+      //   "name": nameLaw,
+      //   "fathername": fathernameLaw,
+      //   "village": village,
+      //   "taluka": taluka,
+      //   "district": district,
+      // },
       'residential_type': house,
       'mediclaims': mediclaims,
     };
