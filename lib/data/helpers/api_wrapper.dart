@@ -24,6 +24,7 @@ class ApiWrapper {
     dynamic data,
     bool isLoading,
     Map<String, String> headers, {
+    String? fileKey,
     media_type.MediaType? mediaType,
     List<ImageFormData>? mediaFileList,
   }) async {
@@ -217,18 +218,26 @@ class ApiWrapper {
                 Utility.showLoader();
               }
               var request = http.MultipartRequest('POST', Uri.parse(uri));
-              request.files.add(await http.MultipartFile.fromPath(
-                  'profile_pic', data ?? '',
+              request.files.add(
+                await http.MultipartFile.fromPath(
+                  fileKey ?? 'file',
+                  data ?? '',
                   contentType:
-                      mediaType ?? media_type.MediaType("image", "jpeg")));
+                      mediaType ?? media_type.MediaType("image", "jpeg"),
+                ),
+              );
               request.headers.addAll(headers);
 
-              http.StreamedResponse response =
-                  await request.send().timeout(const Duration(seconds: 120));
+              http.StreamedResponse response = await request.send().timeout(
+                    const Duration(seconds: 120),
+                  );
               if (isLoading) Utility.closeDialog();
               var bytesToString = await response.stream.bytesToString();
               var res = ResponseModel(
-                  data: bytesToString, hasError: false, statusCode: 200);
+                data: bytesToString,
+                hasError: false,
+                statusCode: 200,
+              );
               log(
                 'URL :- $uri\nData :- $data\nHeaders :- $headers\nResponse :-\nStatus Code :- ${res.statusCode}\nResponse Data :- ${res.data}',
               );
@@ -236,7 +245,9 @@ class ApiWrapper {
             } on TimeoutException catch (_) {
               if (isLoading) Utility.closeDialog();
               return ResponseModel(
-                  data: '{"message":"Request timed out"}', hasError: true);
+                data: '{"message":"Request timed out"}',
+                hasError: true,
+              );
             }
           }
         case Request.awsUploadAdhar:

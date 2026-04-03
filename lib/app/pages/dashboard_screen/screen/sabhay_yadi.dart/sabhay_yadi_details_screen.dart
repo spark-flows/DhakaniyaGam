@@ -29,7 +29,8 @@ class SabhayYadiDeatilsScreen extends StatelessWidget {
           elevation: Dimens.ten,
           centerTitle: true,
           leading: InkWell(
-            onTap: () {Navigator.pop(context);
+            onTap: () {
+              Navigator.pop(context);
             },
             child: Padding(
               padding: Dimens.edgeInsets12,
@@ -138,406 +139,406 @@ class SabhayYadiDeatilsScreen extends StatelessWidget {
                       )
                     ],
                   ),
-                  Dimens.boxHeight20,
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SvgPicture.asset(
-                        AssetConstants.ic_location,
-                      ),
-                      Dimens.boxWidth10,
-                      Flexible(
-                        child: Text(
-                          controller.getOneUserDetailsData?.mainMember
-                                      ?.currentAddress?.isNotEmpty ??
-                                  false
-                              ? controller.getOneUserDetailsData?.mainMember
-                                      ?.currentAddress ??
-                                  ""
-                              : " -- ",
-                          maxLines: 3,
-                          overflow: TextOverflow.ellipsis,
-                          style: Styles.grey9393Guj60014,
-                        ),
-                      )
-                    ],
-                  ),
-                  Dimens.boxHeight20,
-                  Row(
-                    children: [
-                      SvgPicture.asset(
-                        AssetConstants.ic_email,
-                      ),
-                      Dimens.boxWidth10,
-                      Flexible(
-                        child: Text(
-                          controller.getOneUserDetailsData?.mainMember?.email
-                                      ?.isEmpty ??
-                                  false
-                              ? " -- "
-                              : controller.getOneUserDetailsData?.mainMember
-                                      ?.email ??
-                                  " -- ",
-                          style: Styles.grey9393Guj60014,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      )
-                    ],
-                  ),
-                  Dimens.boxHeight20,
-                  Row(
-                    children: [
-                      SvgPicture.asset(
-                        AssetConstants.calendar,
-                      ),
-                      Dimens.boxWidth10,
-                      Text(
-                        controller.getOneUserDetailsData?.mainMember?.dob
-                                    ?.isEmpty ??
-                                false
-                            ? " -- "
-                            : Utility.getFormatedDateTime(controller
-                                    .getOneUserDetailsData?.mainMember?.dob ??
-                                " -- "),
-                        style: Styles.grey9393Guj60014,
-                      )
-                    ],
-                  ),
-                  Dimens.boxHeight20,
-                  Row(
-                    children: [
-                      Row(
-                        children: [
-                          SvgPicture.asset(
-                            AssetConstants.ic_blood,
-                          ),
-                          Dimens.boxWidth10,
-                          Text(
-                            controller.getOneUserDetailsData?.mainMember
-                                        ?.bloodGroup?.isEmpty ??
-                                    false
-                                ? " -- "
-                                : controller.getOneUserDetailsData?.mainMember
-                                        ?.bloodGroup ??
-                                    " -- ",
-                            style: Styles.grey9393Guj60014,
-                          )
-                        ],
-                      ),
-                      Dimens.boxWidth10,
-                      Container(
-                        width: Dimens.one,
-                        height: Dimens.thirty,
-                        color: ColorsValue.grey9393,
-                      ),
-                      Flexible(
-                        child: Row(
-                          children: [
-                            Dimens.boxWidth20,
-                            SvgPicture.asset(
-                              AssetConstants.ic_education,
-                            ),
-                            Dimens.boxWidth10,
-                            Flexible(
-                              child: Text(
-                                controller.getOneUserDetailsData?.mainMember
-                                        ?.education?.gujaratiName ??
-                                    " -- ",
-                                style: Styles.grey9393Guj60014,
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  Dimens.boxHeight20,
-                  Row(
-                    children: [
-                      SvgPicture.asset(
-                        AssetConstants.ic_business,
-                      ),
-                      Dimens.boxWidth10,
-                      Text(
-                        controller.getOneUserDetailsData?.mainMember?.business
-                                ?.gujaratiName ??
-                            " -- ",
-                        style: Styles.grey9393Guj60014,
-                      )
-                    ],
-                  ),
-                  Dimens.boxHeight30,
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "ફર્મનું નામ:",
-                        style: Styles.grey9393Guj60014,
-                      ),
-                      Dimens.boxWidth5,
-                      Flexible(
-                        child: Text(
-                          controller.getOneUserDetailsData?.mainMember?.firmName
-                                      ?.isNotEmpty ??
-                                  false
-                              ? controller.getOneUserDetailsData?.mainMember
-                                      ?.firmName ??
-                                  " -- "
-                              : " -- ",
-                          style: Styles.blackGuj60014,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Dimens.boxHeight15,
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "ધંધો - વ્યવસાયનું સરનામું:",
-                        style: Styles.grey9393Guj60014,
-                      ),
-                      Dimens.boxWidth5,
-                      Flexible(
-                        child: Text(
-                          controller.getOneUserDetailsData?.mainMember
-                                  ?.businessAddress ??
-                              " -- ",
-                          style: Styles.blackGuj60014,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Dimens.boxHeight15,
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "ધંધો - વ્યવસાયની વિગત:",
-                        style: Styles.grey9393Guj60014,
-                      ),
-                      Dimens.boxWidth5,
-                      Flexible(
-                        child: Text(
-                          controller.getOneUserDetailsData?.mainMember
-                                  ?.businessDetails ??
-                              " -- ",
-                          style: Styles.blackGuj60014,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Dimens.boxHeight15,
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "દામ્પત્ય જીવનની શરૂઆત:",
-                        style: Styles.grey9393Guj60014,
-                      ),
-                      Dimens.boxWidth5,
-                      Flexible(
-                        child: Text(
-                          controller.getOneUserDetailsData?.mainMember?.dom
-                                      ?.isEmpty ??
-                                  false
-                              ? " -- "
-                              : Utility.getFormatedDateTime(controller
-                                      .getOneUserDetailsData?.mainMember?.dom ??
-                                  " -- "),
-                          style: Styles.blackGuj60014,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Visibility(
-                    visible: controller
-                            .getOneUserDetailsData?.mainMember?.isMarried ??
-                        false,
-                    child: Column(
-                      children: [
-                        Dimens.boxHeight15,
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "સસરાનુું નામ:",
-                              style: Styles.grey9393Guj60014,
-                            ),
-                            Dimens.boxWidth5,
-                            Flexible(
-                              child: Text(
-                                controller.getOneUserDetailsData?.mainMember
-                                            ?.fatherInLaw?.name?.isNotEmpty ??
-                                        false
-                                    ? "${controller.getOneUserDetailsData?.mainMember?.fatherInLaw?.name} ${controller.getOneUserDetailsData?.mainMember?.fatherInLaw?.fathername} ${controller.getOneUserDetailsData?.mainMember?.fatherInLaw?.surname}"
-                                    : " -- ",
-                                style: Styles.blackGuj60014,
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Dimens.boxHeight15,
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "સસરાના ગામનું નામ:",
-                              style: Styles.grey9393Guj60014,
-                            ),
-                            Dimens.boxWidth5,
-                            Flexible(
-                              child: Text(
-                                controller.getOneUserDetailsData?.mainMember
-                                        ?.fatherInLaw?.village ??
-                                    " -- ",
-                                style: Styles.blackGuj60014,
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Dimens.boxHeight15,
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "સસરાના તાલુકાનું નામ:",
-                              style: Styles.grey9393Guj60014,
-                            ),
-                            Dimens.boxWidth5,
-                            Flexible(
-                              child: Text(
-                                controller.getOneUserDetailsData?.mainMember
-                                        ?.fatherInLaw?.taluka ??
-                                    " -- ",
-                                style: Styles.blackGuj60014,
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Dimens.boxHeight15,
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "સસરાના જિલ્લાનું નામ:",
-                              style: Styles.grey9393Guj60014,
-                            ),
-                            Dimens.boxWidth5,
-                            Flexible(
-                              child: Text(
-                                controller.getOneUserDetailsData?.mainMember
-                                        ?.fatherInLaw?.district ??
-                                    " -- ",
-                                style: Styles.blackGuj60014,
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  Dimens.boxHeight15,
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "સુરતમાં મકાન:",
-                        style: Styles.grey9393Guj60014,
-                      ),
-                      Dimens.boxWidth5,
-                      Flexible(
-                        child: Text(
-                          controller.getOneUserDetailsData?.mainMember
-                                      ?.residentialType?.isNotEmpty ??
-                                  false
-                              ? controller.getOneUserDetailsData?.mainMember
-                                      ?.residentialType ??
-                                  " -- "
-                              : " -- ",
-                          style: Styles.blackGuj60014,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Dimens.boxHeight15,
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "મેડિક્લેમ:",
-                        style: Styles.grey9393Guj60014,
-                      ),
-                      Dimens.boxWidth5,
-                      Flexible(
-                        child: controller.getOneUserDetailsData?.mainMember
-                                    ?.mediclaims?.isNotEmpty ??
-                                false
-                            ? Wrap(
-                                children: controller.getOneUserDetailsData
-                                        ?.mainMember?.mediclaims
-                                        ?.map(
-                                      (e) {
-                                        return Text(
-                                          "$e, ",
-                                          style: Styles.blackGuj60014,
-                                        );
-                                      },
-                                    ).toList() ??
-                                    [],
-                              )
-                            : Text(
-                                " -- ",
-                                style: Styles.blackGuj60014,
-                              ),
-                      )
-                    ],
-                  ),
-                  Dimens.boxHeight15,
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "વિશિષ્ટ પ્રતિભા / કૌશલ્ય / અવોર્ડ /સામાજિક રાજકિય હોદ્દો / સરકારી નોકરી / અન્ય:",
-                        maxLines: 2,
-                        style: Styles.grey9393Guj60014,
-                      ),
-                      Dimens.boxWidth5,
-                      Text(
-                        controller.getOneUserDetailsData?.mainMember?.other
-                                    ?.isNotEmpty ??
-                                false
-                            ? controller
-                                    .getOneUserDetailsData?.mainMember?.other ??
-                                " -- "
-                            : " -- ",
-                        style: Styles.blackGuj60014,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
-                  ),
+                  // Dimens.boxHeight20,
+                  // Row(
+                  //   crossAxisAlignment: CrossAxisAlignment.start,
+                  //   children: [
+                  //     SvgPicture.asset(
+                  //       AssetConstants.ic_location,
+                  //     ),
+                  //     Dimens.boxWidth10,
+                  //     Flexible(
+                  //       child: Text(
+                  //         controller.getOneUserDetailsData?.mainMember
+                  //                     ?.currentAddress?.isNotEmpty ??
+                  //                 false
+                  //             ? controller.getOneUserDetailsData?.mainMember
+                  //                     ?.currentAddress ??
+                  //                 ""
+                  //             : " -- ",
+                  //         maxLines: 3,
+                  //         overflow: TextOverflow.ellipsis,
+                  //         style: Styles.grey9393Guj60014,
+                  //       ),
+                  //     )
+                  //   ],
+                  // ),
+                  // Dimens.boxHeight20,
+                  // Row(
+                  //   children: [
+                  //     SvgPicture.asset(
+                  //       AssetConstants.ic_email,
+                  //     ),
+                  //     Dimens.boxWidth10,
+                  //     Flexible(
+                  //       child: Text(
+                  //         controller.getOneUserDetailsData?.mainMember?.email
+                  //                     ?.isEmpty ??
+                  //                 false
+                  //             ? " -- "
+                  //             : controller.getOneUserDetailsData?.mainMember
+                  //                     ?.email ??
+                  //                 " -- ",
+                  //         style: Styles.grey9393Guj60014,
+                  //         maxLines: 2,
+                  //         overflow: TextOverflow.ellipsis,
+                  //       ),
+                  //     )
+                  //   ],
+                  // ),
+                  // Dimens.boxHeight20,
+                  // Row(
+                  //   children: [
+                  //     SvgPicture.asset(
+                  //       AssetConstants.calendar,
+                  //     ),
+                  //     Dimens.boxWidth10,
+                  //     Text(
+                  //       controller.getOneUserDetailsData?.mainMember?.dob
+                  //                   ?.isEmpty ??
+                  //               false
+                  //           ? " -- "
+                  //           : Utility.getFormatedDateTime(controller
+                  //                   .getOneUserDetailsData?.mainMember?.dob ??
+                  //               " -- "),
+                  //       style: Styles.grey9393Guj60014,
+                  //     )
+                  //   ],
+                  // ),
+                  // Dimens.boxHeight20,
+                  // Row(
+                  //   children: [
+                  //     Row(
+                  //       children: [
+                  //         SvgPicture.asset(
+                  //           AssetConstants.ic_blood,
+                  //         ),
+                  //         Dimens.boxWidth10,
+                  //         Text(
+                  //           controller.getOneUserDetailsData?.mainMember
+                  //                       ?.bloodGroup?.isEmpty ??
+                  //                   false
+                  //               ? " -- "
+                  //               : controller.getOneUserDetailsData?.mainMember
+                  //                       ?.bloodGroup ??
+                  //                   " -- ",
+                  //           style: Styles.grey9393Guj60014,
+                  //         )
+                  //       ],
+                  //     ),
+                  //     Dimens.boxWidth10,
+                  //     Container(
+                  //       width: Dimens.one,
+                  //       height: Dimens.thirty,
+                  //       color: ColorsValue.grey9393,
+                  //     ),
+                  //     Flexible(
+                  //       child: Row(
+                  //         children: [
+                  //           Dimens.boxWidth20,
+                  //           SvgPicture.asset(
+                  //             AssetConstants.ic_education,
+                  //           ),
+                  //           Dimens.boxWidth10,
+                  //           Flexible(
+                  //             child: Text(
+                  //               controller.getOneUserDetailsData?.mainMember
+                  //                       ?.education?.gujaratiName ??
+                  //                   " -- ",
+                  //               style: Styles.grey9393Guj60014,
+                  //               maxLines: 2,
+                  //               overflow: TextOverflow.ellipsis,
+                  //             ),
+                  //           )
+                  //         ],
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
+                  // Dimens.boxHeight20,
+                  // Row(
+                  //   children: [
+                  //     SvgPicture.asset(
+                  //       AssetConstants.ic_business,
+                  //     ),
+                  //     Dimens.boxWidth10,
+                  //     Text(
+                  //       controller.getOneUserDetailsData?.mainMember?.business
+                  //               ?.gujaratiName ??
+                  //           " -- ",
+                  //       style: Styles.grey9393Guj60014,
+                  //     )
+                  //   ],
+                  // ),
+                  // Dimens.boxHeight30,
+                  // Row(
+                  //   crossAxisAlignment: CrossAxisAlignment.start,
+                  //   children: [
+                  //     Text(
+                  //       "ફર્મનું નામ:",
+                  //       style: Styles.grey9393Guj60014,
+                  //     ),
+                  //     Dimens.boxWidth5,
+                  //     Flexible(
+                  //       child: Text(
+                  //         controller.getOneUserDetailsData?.mainMember?.firmName
+                  //                     ?.isNotEmpty ??
+                  //                 false
+                  //             ? controller.getOneUserDetailsData?.mainMember
+                  //                     ?.firmName ??
+                  //                 " -- "
+                  //             : " -- ",
+                  //         style: Styles.blackGuj60014,
+                  //         maxLines: 2,
+                  //         overflow: TextOverflow.ellipsis,
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
+                  // Dimens.boxHeight15,
+                  // Row(
+                  //   crossAxisAlignment: CrossAxisAlignment.start,
+                  //   children: [
+                  //     Text(
+                  //       "ધંધો - વ્યવસાયનું સરનામું:",
+                  //       style: Styles.grey9393Guj60014,
+                  //     ),
+                  //     Dimens.boxWidth5,
+                  //     Flexible(
+                  //       child: Text(
+                  //         controller.getOneUserDetailsData?.mainMember
+                  //                 ?.businessAddress ??
+                  //             " -- ",
+                  //         style: Styles.blackGuj60014,
+                  //         maxLines: 2,
+                  //         overflow: TextOverflow.ellipsis,
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
+                  // Dimens.boxHeight15,
+                  // Row(
+                  //   crossAxisAlignment: CrossAxisAlignment.start,
+                  //   children: [
+                  //     Text(
+                  //       "ધંધો - વ્યવસાયની વિગત:",
+                  //       style: Styles.grey9393Guj60014,
+                  //     ),
+                  //     Dimens.boxWidth5,
+                  //     Flexible(
+                  //       child: Text(
+                  //         controller.getOneUserDetailsData?.mainMember
+                  //                 ?.businessDetails ??
+                  //             " -- ",
+                  //         style: Styles.blackGuj60014,
+                  //         maxLines: 2,
+                  //         overflow: TextOverflow.ellipsis,
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
+                  // Dimens.boxHeight15,
+                  // Row(
+                  //   crossAxisAlignment: CrossAxisAlignment.start,
+                  //   children: [
+                  //     Text(
+                  //       "દામ્પત્ય જીવનની શરૂઆત:",
+                  //       style: Styles.grey9393Guj60014,
+                  //     ),
+                  //     Dimens.boxWidth5,
+                  //     Flexible(
+                  //       child: Text(
+                  //         controller.getOneUserDetailsData?.mainMember?.dom
+                  //                     ?.isEmpty ??
+                  //                 false
+                  //             ? " -- "
+                  //             : Utility.getFormatedDateTime(controller
+                  //                     .getOneUserDetailsData?.mainMember?.dom ??
+                  //                 " -- "),
+                  //         style: Styles.blackGuj60014,
+                  //         maxLines: 2,
+                  //         overflow: TextOverflow.ellipsis,
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
+                  // Visibility(
+                  //   visible: controller
+                  //           .getOneUserDetailsData?.mainMember?.isMarried ??
+                  //       false,
+                  //   child: Column(
+                  //     children: [
+                  //       Dimens.boxHeight15,
+                  //       Row(
+                  //         crossAxisAlignment: CrossAxisAlignment.start,
+                  //         children: [
+                  //           Text(
+                  //             "સસરાનુું નામ:",
+                  //             style: Styles.grey9393Guj60014,
+                  //           ),
+                  //           Dimens.boxWidth5,
+                  //           Flexible(
+                  //             child: Text(
+                  //               controller.getOneUserDetailsData?.mainMember
+                  //                           ?.fatherInLaw?.name?.isNotEmpty ??
+                  //                       false
+                  //                   ? "${controller.getOneUserDetailsData?.mainMember?.fatherInLaw?.name} ${controller.getOneUserDetailsData?.mainMember?.fatherInLaw?.fathername} ${controller.getOneUserDetailsData?.mainMember?.fatherInLaw?.surname}"
+                  //                   : " -- ",
+                  //               style: Styles.blackGuj60014,
+                  //               maxLines: 2,
+                  //               overflow: TextOverflow.ellipsis,
+                  //             ),
+                  //           ),
+                  //         ],
+                  //       ),
+                  //       Dimens.boxHeight15,
+                  //       Row(
+                  //         crossAxisAlignment: CrossAxisAlignment.start,
+                  //         children: [
+                  //           Text(
+                  //             "સસરાના ગામનું નામ:",
+                  //             style: Styles.grey9393Guj60014,
+                  //           ),
+                  //           Dimens.boxWidth5,
+                  //           Flexible(
+                  //             child: Text(
+                  //               controller.getOneUserDetailsData?.mainMember
+                  //                       ?.fatherInLaw?.village ??
+                  //                   " -- ",
+                  //               style: Styles.blackGuj60014,
+                  //               maxLines: 2,
+                  //               overflow: TextOverflow.ellipsis,
+                  //             ),
+                  //           ),
+                  //         ],
+                  //       ),
+                  //       Dimens.boxHeight15,
+                  //       Row(
+                  //         crossAxisAlignment: CrossAxisAlignment.start,
+                  //         children: [
+                  //           Text(
+                  //             "સસરાના તાલુકાનું નામ:",
+                  //             style: Styles.grey9393Guj60014,
+                  //           ),
+                  //           Dimens.boxWidth5,
+                  //           Flexible(
+                  //             child: Text(
+                  //               controller.getOneUserDetailsData?.mainMember
+                  //                       ?.fatherInLaw?.taluka ??
+                  //                   " -- ",
+                  //               style: Styles.blackGuj60014,
+                  //               maxLines: 2,
+                  //               overflow: TextOverflow.ellipsis,
+                  //             ),
+                  //           ),
+                  //         ],
+                  //       ),
+                  //       Dimens.boxHeight15,
+                  //       Row(
+                  //         crossAxisAlignment: CrossAxisAlignment.start,
+                  //         children: [
+                  //           Text(
+                  //             "સસરાના જિલ્લાનું નામ:",
+                  //             style: Styles.grey9393Guj60014,
+                  //           ),
+                  //           Dimens.boxWidth5,
+                  //           Flexible(
+                  //             child: Text(
+                  //               controller.getOneUserDetailsData?.mainMember
+                  //                       ?.fatherInLaw?.district ??
+                  //                   " -- ",
+                  //               style: Styles.blackGuj60014,
+                  //               maxLines: 2,
+                  //               overflow: TextOverflow.ellipsis,
+                  //             ),
+                  //           ),
+                  //         ],
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // Dimens.boxHeight15,
+                  // Row(
+                  //   crossAxisAlignment: CrossAxisAlignment.start,
+                  //   children: [
+                  //     Text(
+                  //       "સુરતમાં મકાન:",
+                  //       style: Styles.grey9393Guj60014,
+                  //     ),
+                  //     Dimens.boxWidth5,
+                  //     Flexible(
+                  //       child: Text(
+                  //         controller.getOneUserDetailsData?.mainMember
+                  //                     ?.residentialType?.isNotEmpty ??
+                  //                 false
+                  //             ? controller.getOneUserDetailsData?.mainMember
+                  //                     ?.residentialType ??
+                  //                 " -- "
+                  //             : " -- ",
+                  //         style: Styles.blackGuj60014,
+                  //         maxLines: 2,
+                  //         overflow: TextOverflow.ellipsis,
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
+                  // Dimens.boxHeight15,
+                  // Row(
+                  //   crossAxisAlignment: CrossAxisAlignment.start,
+                  //   children: [
+                  //     Text(
+                  //       "મેડિક્લેમ:",
+                  //       style: Styles.grey9393Guj60014,
+                  //     ),
+                  //     Dimens.boxWidth5,
+                  //     Flexible(
+                  //       child: controller.getOneUserDetailsData?.mainMember
+                  //                   ?.mediclaims?.isNotEmpty ??
+                  //               false
+                  //           ? Wrap(
+                  //               children: controller.getOneUserDetailsData
+                  //                       ?.mainMember?.mediclaims
+                  //                       ?.map(
+                  //                     (e) {
+                  //                       return Text(
+                  //                         "$e, ",
+                  //                         style: Styles.blackGuj60014,
+                  //                       );
+                  //                     },
+                  //                   ).toList() ??
+                  //                   [],
+                  //             )
+                  //           : Text(
+                  //               " -- ",
+                  //               style: Styles.blackGuj60014,
+                  //             ),
+                  //     )
+                  //   ],
+                  // ),
+                  // Dimens.boxHeight15,
+                  // Column(
+                  //   crossAxisAlignment: CrossAxisAlignment.start,
+                  //   children: [
+                  //     Text(
+                  //       "વિશિષ્ટ પ્રતિભા / કૌશલ્ય / અવોર્ડ /સામાજિક રાજકિય હોદ્દો / સરકારી નોકરી / અન્ય:",
+                  //       maxLines: 2,
+                  //       style: Styles.grey9393Guj60014,
+                  //     ),
+                  //     Dimens.boxWidth5,
+                  //     Text(
+                  //       controller.getOneUserDetailsData?.mainMember?.other
+                  //                   ?.isNotEmpty ??
+                  //               false
+                  //           ? controller
+                  //                   .getOneUserDetailsData?.mainMember?.other ??
+                  //               " -- "
+                  //           : " -- ",
+                  //       style: Styles.blackGuj60014,
+                  //       maxLines: 2,
+                  //       overflow: TextOverflow.ellipsis,
+                  //     ),
+                  //   ],
+                  // ),
                   Dimens.boxHeight30,
                   Visibility(
                     visible: controller.getOneUserDetailsData?.familyMembers
@@ -552,7 +553,7 @@ class SabhayYadiDeatilsScreen extends StatelessWidget {
                           'family_details'.tr,
                           style: Styles.black2E363F60018,
                         ),
-                        Dimens.boxHeight10,
+                        Dimens.boxHeight5,
                         Wrap(
                           children: controller
                                   .getOneUserDetailsData?.familyMembers
@@ -562,187 +563,237 @@ class SabhayYadiDeatilsScreen extends StatelessWidget {
                                 return Padding(
                                   padding: Dimens.edgeInsetsTopt10,
                                   child: Container(
-                                    decoration: BoxDecoration(
-                                        color: ColorsValue.white,
-                                        borderRadius: BorderRadius.circular(
-                                          Dimens.six,
-                                        ),
-                                        border: Border.all(
-                                            width: Dimens.one,
-                                            color: ColorsValue.maincolor)),
-                                    child: ExpansionTile(
-                                      leading: Container(
-                                        width: Dimens.sixty,
-                                        height: Dimens.thirty,
-                                        decoration: BoxDecoration(
-                                          color: ColorsValue.lightMainColor,
+                                      padding: Dimens.edgeInsets10,
+                                      decoration: BoxDecoration(
+                                          color: ColorsValue.white,
                                           borderRadius: BorderRadius.circular(
-                                            Dimens.five,
+                                            Dimens.six,
                                           ),
-                                        ),
-                                        child: Center(
-                                          child: Text(
-                                            e.value.relation == "mother"
-                                                ? "માતા"
-                                                : e.value.relation == "father"
-                                                    ? "પિતા"
-                                                    : e.value.relation == "wife"
-                                                        ? "પત્ની"
+                                          border: Border.all(
+                                              width: Dimens.one,
+                                              color: ColorsValue.maincolor)),
+                                      child: Row(
+                                        spacing: Dimens.ten,
+                                        children: [
+                                          Container(
+                                            width: Dimens.sixty,
+                                            height: Dimens.thirty,
+                                            decoration: BoxDecoration(
+                                              color: ColorsValue.lightMainColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                Dimens.five,
+                                              ),
+                                            ),
+                                            child: Center(
+                                              child: Text(
+                                                e.value.relation == "mother"
+                                                    ? "માતા"
+                                                    : e.value.relation ==
+                                                            "father"
+                                                        ? "પિતા"
                                                         : e.value.relation ==
-                                                                "sister"
-                                                            ? "બહેન"
+                                                                "wife"
+                                                            ? "પત્ની"
                                                             : e.value.relation ==
-                                                                    "brother"
-                                                                ? "ભાઈ"
+                                                                    "sister"
+                                                                ? "બહેન"
                                                                 : e.value.relation ==
-                                                                        "daughter"
-                                                                    ? "દીકરી"
-                                                                    : "દીકરો",
-                                            style: Styles.mainGuj60012,
+                                                                        "brother"
+                                                                    ? "ભાઈ"
+                                                                    : e.value.relation ==
+                                                                            "daughter"
+                                                                        ? "દીકરી"
+                                                                        : "દીકરો",
+                                                style: Styles.mainGuj60012,
+                                              ),
+                                            ),
                                           ),
-                                        ),
+                                          Flexible(
+                                            child: Text(
+                                              "${e.value.name} ${e.value.fathername} ${e.value.surname}",
+                                              style: Styles.black2E363F60014,
+                                              maxLines: 2,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                          ),
+                                        ],
+                                      )
+
+                                      // ExpansionTile(
+                                      //   leading: Container(
+                                      //     width: Dimens.sixty,
+                                      //     height: Dimens.thirty,
+                                      //     decoration: BoxDecoration(
+                                      //       color: ColorsValue.lightMainColor,
+                                      //       borderRadius: BorderRadius.circular(
+                                      //         Dimens.five,
+                                      //       ),
+                                      //     ),
+                                      //     child: Center(
+                                      //       child: Text(
+                                      //         e.value.relation == "mother"
+                                      //             ? "માતા"
+                                      //             : e.value.relation == "father"
+                                      //                 ? "પિતા"
+                                      //                 : e.value.relation == "wife"
+                                      //                     ? "પત્ની"
+                                      //                     : e.value.relation ==
+                                      //                             "sister"
+                                      //                         ? "બહેન"
+                                      //                         : e.value.relation ==
+                                      //                                 "brother"
+                                      //                             ? "ભાઈ"
+                                      //                             : e.value.relation ==
+                                      //                                     "daughter"
+                                      //                                 ? "દીકરી"
+                                      //                                 : "દીકરો",
+                                      //         style: Styles.mainGuj60012,
+                                      //       ),
+                                      //     ),
+                                      //   ),
+                                      //   title: Text(
+                                      //     "${e.value.name} ${e.value.fathername} ${e.value.surname}",
+                                      //     style: Styles.black2E363F60014,
+                                      //     maxLines: 1,
+                                      //     overflow: TextOverflow.ellipsis,
+                                      //   ),
+                                      //   childrenPadding:
+                                      //       Dimens.edgeInsets30_10_30_10,
+                                      //   children: [
+                                      //     Row(
+                                      //       crossAxisAlignment:
+                                      //           CrossAxisAlignment.start,
+                                      //       children: [
+                                      //         Text(
+                                      //           "જન્મ તારીખ:",
+                                      //           style: Styles.grey9393Guj60014,
+                                      //         ),
+                                      //         Dimens.boxWidth5,
+                                      //         Flexible(
+                                      //           child: Text(
+                                      //             e.value.dob ?? " -- ",
+                                      //             style: Styles.blackGuj60014,
+                                      //             maxLines: 2,
+                                      //             overflow: TextOverflow.ellipsis,
+                                      //           ),
+                                      //         ),
+                                      //       ],
+                                      //     ),
+                                      //     Dimens.boxHeight10,
+                                      //     Row(
+                                      //       crossAxisAlignment:
+                                      //           CrossAxisAlignment.start,
+                                      //       children: [
+                                      //         Text(
+                                      //           "ઉંમર:",
+                                      //           style: Styles.grey9393Guj60014,
+                                      //         ),
+                                      //         Dimens.boxWidth5,
+                                      //         Flexible(
+                                      //           child: Text(
+                                      //             e.value.dob?.isNotEmpty ?? false
+                                      //                 ? Utility.calculateAge(
+                                      //                         DateTime.parse(
+                                      //                             e.value.dob ??
+                                      //                                 " -- "))
+                                      //                     .toString()
+                                      //                 : " -- ",
+                                      //             style: Styles.blackGuj60014,
+                                      //             maxLines: 2,
+                                      //             overflow: TextOverflow.ellipsis,
+                                      //           ),
+                                      //         ),
+                                      //       ],
+                                      //     ),
+                                      //     Dimens.boxHeight10,
+                                      //     Row(
+                                      //       crossAxisAlignment:
+                                      //           CrossAxisAlignment.start,
+                                      //       children: [
+                                      //         Text(
+                                      //           "રક્ત જૂથ:",
+                                      //           style: Styles.grey9393Guj60014,
+                                      //         ),
+                                      //         Dimens.boxWidth5,
+                                      //         Flexible(
+                                      //           child: Text(
+                                      //             e.value.bloodGroup ?? " -- ",
+                                      //             style: Styles.blackGuj60014,
+                                      //             maxLines: 2,
+                                      //             overflow: TextOverflow.ellipsis,
+                                      //           ),
+                                      //         ),
+                                      //       ],
+                                      //     ),
+                                      //     Dimens.boxHeight10,
+                                      //     Row(
+                                      //       crossAxisAlignment:
+                                      //           CrossAxisAlignment.start,
+                                      //       children: [
+                                      //         Text(
+                                      //           "શિક્ષણ",
+                                      //           style: Styles.grey9393Guj60014,
+                                      //         ),
+                                      //         Dimens.boxWidth5,
+                                      //         Flexible(
+                                      //           child: Text(
+                                      //             e.value.business?.gujaratiName
+                                      //                         ?.isEmpty ??
+                                      //                     false
+                                      //                 ? e.value.otherBusiness
+                                      //                             ?.isNotEmpty ??
+                                      //                         false
+                                      //                     ? e.value
+                                      //                             .otherBusiness ??
+                                      //                         " -- "
+                                      //                     : e.value.business
+                                      //                             ?.gujaratiName ??
+                                      //                         " -- "
+                                      //                 : " -- ",
+                                      //             style: Styles.blackGuj60014,
+                                      //             maxLines: 2,
+                                      //             overflow: TextOverflow.ellipsis,
+                                      //           ),
+                                      //         ),
+                                      //       ],
+                                      //     ),
+                                      //     Dimens.boxHeight10,
+                                      //     Row(
+                                      //       crossAxisAlignment:
+                                      //           CrossAxisAlignment.start,
+                                      //       children: [
+                                      //         Text(
+                                      //           "વ્યવસાય",
+                                      //           style: Styles.grey9393Guj60014,
+                                      //         ),
+                                      //         Dimens.boxWidth5,
+                                      //         Flexible(
+                                      //           child: Text(
+                                      //             e.value.education?.gujaratiName
+                                      //                         ?.isEmpty ??
+                                      //                     false
+                                      //                 ? e.value.otherEducation
+                                      //                             ?.isNotEmpty ??
+                                      //                         false
+                                      //                     ? e.value
+                                      //                             .otherEducation ??
+                                      //                         " -- "
+                                      //                     : e.value.education
+                                      //                             ?.gujaratiName ??
+                                      //                         " -- "
+                                      //                 : " -- ",
+                                      //             style: Styles.blackGuj60014,
+                                      //             maxLines: 2,
+                                      //             overflow: TextOverflow.ellipsis,
+                                      //           ),
+                                      //         ),
+                                      //       ],
+                                      //     ),
+                                      //   ],
+                                      // ),
+
                                       ),
-                                      title: Text(
-                                        "${e.value.name} ${e.value.fathername} ${e.value.surname}",
-                                        style: Styles.black2E363F60014,
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                      childrenPadding:
-                                          Dimens.edgeInsets30_10_30_10,
-                                      children: [
-                                        Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "જન્મ તારીખ:",
-                                              style: Styles.grey9393Guj60014,
-                                            ),
-                                            Dimens.boxWidth5,
-                                            Flexible(
-                                              child: Text(
-                                                e.value.dob ?? " -- ",
-                                                style: Styles.blackGuj60014,
-                                                maxLines: 2,
-                                                overflow: TextOverflow.ellipsis,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Dimens.boxHeight10,
-                                        Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "ઉંમર:",
-                                              style: Styles.grey9393Guj60014,
-                                            ),
-                                            Dimens.boxWidth5,
-                                            Flexible(
-                                              child: Text(
-                                                e.value.dob?.isNotEmpty ?? false
-                                                    ? Utility.calculateAge(
-                                                            DateTime.parse(
-                                                                e.value.dob ??
-                                                                    " -- "))
-                                                        .toString()
-                                                    : " -- ",
-                                                style: Styles.blackGuj60014,
-                                                maxLines: 2,
-                                                overflow: TextOverflow.ellipsis,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Dimens.boxHeight10,
-                                        Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "રક્ત જૂથ:",
-                                              style: Styles.grey9393Guj60014,
-                                            ),
-                                            Dimens.boxWidth5,
-                                            Flexible(
-                                              child: Text(
-                                                e.value.bloodGroup ?? " -- ",
-                                                style: Styles.blackGuj60014,
-                                                maxLines: 2,
-                                                overflow: TextOverflow.ellipsis,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Dimens.boxHeight10,
-                                        Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "શિક્ષણ",
-                                              style: Styles.grey9393Guj60014,
-                                            ),
-                                            Dimens.boxWidth5,
-                                            Flexible(
-                                              child: Text(
-                                                e.value.business?.gujaratiName
-                                                            ?.isEmpty ??
-                                                        false
-                                                    ? e.value.otherBusiness
-                                                                ?.isNotEmpty ??
-                                                            false
-                                                        ? e.value
-                                                                .otherBusiness ??
-                                                            " -- "
-                                                        : e.value.business
-                                                                ?.gujaratiName ??
-                                                            " -- "
-                                                    : " -- ",
-                                                style: Styles.blackGuj60014,
-                                                maxLines: 2,
-                                                overflow: TextOverflow.ellipsis,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Dimens.boxHeight10,
-                                        Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "વ્યવસાય",
-                                              style: Styles.grey9393Guj60014,
-                                            ),
-                                            Dimens.boxWidth5,
-                                            Flexible(
-                                              child: Text(
-                                                e.value.education?.gujaratiName
-                                                            ?.isEmpty ??
-                                                        false
-                                                    ? e.value.otherEducation
-                                                                ?.isNotEmpty ??
-                                                            false
-                                                        ? e.value
-                                                                .otherEducation ??
-                                                            " -- "
-                                                        : e.value.education
-                                                                ?.gujaratiName ??
-                                                            " -- "
-                                                    : " -- ",
-                                                style: Styles.blackGuj60014,
-                                                maxLines: 2,
-                                                overflow: TextOverflow.ellipsis,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
                                 );
                               }).toList() ??
                               [],

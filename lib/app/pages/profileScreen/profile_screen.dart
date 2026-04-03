@@ -26,7 +26,8 @@ class ProfileScreen extends StatelessWidget {
             elevation: Dimens.ten,
             centerTitle: true,
             leading: InkWell(
-              onTap: () {Navigator.pop(context);
+              onTap: () {
+                Navigator.pop(context);
               },
               child: Padding(
                 padding: Dimens.edgeInsets12,
@@ -171,37 +172,37 @@ class ProfileScreen extends StatelessWidget {
                 //     ),
                 //   ),
                 // ),
-                Dimens.boxHeight20,
-                InkWell(
-                  onTap: () {
-                    RouteManagement.goToSabhyFeeRasidScreen();
-                  },
-                  child: Container(
-                    height: Dimens.sixtySix,
-                    decoration: BoxDecoration(
-                      color: ColorsValue.white,
-                      border: Border.all(
-                        color: ColorsValue.maincolor,
-                        width: Dimens.one,
-                      ),
-                      borderRadius: BorderRadius.circular(
-                        Dimens.six,
-                      ),
-                    ),
-                    child: Center(
-                      child: ListTile(
-                        contentPadding: Dimens.edgeInsets20_00_20_00,
-                        dense: true,
-                        title: Text(
-                          'સભ્ય ફીની રસીદ',
-                          style: Styles.mainGuj90018,
-                        ),
-                        trailing:
-                            SvgPicture.asset(AssetConstants.ic_arrow_right),
-                      ),
-                    ),
-                  ),
-                ),
+                // Dimens.boxHeight20,
+                // InkWell(
+                //   onTap: () {
+                //     RouteManagement.goToSabhyFeeRasidScreen();
+                //   },
+                //   child: Container(
+                //     height: Dimens.sixtySix,
+                //     decoration: BoxDecoration(
+                //       color: ColorsValue.white,
+                //       border: Border.all(
+                //         color: ColorsValue.maincolor,
+                //         width: Dimens.one,
+                //       ),
+                //       borderRadius: BorderRadius.circular(
+                //         Dimens.six,
+                //       ),
+                //     ),
+                //     child: Center(
+                //       child: ListTile(
+                //         contentPadding: Dimens.edgeInsets20_00_20_00,
+                //         dense: true,
+                //         title: Text(
+                //           'સભ્ય ફીની રસીદ',
+                //           style: Styles.mainGuj90018,
+                //         ),
+                //         trailing:
+                //             SvgPicture.asset(AssetConstants.ic_arrow_right),
+                //       ),
+                //     ),
+                //   ),
+                // ),
                 Dimens.boxHeight20,
                 InkWell(
                   onTap: () {
@@ -256,7 +257,8 @@ class ProfileScreen extends StatelessWidget {
                                 "Yes",
                                 style: Styles.redColor50014,
                               ),
-                              onPressed: () async {Navigator.pop(context);
+                              onPressed: () async {
+                                Navigator.pop(context);
                                 Get.find<DeviceRepository>().deleteBox();
                                 RouteManagement.goToLoginScreen();
                               },
@@ -266,7 +268,8 @@ class ProfileScreen extends StatelessWidget {
                                 "No",
                                 style: Styles.black2E363F50014,
                               ),
-                              onPressed: () {Navigator.pop(context);
+                              onPressed: () {
+                                Navigator.pop(context);
                               },
                             )
                           ],

@@ -206,4 +206,13 @@ class DashboardUsecases {
         resultId: resultId,
         isLoading: isLoading,
       );
+
+  Future<EducationModel?> postStudiesList({
+    bool isLoading = false,
+    required String? search,
+  }) async =>
+      await repository.postStudiesList(
+        isLoading: isLoading,
+        search: search,
+      );
 }

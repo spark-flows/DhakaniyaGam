@@ -243,4 +243,13 @@ class DashboardPresenter {
         resultId: resultId,
         isLoading: isLoading,
       );
+
+  Future<EducationModel?> postStudiesList({
+    bool isLoading = false,
+    required String? search,
+  }) async =>
+      await dashboardUsecases.postStudiesList(
+        isLoading: isLoading,
+        search: search,
+      );
 }

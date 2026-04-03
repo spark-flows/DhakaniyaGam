@@ -85,4 +85,13 @@ class RegisterPresenter {
         filePath: filePath,
         isLoading: isLoading,
       );
+
+  Future<String?> uploadResiterProfilePic({
+    bool isLoading = false,
+    required String filePath,
+  }) async =>
+      await registerUsecases.uploadResiterProfilePic(
+        isLoading: isLoading,
+        filePath: filePath,
+      );
 }

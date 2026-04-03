@@ -148,33 +148,21 @@ class DashboardScreen extends StatelessWidget {
                 return InkWell(
                   onTap: () {
                     switch (index) {
-                      // case 0:
-                      //   RouteManagement.goToVillageYadiListScreen();
                       case 0:
                         RouteManagement.goToSevaKiyParvutiScreen();
                       case 1:
-                        RouteManagement.goToYuvaSayojakScreen();
-                      case 2:
                         RouteManagement.goToSabhayYadiScreen();
-                      // case 4:
-                      //   RouteManagement.goToSalahakarSamitiScreen();
-                      case 3:
-                        RouteManagement.goToHodedarScreen();
-                      case 4:
+                      case 2:
                         RouteManagement.goToTalukaRepresentativeScreen();
-                      case 5:
-                        RouteManagement.goToVillageRepresentativScreen();
-                      case 6:
+                      case 3:
                         RouteManagement.goToDonorsScreen();
-                      case 7:
+                      case 4:
                         RouteManagement.goToUploadResultListScreen();
-                      case 8:
+                      case 5:
                         RouteManagement.goToQualifyPrizeListScreen();
-                      case 9:
-                        RouteManagement.goToQualifyStationeryListScreen();
-                      case 10:
+                      case 6:
                         RouteManagement.goToParivarSabhayVigatListScreen();
-                      case 11:
+                      case 7:
                         RouteManagement.goToGalleryScreen();
                     }
                   },

@@ -39,3 +39,4 @@ export 'get_one_gallery_model.dart';
 export 'service_model.dart';
 export 'stationery_coupon_model.dart';
 export 'price_coupon_model.dart';
+export 'education_model.dart';

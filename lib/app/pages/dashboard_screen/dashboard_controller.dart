@@ -30,18 +30,12 @@ class DashboardController extends GetxController {
   ];
 
   List<String> titleList = [
-    // "taluka_gam_yadi".tr,
     "service_activity".tr,
-    "youth_coordinator_mr".tr,
     "list_of_members".tr,
-    // "advisory_committee".tr,
-    "incumbent".tr,
     "executive".tr,
-    "village_representativ".tr,
     "donors".tr,
     "upload_the_result".tr,
     "qualify_for_prizes".tr,
-    "select_stationery".tr,
     "family_members".tr,
     "gallerys".tr,
   ];
@@ -473,6 +467,22 @@ class DashboardController extends GetxController {
         ),
       ];
       selectBusinessLists.addAll(response?.data ?? []);
+      update();
+    }
+  }
+
+  TextEditingController searchPriceController = TextEditingController();
+
+  List<EducationDatas> educationDataList = [];
+
+  Future<void> postStudiesList() async {
+    var response = await dashboardPresenter.postStudiesList(
+      search: searchPriceController.text,
+      isLoading: true,
+    );
+    educationDataList.clear();
+    if (response?.status == 200) {
+      educationDataList = response?.data ?? [];
       update();
     }
   }

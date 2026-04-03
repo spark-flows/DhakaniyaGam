@@ -33,7 +33,8 @@ class UploadResultScreen extends StatelessWidget {
             elevation: Dimens.ten,
             centerTitle: true,
             leading: InkWell(
-              onTap: () {Navigator.pop(context);
+              onTap: () {
+                Navigator.pop(context);
               },
               child: Padding(
                 padding: Dimens.edgeInsets12,
@@ -78,18 +79,25 @@ class UploadResultScreen extends StatelessWidget {
                     AssetConstants.ic_down_arrow,
                   ),
                   value: controller.selectFullFamilyValue,
-                  items: controller.selectFullFamilyLists
-                      .map((value) => DropdownMenuItem(
-                            value: value.id,
-                            child: Text(
-                                "${value.name ?? "Select Member"} ${value.fathername ?? ""} ${value.surname ?? ""}"),
-                          ))
-                      .toList(),
+                  items: controller.selectFullFamilyLists.isNotEmpty
+                      ? controller.selectFullFamilyLists
+                          .map((value) => DropdownMenuItem(
+                                value: value.id,
+                                child: Text(
+                                    "${value.name ?? "Select Member"} ${value.fathername ?? ""} ${value.surname ?? ""}"),
+                              ))
+                          .toList()
+                      : [],
                   onChanged: (newValue) {
                     controller.selectFullFamilyValue = newValue;
                     controller.update();
                   },
                 ),
+              ),
+              Dimens.boxHeight10,
+              Text(
+                '* પહેલા ફેમિલી મેમ્બર દાખલ કરો.'.tr,
+                style: Styles.redGuj50012,
               ),
               Dimens.boxHeight20,
               Align(

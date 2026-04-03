@@ -659,57 +659,51 @@ abstract class Utility {
   }
 
   static Future<void> downloadAndSavePDF(
-      String url, String folderName, int invoiceNo) async {
-    late AwesomeNotifications awesomeNotifications = AwesomeNotifications();
+    String url, String folderName, int invoiceNo) async {
+
+  try {
     String fileName = url.split('/').last;
 
     final response = await http.get(Uri.parse(ApiWrapper.imageUrl + url));
-    Directory? appDocumentsDirectory;
+
     if (response.statusCode == 200) {
+
+      Directory directory;
+
       if (Platform.isAndroid) {
-        // appDocumentsDirectory = Directory("/storage/emulated/0/Download");
-        appDocumentsDirectory = await getExternalStorageDirectory();
+        directory = Directory('/storage/emulated/0/Download/$folderName');
+
+        if (!await directory.exists()) {
+          await directory.create(recursive: true);
+        }
       } else {
-        appDocumentsDirectory = await getApplicationDocumentsDirectory();
+        directory = await getApplicationDocumentsDirectory();
       }
 
-      String folderPath = '${appDocumentsDirectory!.path}/$folderName';
-      await Directory(folderPath).create(recursive: true);
+      String filePath = '${directory.path}/$fileName';
 
-      String filePath = '$folderPath/$fileName';
-      File pdfFile = File(filePath);
-      await pdfFile.writeAsBytes(Uint8List.fromList(response.bodyBytes));
+      File file = File(filePath);
+      await file.writeAsBytes(response.bodyBytes);
 
-      awesomeNotifications.createNotification(
+      // 🔔 Notification
+      AwesomeNotifications().createNotification(
         content: NotificationContent(
-            id: invoiceNo,
-            channelKey: "high_importance_channel",
-            notificationLayout: NotificationLayout.Default,
-            title: fileName.split(".").first,
-            icon: "",
-            payload: {
-              "pdf_url": url,
-            },
-            body: "$fileName successfully downloaded."),
+          id: invoiceNo,
+          channelKey: "high_importance_channel",
+          title: fileName,
+          body: "PDF downloaded successfully",
+          payload: {"file_path": filePath},
+        ),
       );
 
-      AwesomeNotifications().setListeners(
-        onActionReceivedMethod: (receivedAction) async {
-          await OpenFile.open(filePath);
-        },
-        onNotificationDisplayedMethod: (receivedNotification) async {
-          // print("Display:--- $receivedNotification");
-          if (Platform.isIOS) {
-            await OpenFile.open(filePath);
-          }
-        },
-      );
     } else {
-      if (kDebugMode) {
-        print('Failed to download PDF. Status code: ${response.statusCode}');
-      }
+      print("Download failed: ${response.statusCode}");
     }
+
+  } catch (e) {
+    print("Error: $e");
   }
+}
 
   static bool comparePasswords(String password, String confirmPassword) {
     if (password == confirmPassword) {

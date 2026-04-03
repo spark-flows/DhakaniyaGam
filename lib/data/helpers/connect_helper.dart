@@ -143,7 +143,6 @@ class ConnectHelper {
   }) async {
     var data = {
       'profile_pic': profile_pic,
-      'villageId': villageId,
       'surname': surname,
       'name': name,
       'fathername': fathername,
@@ -161,7 +160,6 @@ class ConnectHelper {
       'current_address': current_address,
       'businessCategoryId': businessCategoryId,
       'other_business': other_business,
-      'village_representative': village_representative,
       'front_aadhara': front_aadhara,
       'back_aadhara': back_aadhara,
     };
@@ -232,15 +230,29 @@ class ConnectHelper {
       'token': token ?? "",
     };
     var response = await apiWrapper.makeRequest(
-      EndPoints.uploadProfilePic,
-      isToken ? Request.postWithFormData : Request.awsUpload,
-      data,
-      isLoading,
-      isToken
-          ? Utility.commonHeader()
-          : Utility.commonHeader(isDefaultAuthorizationKeyAdd: false),
-      mediaFileList: mediaFileList,
-    );
+        EndPoints.uploadProfilePic,
+        isToken ? Request.postWithFormData : Request.awsUpload,
+        data,
+        isLoading,
+        isToken
+            ? Utility.commonHeader()
+            : Utility.commonHeader(isDefaultAuthorizationKeyAdd: false),
+        mediaFileList: mediaFileList,
+        fileKey: "profile_pic");
+    return response;
+  }
+
+  Future<ResponseModel> uploadResiterProfilePic({
+    bool isLoading = false,
+    required String filePath,
+  }) async {
+    var response = await apiWrapper.makeRequest(
+        EndPoints.uploadProfilePic,
+        Request.awsUpload,
+        filePath,
+        isLoading,
+        Utility.commonHeader(isDefaultAuthorizationKeyAdd: false),
+        fileKey: "profile_pic");
     return response;
   }
 
@@ -1322,6 +1334,23 @@ class ConnectHelper {
     };
     var response = await apiWrapper.makeRequest(
       EndPoints.postDownloadPrizeStationery,
+      Request.post,
+      data,
+      isLoading,
+      Utility.commonHeader(),
+    );
+    return response;
+  }
+
+  Future<ResponseModel> postStudiesList({
+    bool isLoading = false,
+    required String? search,
+  }) async {
+    var data = {
+      "search": search,
+    };
+    var response = await apiWrapper.makeRequest(
+      EndPoints.postStudiesList,
       Request.post,
       data,
       isLoading,

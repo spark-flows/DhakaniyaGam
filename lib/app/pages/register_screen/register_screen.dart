@@ -59,7 +59,8 @@ class RegisterScreen extends StatelessWidget {
                                       Align(
                                         alignment: Alignment.topRight,
                                         child: InkWell(
-                                          onTap: () {Navigator.pop(context);
+                                          onTap: () {
+                                            Navigator.pop(context);
                                           },
                                           child: Icon(
                                             Icons.close,
@@ -71,7 +72,8 @@ class RegisterScreen extends StatelessWidget {
                                             MainAxisAlignment.center,
                                         children: [
                                           InkWell(
-                                            onTap: () async {Navigator.pop(context);
+                                            onTap: () async {
+                                              Navigator.pop(context);
                                               if (await controller
                                                   .imagePermissionCheack(
                                                       context)) {
@@ -112,7 +114,8 @@ class RegisterScreen extends StatelessWidget {
                                           ),
                                           Dimens.boxWidth60,
                                           InkWell(
-                                            onTap: () async {Navigator.pop(context);
+                                            onTap: () async {
+                                              Navigator.pop(context);
                                               if (await controller
                                                   .imagePermissionCheack(
                                                       context)) {
@@ -407,46 +410,46 @@ class RegisterScreen extends StatelessWidget {
                       controller: controller.otherBusinessController,
                     ),
                   ],
-                  Dimens.boxHeight20,
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'તમારા ગામ પ્રતિનિધિ પસંદ કરો',
-                      style: Styles.grey9BA0A8Guj90016,
-                    ),
-                  ),
-                  Container(
-                    height: Dimens.fifty,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(Dimens.six),
-                        color: ColorsValue.greyEEEEEE),
-                    child: DropdownButton<String>(
-                      underline: Container(),
-                      hint: Text('તમારા ગામ પ્રતિનિધિ પસંદ કરો',
-                          style: Styles.grey9BA0A8Guj90016),
-                      padding:
-                          EdgeInsets.only(left: Dimens.ten, right: Dimens.ten),
-                      isExpanded: true,
-                      icon: SvgPicture.asset(AssetConstants.ic_down_arrow),
-                      value: controller.selectCommitteeValue,
-                      items: controller.selectCommitteeLists
-                          .map((value) => DropdownMenuItem(
-                                onTap: () {
-                                  controller.fullname =
-                                      "${value.user?.name ?? ""} ${value.user?.fathername ?? ""} ${value.user?.surname ?? ""}";
-                                  controller.update();
-                                },
-                                value: value.id,
-                                child: Text(
-                                    "${value.user?.name ?? ""} ${value.user?.fathername ?? ""} ${value.user?.surname ?? ""}"),
-                              ))
-                          .toList(),
-                      onChanged: (newValue) {
-                        controller.selectCommitteeValue = newValue;
-                        controller.update();
-                      },
-                    ),
-                  ),
+                  // Dimens.boxHeight20,
+                  // Align(
+                  //   alignment: Alignment.centerLeft,
+                  //   child: Text(
+                  //     'તમારા ગામ પ્રતિનિધિ પસંદ કરો',
+                  //     style: Styles.grey9BA0A8Guj90016,
+                  //   ),
+                  // ),
+                  // Container(
+                  //   height: Dimens.fifty,
+                  //   decoration: BoxDecoration(
+                  //       borderRadius: BorderRadius.circular(Dimens.six),
+                  //       color: ColorsValue.greyEEEEEE),
+                  //   child: DropdownButton<String>(
+                  //     underline: Container(),
+                  //     hint: Text('તમારા ગામ પ્રતિનિધિ પસંદ કરો',
+                  //         style: Styles.grey9BA0A8Guj90016),
+                  //     padding:
+                  //         EdgeInsets.only(left: Dimens.ten, right: Dimens.ten),
+                  //     isExpanded: true,
+                  //     icon: SvgPicture.asset(AssetConstants.ic_down_arrow),
+                  //     value: controller.selectCommitteeValue,
+                  //     items: controller.selectCommitteeLists
+                  //         .map((value) => DropdownMenuItem(
+                  //               onTap: () {
+                  //                 controller.fullname =
+                  //                     "${value.user?.name ?? ""} ${value.user?.fathername ?? ""} ${value.user?.surname ?? ""}";
+                  //                 controller.update();
+                  //               },
+                  //               value: value.id,
+                  //               child: Text(
+                  //                   "${value.user?.name ?? ""} ${value.user?.fathername ?? ""} ${value.user?.surname ?? ""}"),
+                  //             ))
+                  //         .toList(),
+                  //     onChanged: (newValue) {
+                  //       controller.selectCommitteeValue = newValue;
+                  //       controller.update();
+                  //     },
+                  //   ),
+                  // ),
                   Dimens.boxHeight20,
                   Align(
                     alignment: Alignment.centerLeft,

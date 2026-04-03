@@ -36,15 +36,15 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
   get: ^4.6.6
-  google_fonts: ^6.2.1
-  device_info_plus: ^11.2.2
+  google_fonts: 
+  device_info_plus: ^12.4.0
   hive_flutter: ^1.1.0
   flutter_screenutil: ^5.9.0
-  flutter_secure_storage: ^9.0.0
+  flutter_secure_storage: ^10.0.0
   dio: ^5.4.1
   email_validator: ^3.0.0
-  file_picker: ^9.0.1
-  permission_handler: ^11.3.0
+  file_picker: ^10.3.10
+  permission_handler: ^12.0.1
   # image_gallery_saver: ^2.0.3
   internet_connection_checker: 
   intl: 
@@ -54,23 +54,23 @@ dependencies:
   flutter_svg: ^2.0.10+1
   cached_network_image: ^3.3.1
   intl_phone_number_input: ^0.7.4
-  dotted_border: ^2.1.0
+  dotted_border: ^3.1.0
   image_picker: ^1.0.7
   pin_code_fields: ^8.0.1
   validators: ^3.0.0
   convex_bottom_bar: ^3.2.0
   infinite_scroll_pagination: ^4.0.0
   get_storage: ^2.1.1
-  flutter_localization: ^0.3.1
+  flutter_localization: ^0.4.0
   age_calculator: ^1.0.0
   photo_view: ^0.15.0
   video_player: ^2.8.6
   firebase_core:
-  firebase_messaging: ^15.0.2
-  awesome_notifications: ^0.10.0
+  firebase_messaging: ^16.1.3
+  awesome_notifications: ^0.11.0
   socket_io_client: ^3.0.2
   open_file: ^3.5.10
-  connectivity_plus: ^6.1.3
+  connectivity_plus: ^7.1.0
   path_provider: ^2.1.5
 
 dev_dependencies:
@@ -82,7 +82,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
   hive_generator: ^2.0.1
   build_runner: ^2.1.8
   analyzer:

@@ -49,9 +49,9 @@ class GetFamilyData {
   String? surname;
   String? name;
   String? fathername;
-  bool? status;
+  dynamic status;
   int? createTimestamp;
-  DateTime? createdAt;
+  String? createdAt;
 
   GetFamilyData({
     this.id,
@@ -74,9 +74,7 @@ class GetFamilyData {
         fathername: json["fathername"],
         status: json["status"],
         createTimestamp: json["create_timestamp"],
-        createdAt: json["createdAt"] == null
-            ? null
-            : DateTime.parse(json["createdAt"]),
+        createdAt: json["createdAt"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -88,6 +86,6 @@ class GetFamilyData {
         "fathername": fathername,
         "status": status,
         "create_timestamp": createTimestamp,
-        "createdAt": createdAt?.toIso8601String(),
+        "createdAt": createdAt,
       };
 }

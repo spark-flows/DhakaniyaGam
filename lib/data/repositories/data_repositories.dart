@@ -159,6 +159,15 @@ class DataRepository extends DomainRepository {
         isLoading: isLoading,
       );
 
+  Future<ResponseModel> uploadResiterProfilePic({
+    required String filePath,
+    bool isLoading = false,
+  }) async =>
+      connectHelper.uploadResiterProfilePic(
+        filePath: filePath,
+        isLoading: isLoading,
+      );
+
   Future<ResponseModel> uploadAdharPic({
     required String filePath,
     bool isLoading = false,
@@ -815,6 +824,15 @@ class DataRepository extends DomainRepository {
   }) async =>
       connectHelper.postDownloadPrizeStationery(
         resultId: resultId,
+        isLoading: isLoading,
+      );
+
+  Future<ResponseModel> postStudiesList({
+    bool isLoading = false,
+    required String? search,
+  }) async =>
+      connectHelper.postStudiesList(
+        search: search,
         isLoading: isLoading,
       );
 }

@@ -7,9 +7,7 @@ import 'package:dhakaniya_gam/app/navigators/navigators.dart';
 import 'package:dhakaniya_gam/domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:http_parser/http_parser.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:mime/mime.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class RegisterController extends GetxController {
@@ -86,7 +84,8 @@ class RegisterController extends GetxController {
                 "allow".tr,
                 style: Styles.redColorGuj60014,
               ),
-              onPressed: () async {Navigator.pop(context);
+              onPressed: () async {
+                Navigator.pop(context);
                 await openAppSettings();
               },
             ),
@@ -95,7 +94,8 @@ class RegisterController extends GetxController {
                 "deny".tr,
                 style: Styles.blackGuj60014,
               ),
-              onPressed: () {Navigator.pop(context);
+              onPressed: () {
+                Navigator.pop(context);
               },
             )
           ],
@@ -118,19 +118,10 @@ class RegisterController extends GetxController {
 
     if (pickedFile != null) {
       imageFile = File(pickedFile.path);
-      profilePic = await registerPresenter.uploadProfilePic(
-        mediaFileList: [
-          ImageFormData(
-            fieldName: "profile_pic",
-            filePath: imageFile?.path ?? "",
-            mediaType: MediaType.parse(lookupMimeType(imageFile?.path ?? "")!),
-          ),
-        ],
-        isToken: false,
-        token: "",
-      );
+      profilePic = await registerPresenter.uploadResiterProfilePic(
+          filePath: imageFile?.path ?? "", isLoading: true);
+      update();
     }
-    update();
   }
 
   Future uploadFrontAdharPic() async {
@@ -140,7 +131,7 @@ class RegisterController extends GetxController {
     if (pickedFile != null) {
       var imageFile = File(pickedFile.path);
       frontAdharPic = await registerPresenter.uploadAdharPic(
-          filePath: imageFile.path ?? "");
+          filePath: imageFile.path ?? "", isLoading: true);
       print(frontAdharPic);
     }
     update();
@@ -180,7 +171,7 @@ class RegisterController extends GetxController {
       RouteManagement.goToOtpScreen(
           mobileNumberController.text, response?.data?.accessToken ?? "");
     } else {
-      Utility.errorMessage(response?.message ?? "");
+      // Utility.errorMessage(response?.message ?? "");
     }
   }
 

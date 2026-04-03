@@ -9,7 +9,11 @@ class QualifyPrizeListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<DashboardController>(builder: (controller) {
+    return GetBuilder<DashboardController>(initState: (state) {
+      var controller = Get.find<DashboardController>();
+      controller.educationDataList.clear();
+      controller.postStudiesList();
+    }, builder: (controller) {
       return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -23,7 +27,8 @@ class QualifyPrizeListScreen extends StatelessWidget {
           elevation: Dimens.ten,
           centerTitle: true,
           leading: InkWell(
-            onTap: () {Navigator.pop(context);
+            onTap: () {
+              Navigator.pop(context);
             },
             child: Padding(
               padding: Dimens.edgeInsets12,
@@ -40,8 +45,9 @@ class QualifyPrizeListScreen extends StatelessWidget {
         body: Padding(
           padding: Dimens.edgeInsets20,
           child: ListView.builder(
-            itemCount: controller.categoryGiftLists.length,
+            itemCount: controller.educationDataList.length,
             itemBuilder: (context, index) {
+              var item = controller.educationDataList[index];
               return InkWell(
                 onTap: () {
                   if (controller.categoryGiftLists[index].split(' ').first ==
@@ -75,7 +81,7 @@ class QualifyPrizeListScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            controller.categoryGiftLists[index],
+                            item.gujaratiName ?? "",
                             style: Styles.mainGuj90018,
                           ),
                           SvgPicture.asset(

@@ -186,6 +186,7 @@ class ParivarSabhayVigatScreen extends StatelessWidget {
                     isGujarati: true,
                     textInputAction: TextInputAction.next,
                     controller: controller.dobController,
+                    readOnly: true,
                     validation: (value) {
                       if (value!.isEmpty) {
                         return 'enter_dob'.tr;

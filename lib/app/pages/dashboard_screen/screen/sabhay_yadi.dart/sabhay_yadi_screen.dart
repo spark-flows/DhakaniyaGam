@@ -37,7 +37,8 @@ class SabhayYadiScreen extends StatelessWidget {
           elevation: Dimens.ten,
           centerTitle: true,
           leading: InkWell(
-            onTap: () {Navigator.pop(context);
+            onTap: () {
+              Navigator.pop(context);
             },
             child: Padding(
               padding: Dimens.edgeInsets12,
@@ -327,7 +328,8 @@ class SabhayYadiScreen extends StatelessWidget {
                                               controller.selectBloodValue =
                                                   "Select BloodGroup";
                                               controller.pagingController
-                                                  .refresh();Navigator.pop(context);
+                                                  .refresh();
+                                              Navigator.pop(context);
                                             },
                                             style: ElevatedButton.styleFrom(
                                               fixedSize: Size(
@@ -351,7 +353,8 @@ class SabhayYadiScreen extends StatelessWidget {
                                         Dimens.boxWidth20,
                                         Expanded(
                                           child: ElevatedButton(
-                                            onPressed: () {Navigator.pop(context);
+                                            onPressed: () {
+                                              Navigator.pop(context);
                                               controller.pagingController
                                                   .refresh();
                                             },
@@ -467,10 +470,6 @@ class SabhayYadiScreen extends StatelessWidget {
                                 title: Text(
                                   "${item.name} ${item.fathername} ${item.surname}",
                                   style: Styles.blackGuj60018,
-                                ),
-                                subtitle: Text(
-                                  item.village?.gujaratiName ?? "",
-                                  style: Styles.grey9393Guj60016,
                                 ),
                                 trailing: SvgPicture.asset(
                                   AssetConstants.ic_arrow_right,

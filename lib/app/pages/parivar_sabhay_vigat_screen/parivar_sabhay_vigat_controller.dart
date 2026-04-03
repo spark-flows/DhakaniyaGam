@@ -123,7 +123,7 @@ class ParivarSabhayVigatController extends GetxController {
 
   Future<void> getFamilyMembers() async {
     var response = await parivarSabhayVigatPresenter.getFamilyMembers(
-      isLoading: false,
+      isLoading: true,
     );
     familyMembersList.clear();
     if (response != null) {

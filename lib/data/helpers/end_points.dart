@@ -13,7 +13,7 @@ class EndPoints {
   static String setProfile = 'user/profile';
   static String postFamilyMembersAdd = 'user/familymembers/save';
   static String getFamilyMembers = 'user/familymembers';
-  static String getOneFamilyMembers = 'user/stu/getone';
+  static String getOneFamilyMembers = 'user/familymembers/getone';
   static String postDeleteFamilyMembers = 'user/familymembers/delete';
   static String getFullFamily = 'user/familymembers/getfamily';
 
@@ -59,6 +59,7 @@ class EndPoints {
   static String postGetOneGallery = 'user/gallery/getone';
 
   static String getAds = 'user/ads';
+  static String postStudiesList = 'user/studies';
   static String getAllVillage = 'user/villages/withpagination';
 
   static String postQualifiedPrizes = 'user/results/qualifiedstudentsforprize';

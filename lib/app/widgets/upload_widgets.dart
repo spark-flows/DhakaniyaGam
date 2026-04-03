@@ -27,13 +27,13 @@ class UploadWidgets extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: DottedBorder(
-          color: ColorsValue.maincolor,
-          radius: Radius.circular(Dimens.five),
-          borderType: BorderType.RRect,
-          strokeWidth: Dimens.two,
-          dashPattern: [
-            Dimens.five,
-          ],
+          options: RectDottedBorderOptions(
+            color: ColorsValue.maincolor,
+            strokeWidth: Dimens.two,
+            dashPattern: [
+              Dimens.five,
+            ],
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,

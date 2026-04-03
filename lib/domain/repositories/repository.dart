@@ -361,6 +361,29 @@ class Repository {
     }
   }
 
+  Future<String?> uploadResiterProfilePic({
+    bool isLoading = false,
+    required String filePath,
+  }) async {
+    try {
+      var response = await _dataRepository.uploadResiterProfilePic(
+        isLoading: isLoading,
+        filePath: filePath,
+      );
+      if (response.statusCode == 200) {
+        return json.decode(response.data)['Data']['path'];
+      } else {
+        Utility.showMessage(json.decode(response.data)['Message'].toString(),
+            MessageType.error, () => null, '');
+        return null;
+      }
+    } catch (_) {
+      Utility.closeDialog();
+      UnimplementedError();
+      return null;
+    }
+  }
+
   Future<BusinessCategoriesModel?> educationApi({
     bool isLoading = false,
   }) async {
@@ -1577,6 +1600,28 @@ class Repository {
         resultId: resultId,
       );
       var villageListModel = priceCouponModelFromJson(response.data);
+      if (villageListModel.status == 200) {
+        return villageListModel;
+      } else {
+        return null;
+      }
+    } catch (_) {
+      Utility.closeDialog();
+      UnimplementedError();
+      return null;
+    }
+  }
+
+  Future<EducationModel?> postStudiesList({
+    bool isLoading = false,
+    required String? search,
+  }) async {
+    try {
+      var response = await _dataRepository.postStudiesList(
+        isLoading: isLoading,
+        search: search,
+      );
+      var villageListModel = educationModelFromJson(response.data);
       if (villageListModel.status == 200) {
         return villageListModel;
       } else {
