@@ -21,6 +21,7 @@ class NotificationScreen extends StatelessWidget {
             .addPageRequestListener((pageKey) async {
           await controller.getAllNotification(pageKey);
         });
+        controller.getProfileApi();
       },
       builder: (controller) {
         return Scaffold(

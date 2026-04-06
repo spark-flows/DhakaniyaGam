@@ -13,7 +13,8 @@ import 'package:http_parser/src/media_type.dart' as media_type;
 
 /// API WRAPPER to call all the APIs and handle the error status codes
 class ApiWrapper {
-  final String _baseUrl = 'https://api.dhankaniya.com/';
+  // final String _baseUrl = 'https://api.dhankaniya.com/';
+  final String _baseUrl = 'https://h5gtm208-3000.inc1.devtunnels.ms/';
   static String baseUrl = 'https://api.dhankaniya.com/';
   static String imageUrl = ''; // https://dhandhuka.s3.ap-south-1.amazonaws.com/
 
@@ -45,10 +46,7 @@ class ApiWrapper {
 
             try {
               final response = await http
-                  .get(
-                    Uri.parse(uri),
-                    headers: headers,
-                  )
+                  .get(Uri.parse(uri), headers: headers)
                   .timeout(const Duration(seconds: 120));
 
               if (isLoading) Utility.closeDialog();
@@ -96,7 +94,9 @@ class ApiWrapper {
             } on TimeoutException catch (_) {
               Utility.closeDialog();
               return ResponseModel(
-                  data: '{"message":"Request timed out"}', hasError: true);
+                data: '{"message":"Request timed out"}',
+                hasError: true,
+              );
             }
           }
         case Request.put:
@@ -113,11 +113,7 @@ class ApiWrapper {
                 Utility.showLoader();
               }
               final response = await http
-                  .put(
-                    Uri.parse(uri),
-                    body: data,
-                    headers: headers,
-                  )
+                  .put(Uri.parse(uri), body: data, headers: headers)
                   .timeout(const Duration(seconds: 120));
 
               if (isLoading) Utility.closeDialog();
@@ -130,7 +126,9 @@ class ApiWrapper {
             } on TimeoutException catch (_) {
               if (isLoading) Utility.closeDialog();
               return ResponseModel(
-                  data: '{"message":"Request timed out"}', hasError: true);
+                data: '{"message":"Request timed out"}',
+                hasError: true,
+              );
             }
           }
 
@@ -165,9 +163,10 @@ class ApiWrapper {
             } on TimeoutException catch (_) {
               if (isLoading) Utility.closeDialog();
               return ResponseModel(
-                  data: '{"message":"Request timed out"}',
-                  hasError: true,
-                  statusCode: 1000);
+                data: '{"message":"Request timed out"}',
+                hasError: true,
+                statusCode: 1000,
+              );
             }
           }
         case Request.delete:
@@ -201,7 +200,9 @@ class ApiWrapper {
             } on TimeoutException catch (_) {
               if (isLoading) Utility.closeDialog();
               return ResponseModel(
-                  data: '{"message":"Request timed out"}', hasError: true);
+                data: '{"message":"Request timed out"}',
+                hasError: true,
+              );
             }
           }
         case Request.awsUpload:
@@ -229,8 +230,8 @@ class ApiWrapper {
               request.headers.addAll(headers);
 
               http.StreamedResponse response = await request.send().timeout(
-                    const Duration(seconds: 120),
-                  );
+                const Duration(seconds: 120),
+              );
               if (isLoading) Utility.closeDialog();
               var bytesToString = await response.stream.bytesToString();
               var res = ResponseModel(
@@ -264,18 +265,26 @@ class ApiWrapper {
                 Utility.showLoader();
               }
               var request = http.MultipartRequest('POST', Uri.parse(uri));
-              request.files.add(await http.MultipartFile.fromPath(
-                  'aadhar', data ?? '',
+              request.files.add(
+                await http.MultipartFile.fromPath(
+                  'aadhar',
+                  data ?? '',
                   contentType:
-                      mediaType ?? media_type.MediaType("image", "jpeg")));
+                      mediaType ?? media_type.MediaType("image", "jpeg"),
+                ),
+              );
               request.headers.addAll(headers);
 
-              http.StreamedResponse response =
-                  await request.send().timeout(const Duration(seconds: 120));
+              http.StreamedResponse response = await request.send().timeout(
+                const Duration(seconds: 120),
+              );
               if (isLoading) Utility.closeDialog();
               var bytesToString = await response.stream.bytesToString();
               var res = ResponseModel(
-                  data: bytesToString, hasError: false, statusCode: 200);
+                data: bytesToString,
+                hasError: false,
+                statusCode: 200,
+              );
               log(
                 'URL :- $uri\nData :- $data\nHeaders :- $headers\nResponse :-\nStatus Code :- ${res.statusCode}\nResponse Data :- ${res.data}',
               );
@@ -283,7 +292,9 @@ class ApiWrapper {
             } on TimeoutException catch (_) {
               if (isLoading) Utility.closeDialog();
               return ResponseModel(
-                  data: '{"message":"Request timed out"}', hasError: true);
+                data: '{"message":"Request timed out"}',
+                hasError: true,
+              );
             }
           }
         case Request.awsUploadResult:
@@ -300,18 +311,26 @@ class ApiWrapper {
                 Utility.showLoader();
               }
               var request = http.MultipartRequest('POST', Uri.parse(uri));
-              request.files.add(await http.MultipartFile.fromPath(
-                  'result', data ?? '',
+              request.files.add(
+                await http.MultipartFile.fromPath(
+                  'result',
+                  data ?? '',
                   contentType:
-                      mediaType ?? media_type.MediaType("image", "jpeg")));
+                      mediaType ?? media_type.MediaType("image", "jpeg"),
+                ),
+              );
               request.headers.addAll(headers);
 
-              http.StreamedResponse response =
-                  await request.send().timeout(const Duration(seconds: 120));
+              http.StreamedResponse response = await request.send().timeout(
+                const Duration(seconds: 120),
+              );
               if (isLoading) Utility.closeDialog();
               var bytesToString = await response.stream.bytesToString();
               var res = ResponseModel(
-                  data: bytesToString, hasError: false, statusCode: 200);
+                data: bytesToString,
+                hasError: false,
+                statusCode: 200,
+              );
               log(
                 'URL :- $uri\nData :- $data\nHeaders :- $headers\nResponse :-\nStatus Code :- ${res.statusCode}\nResponse Data :- ${res.data}',
               );
@@ -319,7 +338,9 @@ class ApiWrapper {
             } on TimeoutException catch (_) {
               if (isLoading) Utility.closeDialog();
               return ResponseModel(
-                  data: '{"message":"Request timed out"}', hasError: true);
+                data: '{"message":"Request timed out"}',
+                hasError: true,
+              );
             }
           }
         case Request.awsUploadFee:
@@ -336,18 +357,26 @@ class ApiWrapper {
                 Utility.showLoader();
               }
               var request = http.MultipartRequest('POST', Uri.parse(uri));
-              request.files.add(await http.MultipartFile.fromPath(
-                  "fee_receipt", data ?? '',
+              request.files.add(
+                await http.MultipartFile.fromPath(
+                  "fee_receipt",
+                  data ?? '',
                   contentType:
-                      mediaType ?? media_type.MediaType("image", "jpeg")));
+                      mediaType ?? media_type.MediaType("image", "jpeg"),
+                ),
+              );
               request.headers.addAll(headers);
 
-              http.StreamedResponse response =
-                  await request.send().timeout(const Duration(seconds: 120));
+              http.StreamedResponse response = await request.send().timeout(
+                const Duration(seconds: 120),
+              );
               if (isLoading) Utility.closeDialog();
               var bytesToString = await response.stream.bytesToString();
               var res = ResponseModel(
-                  data: bytesToString, hasError: false, statusCode: 200);
+                data: bytesToString,
+                hasError: false,
+                statusCode: 200,
+              );
               log(
                 'URL :- $uri\nData :- $data\nHeaders :- $headers\nResponse :-\nStatus Code :- ${res.statusCode}\nResponse Data :- ${res.data}',
               );
@@ -355,7 +384,9 @@ class ApiWrapper {
             } on TimeoutException catch (_) {
               if (isLoading) Utility.closeDialog();
               return ResponseModel(
-                  data: '{"message":"Request timed out"}', hasError: true);
+                data: '{"message":"Request timed out"}',
+                hasError: true,
+              );
             }
           }
         case Request.awsUploadDocument:
@@ -372,18 +403,26 @@ class ApiWrapper {
                 Utility.showLoader();
               }
               var request = http.MultipartRequest('POST', Uri.parse(uri));
-              request.files.add(await http.MultipartFile.fromPath(
-                  "document", data ?? '',
+              request.files.add(
+                await http.MultipartFile.fromPath(
+                  "document",
+                  data ?? '',
                   contentType:
-                      mediaType ?? media_type.MediaType("image", "jpeg")));
+                      mediaType ?? media_type.MediaType("image", "jpeg"),
+                ),
+              );
               request.headers.addAll(headers);
 
-              http.StreamedResponse response =
-                  await request.send().timeout(const Duration(seconds: 120));
+              http.StreamedResponse response = await request.send().timeout(
+                const Duration(seconds: 120),
+              );
               if (isLoading) Utility.closeDialog();
               var bytesToString = await response.stream.bytesToString();
               var res = ResponseModel(
-                  data: bytesToString, hasError: false, statusCode: 200);
+                data: bytesToString,
+                hasError: false,
+                statusCode: 200,
+              );
               log(
                 'URL :- $uri\nData :- $data\nHeaders :- $headers\nResponse :-\nStatus Code :- ${res.statusCode}\nResponse Data :- ${res.data}',
               );
@@ -391,7 +430,9 @@ class ApiWrapper {
             } on TimeoutException catch (_) {
               if (isLoading) Utility.closeDialog();
               return ResponseModel(
-                  data: '{"message":"Request timed out"}', hasError: true);
+                data: '{"message":"Request timed out"}',
+                hasError: true,
+              );
             }
           }
         case Request.awsUploadCertificate:
@@ -408,18 +449,26 @@ class ApiWrapper {
                 Utility.showLoader();
               }
               var request = http.MultipartRequest('POST', Uri.parse(uri));
-              request.files.add(await http.MultipartFile.fromPath(
-                  "death_certificate", data ?? '',
+              request.files.add(
+                await http.MultipartFile.fromPath(
+                  "death_certificate",
+                  data ?? '',
                   contentType:
-                      mediaType ?? media_type.MediaType("image", "jpeg")));
+                      mediaType ?? media_type.MediaType("image", "jpeg"),
+                ),
+              );
               request.headers.addAll(headers);
 
-              http.StreamedResponse response =
-                  await request.send().timeout(const Duration(seconds: 120));
+              http.StreamedResponse response = await request.send().timeout(
+                const Duration(seconds: 120),
+              );
               if (isLoading) Utility.closeDialog();
               var bytesToString = await response.stream.bytesToString();
               var res = ResponseModel(
-                  data: bytesToString, hasError: false, statusCode: 200);
+                data: bytesToString,
+                hasError: false,
+                statusCode: 200,
+              );
               log(
                 'URL :- $uri\nData :- $data\nHeaders :- $headers\nResponse :-\nStatus Code :- ${res.statusCode}\nResponse Data :- ${res.data}',
               );
@@ -427,7 +476,9 @@ class ApiWrapper {
             } on TimeoutException catch (_) {
               if (isLoading) Utility.closeDialog();
               return ResponseModel(
-                  data: '{"message":"Request timed out"}', hasError: true);
+                data: '{"message":"Request timed out"}',
+                hasError: true,
+              );
             }
           }
         case Request.awsUploadPassbook:
@@ -444,18 +495,26 @@ class ApiWrapper {
                 Utility.showLoader();
               }
               var request = http.MultipartRequest('POST', Uri.parse(uri));
-              request.files.add(await http.MultipartFile.fromPath(
-                  "passbook", data ?? '',
+              request.files.add(
+                await http.MultipartFile.fromPath(
+                  "passbook",
+                  data ?? '',
                   contentType:
-                      mediaType ?? media_type.MediaType("image", "jpeg")));
+                      mediaType ?? media_type.MediaType("image", "jpeg"),
+                ),
+              );
               request.headers.addAll(headers);
 
-              http.StreamedResponse response =
-                  await request.send().timeout(const Duration(seconds: 120));
+              http.StreamedResponse response = await request.send().timeout(
+                const Duration(seconds: 120),
+              );
               if (isLoading) Utility.closeDialog();
               var bytesToString = await response.stream.bytesToString();
               var res = ResponseModel(
-                  data: bytesToString, hasError: false, statusCode: 200);
+                data: bytesToString,
+                hasError: false,
+                statusCode: 200,
+              );
               log(
                 'URL :- $uri\nData :- $data\nHeaders :- $headers\nResponse :-\nStatus Code :- ${res.statusCode}\nResponse Data :- ${res.data}',
               );
@@ -463,7 +522,9 @@ class ApiWrapper {
             } on TimeoutException catch (_) {
               if (isLoading) Utility.closeDialog();
               return ResponseModel(
-                  data: '{"message":"Request timed out"}', hasError: true);
+                data: '{"message":"Request timed out"}',
+                hasError: true,
+              );
             }
           }
         case Request.awsRentAgreement:
@@ -480,18 +541,26 @@ class ApiWrapper {
                 Utility.showLoader();
               }
               var request = http.MultipartRequest('POST', Uri.parse(uri));
-              request.files.add(await http.MultipartFile.fromPath(
-                  "rent_agreement", data ?? '',
+              request.files.add(
+                await http.MultipartFile.fromPath(
+                  "rent_agreement",
+                  data ?? '',
                   contentType:
-                      mediaType ?? media_type.MediaType("image", "jpeg")));
+                      mediaType ?? media_type.MediaType("image", "jpeg"),
+                ),
+              );
               request.headers.addAll(headers);
 
-              http.StreamedResponse response =
-                  await request.send().timeout(const Duration(seconds: 120));
+              http.StreamedResponse response = await request.send().timeout(
+                const Duration(seconds: 120),
+              );
               if (isLoading) Utility.closeDialog();
               var bytesToString = await response.stream.bytesToString();
               var res = ResponseModel(
-                  data: bytesToString, hasError: false, statusCode: 200);
+                data: bytesToString,
+                hasError: false,
+                statusCode: 200,
+              );
               log(
                 'URL :- $uri\nData :- $data\nHeaders :- $headers\nResponse :-\nStatus Code :- ${res.statusCode}\nResponse Data :- ${res.data}',
               );
@@ -499,7 +568,9 @@ class ApiWrapper {
             } on TimeoutException catch (_) {
               if (isLoading) Utility.closeDialog();
               return ResponseModel(
-                  data: '{"message":"Request timed out"}', hasError: true);
+                data: '{"message":"Request timed out"}',
+                hasError: true,
+              );
             }
           }
         case Request.awsFileUpload:
@@ -516,18 +587,26 @@ class ApiWrapper {
                 Utility.showLoader();
               }
               var request = http.MultipartRequest('POST', Uri.parse(uri));
-              request.files.add(await http.MultipartFile.fromPath(
-                  'file', data ?? '',
+              request.files.add(
+                await http.MultipartFile.fromPath(
+                  'file',
+                  data ?? '',
                   contentType:
-                      mediaType ?? media_type.MediaType("application", "pdf")));
+                      mediaType ?? media_type.MediaType("application", "pdf"),
+                ),
+              );
               request.headers.addAll(headers);
 
-              http.StreamedResponse response =
-                  await request.send().timeout(const Duration(seconds: 120));
+              http.StreamedResponse response = await request.send().timeout(
+                const Duration(seconds: 120),
+              );
               if (isLoading) Utility.closeDialog();
               var bytesToString = await response.stream.bytesToString();
               var res = ResponseModel(
-                  data: bytesToString, hasError: false, statusCode: 200);
+                data: bytesToString,
+                hasError: false,
+                statusCode: 200,
+              );
               log(
                 'URL :- $uri\nData :- $data\nHeaders :- $headers\nResponse :-\nStatus Code :- ${res.statusCode}\nResponse Data :- ${res.data}',
               );
@@ -535,7 +614,9 @@ class ApiWrapper {
             } on TimeoutException catch (_) {
               if (isLoading) Utility.closeDialog();
               return ResponseModel(
-                  data: '{"message":"Request timed out"}', hasError: true);
+                data: '{"message":"Request timed out"}',
+                hasError: true,
+              );
             }
           }
         case Request.getApiWithoutBaseURL:
@@ -549,10 +630,7 @@ class ApiWrapper {
 
             try {
               final response = await http
-                  .get(
-                    Uri.parse(url),
-                    headers: headers,
-                  )
+                  .get(Uri.parse(url), headers: headers)
                   .timeout(const Duration(seconds: 120));
 
               if (isLoading) Utility.closeDialog();
@@ -565,7 +643,9 @@ class ApiWrapper {
             } on TimeoutException catch (_) {
               Utility.closeDialog();
               return ResponseModel(
-                  data: '{"message":"Request timed out"}', hasError: true);
+                data: '{"message":"Request timed out"}',
+                hasError: true,
+              );
             }
           }
         case Request.postWithFormData:
@@ -589,7 +669,8 @@ class ApiWrapper {
                   await http.MultipartFile.fromPath(
                     fileData.fieldName,
                     fileData.filePath,
-                    contentType: fileData.mediaType ??
+                    contentType:
+                        fileData.mediaType ??
                         media_type.MediaType("application", "image"),
                   ),
                 );
@@ -599,12 +680,16 @@ class ApiWrapper {
 
               request.fields.addAll(data);
 
-              http.StreamedResponse response =
-                  await request.send().timeout(const Duration(seconds: 120));
+              http.StreamedResponse response = await request.send().timeout(
+                const Duration(seconds: 120),
+              );
               if (isLoading) Utility.closeDialog();
               var bytesToString = await response.stream.bytesToString();
               var res = ResponseModel(
-                  data: bytesToString, hasError: false, statusCode: 200);
+                data: bytesToString,
+                hasError: false,
+                statusCode: 200,
+              );
               log(
                 'URL :- $uri\nData :- $data\nHeaders :- $headers\nResponse :-\nStatus Code :- ${res.statusCode}\nResponse Data :- ${res.data}',
               );
@@ -612,7 +697,9 @@ class ApiWrapper {
             } on TimeoutException catch (_) {
               if (isLoading) Utility.closeDialog();
               return ResponseModel(
-                  data: '{"message":"Request timed out"}', hasError: true);
+                data: '{"message":"Request timed out"}',
+                hasError: true,
+              );
             }
           }
         case Request.awsFile:
@@ -629,18 +716,26 @@ class ApiWrapper {
                 Utility.showLoader();
               }
               var request = http.MultipartRequest('POST', Uri.parse(uri));
-              request.files.add(await http.MultipartFile.fromPath(
-                  'file', data ?? '',
+              request.files.add(
+                await http.MultipartFile.fromPath(
+                  'file',
+                  data ?? '',
                   contentType:
-                      mediaType ?? media_type.MediaType("image", "jpeg")));
+                      mediaType ?? media_type.MediaType("image", "jpeg"),
+                ),
+              );
               request.headers.addAll(headers);
 
-              http.StreamedResponse response =
-                  await request.send().timeout(const Duration(seconds: 120));
+              http.StreamedResponse response = await request.send().timeout(
+                const Duration(seconds: 120),
+              );
               if (isLoading) Utility.closeDialog();
               var bytesToString = await response.stream.bytesToString();
               var res = ResponseModel(
-                  data: bytesToString, hasError: false, statusCode: 200);
+                data: bytesToString,
+                hasError: false,
+                statusCode: 200,
+              );
               log(
                 'URL :- $uri\nData :- $data\nHeaders :- $headers\nResponse :-\nStatus Code :- ${res.statusCode}\nResponse Data :- ${res.data}',
               );
@@ -648,12 +743,13 @@ class ApiWrapper {
             } on TimeoutException catch (_) {
               if (isLoading) Utility.closeDialog();
               return ResponseModel(
-                  data: '{"message":"Request timed out"}', hasError: true);
+                data: '{"message":"Request timed out"}',
+                hasError: true,
+              );
             }
           }
       }
     }
-
     /// If there is no network available then instead of print can show the no internet widget too
     else {
       return ResponseModel(
@@ -683,8 +779,10 @@ class ApiWrapper {
       case 401:
 
         /// unauthorized
-        Repository(DeviceRepository(), DataRepository(ConnectHelper()))
-            .deleteAllSecuredValues();
+        Repository(
+          DeviceRepository(),
+          DataRepository(ConnectHelper()),
+        ).deleteAllSecuredValues();
 
         return ResponseModel(
           data: response.body,

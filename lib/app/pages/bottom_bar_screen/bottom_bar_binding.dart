@@ -56,6 +56,12 @@ class BottomBarBinding extends Bindings {
               ),
               permanent: true,
             ),
+            Get.put(
+              CommonUsecases(
+                Get.find(),
+              ),
+              permanent: true,
+            ),
           ),
         ),
       ),

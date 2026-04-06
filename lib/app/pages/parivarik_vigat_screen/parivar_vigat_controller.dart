@@ -129,7 +129,8 @@ class ParivarikVigatController extends GetxController {
                   "allow".tr,
                   style: Styles.redColorGuj60014,
                 ),
-                onPressed: () async {Navigator.pop(context);
+                onPressed: () async {
+                  Navigator.pop(context);
                   await openAppSettings();
                 },
               ),
@@ -138,7 +139,8 @@ class ParivarikVigatController extends GetxController {
                   "deny".tr,
                   style: Styles.blackGuj60014,
                 ),
-                onPressed: () {Navigator.pop(context);
+                onPressed: () {
+                  Navigator.pop(context);
                 },
               )
             ],
@@ -191,7 +193,7 @@ class ParivarikVigatController extends GetxController {
     );
     if (response?.data != null) {
       getProfileData = response?.data;
-
+      Utility.notificationCount = response?.data?.notificationCount ?? 0;
       profilePic = getProfileData?.profilePic ?? "";
       surnameController.text = getProfileData?.surname ?? "";
       nameController.text = getProfileData?.name ?? "";

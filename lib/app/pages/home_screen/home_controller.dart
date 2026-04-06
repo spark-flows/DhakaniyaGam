@@ -31,6 +31,7 @@ class HomeController extends GetxController {
     );
     Utility.profileData = null;
     if (response != null) {
+      Utility.notificationCount = response.data?.notificationCount ?? 0;
       Utility.profileData = response.data;
       Utility.prifilePic = response.data?.profilePic ?? "";
       getProfileData = response.data;

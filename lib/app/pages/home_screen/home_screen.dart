@@ -17,7 +17,8 @@ class HomeScreen extends StatelessWidget {
           elevation: Dimens.ten,
           centerTitle: true,
           leading: InkWell(
-            onTap: () {Navigator.pop(context);
+            onTap: () {
+              Navigator.pop(context);
             },
             child: Padding(
               padding: Dimens.edgeInsets12,
@@ -37,13 +38,13 @@ class HomeScreen extends StatelessWidget {
             Image.asset(
               AssetConstants.app_logo,
             ),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'village_name'.tr,
-                style: Styles.grey9BA0A8Guj90016,
-              ),
-            ),
+            // Align(
+            //   alignment: Alignment.centerLeft,
+            //   child: Text(
+            //     'village_name'.tr,
+            //     style: Styles.grey9BA0A8Guj90016,
+            //   ),
+            // ),
             // Container(
             //   height: Dimens.fourtyFive,
             //   padding: Dimens.edgeInsets20_00_20_00,
@@ -67,47 +68,47 @@ class HomeScreen extends StatelessWidget {
             //   ),
             // ),
 
-            Container(
-              height: Dimens.fifty,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Dimens.six),
-                color: ColorsValue.greyEEEEEE,
-              ),
-              child: DropdownButton<String>(
-                underline: Container(),
-                hint: Text(
-                  controller.getProfileData?.village?.gujaratiName ?? "",
-                  style: Styles.grey9BA0A8Guj90016,
-                ),
-                padding: EdgeInsets.only(
-                  left: Dimens.ten,
-                  right: Dimens.ten,
-                ),
-                isExpanded: true,
-                icon: SvgPicture.asset(
-                  AssetConstants.ic_down_arrow,
-                ),
-                value: controller.selectVillageValue,
-                items: controller.getProfileData?.village?.gujaratiName
-                            ?.isNotEmpty ??
-                        false
-                    ? []
-                    : controller.villageList
-                        .map((value) => DropdownMenuItem(
-                              value: value.id,
-                              child: Text(value.gujaratiName ?? ""),
-                            ))
-                        .toList(),
-                onChanged: controller.getProfileData?.village?.gujaratiName
-                            ?.isNotEmpty ??
-                        false
-                    ? (va) {}
-                    : (newValue) {
-                        controller.selectVillageValue = newValue;
-                        controller.update();
-                      },
-              ),
-            ),
+            // Container(
+            //   height: Dimens.fifty,
+            //   decoration: BoxDecoration(
+            //     borderRadius: BorderRadius.circular(Dimens.six),
+            //     color: ColorsValue.greyEEEEEE,
+            //   ),
+            //   child: DropdownButton<String>(
+            //     underline: Container(),
+            //     hint: Text(
+            //       controller.getProfileData?.village?.gujaratiName ?? "",
+            //       style: Styles.grey9BA0A8Guj90016,
+            //     ),
+            //     padding: EdgeInsets.only(
+            //       left: Dimens.ten,
+            //       right: Dimens.ten,
+            //     ),
+            //     isExpanded: true,
+            //     icon: SvgPicture.asset(
+            //       AssetConstants.ic_down_arrow,
+            //     ),
+            //     value: controller.selectVillageValue,
+            //     items: controller.getProfileData?.village?.gujaratiName
+            //                 ?.isNotEmpty ??
+            //             false
+            //         ? []
+            //         : controller.villageList
+            //             .map((value) => DropdownMenuItem(
+            //                   value: value.id,
+            //                   child: Text(value.gujaratiName ?? ""),
+            //                 ))
+            //             .toList(),
+            //     onChanged: controller.getProfileData?.village?.gujaratiName
+            //                 ?.isNotEmpty ??
+            //             false
+            //         ? (va) {}
+            //         : (newValue) {
+            //             controller.selectVillageValue = newValue;
+            //             controller.update();
+            //           },
+            //   ),
+            // ),
             Dimens.boxHeight30,
             InkWell(
               onTap: () {

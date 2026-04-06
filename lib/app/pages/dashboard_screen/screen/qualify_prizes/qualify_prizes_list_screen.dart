@@ -44,56 +44,111 @@ class QualifyPrizeListScreen extends StatelessWidget {
         ),
         body: Padding(
           padding: Dimens.edgeInsets20,
-          child: ListView.builder(
-            itemCount: controller.educationDataList.length,
-            itemBuilder: (context, index) {
-              var item = controller.educationDataList[index];
-              return InkWell(
-                onTap: () {
-                  if (controller.categoryGiftLists[index].split(' ').first ==
-                          "Std" ||
-                      controller.categoryGiftLists[index].split(' ').first ==
-                          "College") {
-                    RouteManagement.goToQualifyPrizeScreen(
-                        controller.categoryGiftLists[index], false);
-                  } else {
-                    RouteManagement.goToQualifyPrizeScreen(
-                        controller.categoryGiftLists[index], true);
-                  }
-                },
-                child: Padding(
-                  padding: Dimens.edgeInsets00_10_00_10,
-                  child: Container(
-                    height: Dimens.sixtySix,
-                    padding: Dimens.edgeInsets20_00_20_00,
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                    height: Dimens.fourty,
+                    width: Dimens.hundred,
+                    padding: Dimens.edgeInsets10_00_10_00,
                     decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(
-                        Dimens.six,
-                      ),
+                      color: ColorsValue.lightMainColor,
+                      borderRadius: BorderRadius.circular(Dimens.ten),
                       border: Border.all(
                         color: ColorsValue.maincolor,
                         width: Dimens.one,
                       ),
                     ),
-                    child: Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            item.gujaratiName ?? "",
-                            style: Styles.mainGuj90018,
-                          ),
-                          SvgPicture.asset(
-                            AssetConstants.ic_arrow_right,
-                          )
-                        ],
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<int>(
+                        value: controller.selectYear,
+                        isExpanded: true,
+                        icon: Icon(
+                          Icons.keyboard_arrow_down_rounded,
+                          color: ColorsValue.maincolor,
+                        ),
+                        style: Styles.mainGuj60016,
+                        items: List.generate(
+                          DateTime.now().year - 2025,
+                          (index) => DateTime.now().year - index,
+                        ).map((year) {
+                          return DropdownMenuItem<int>(
+                            value: year,
+                            child: Text(year.toString()),
+                          );
+                        }).toList(),
+                        onChanged: (int? newYear) {
+                          if (newYear != null) {
+                            controller.selectYear = newYear;
+                            controller.qualifyPrizePagingController.refresh();
+                            controller.update();
+                          }
+                        },
                       ),
                     ),
                   ),
+                ],
+              ),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: controller.educationDataList.length,
+                  itemBuilder: (context, index) {
+                    var item = controller.educationDataList[index];
+                    return InkWell(
+                      onTap: () {
+                        if (controller.categoryGiftLists[index]
+                                    .split(' ')
+                                    .first ==
+                                "Std" ||
+                            controller.categoryGiftLists[index]
+                                    .split(' ')
+                                    .first ==
+                                "College") {
+                          RouteManagement.goToQualifyPrizeScreen(
+                              controller.categoryGiftLists[index], false);
+                        } else {
+                          RouteManagement.goToQualifyPrizeScreen(
+                              controller.categoryGiftLists[index], true);
+                        }
+                      },
+                      child: Padding(
+                        padding: Dimens.edgeInsets00_10_00_10,
+                        child: Container(
+                          height: Dimens.sixtySix,
+                          padding: Dimens.edgeInsets20_00_20_00,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(
+                              Dimens.six,
+                            ),
+                            border: Border.all(
+                              color: ColorsValue.maincolor,
+                              width: Dimens.one,
+                            ),
+                          ),
+                          child: Center(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  item.gujaratiName ?? "",
+                                  style: Styles.mainGuj90018,
+                                ),
+                                SvgPicture.asset(
+                                  AssetConstants.ic_arrow_right,
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 ),
-              );
-            },
+              ),
+            ],
           ),
         ),
       );

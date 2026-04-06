@@ -1459,6 +1459,7 @@ class Repository {
     required String search,
     required String education,
     required String medium,
+    required int year,
   }) async {
     try {
       var response = await _dataRepository.postQualifiedPrizes(
@@ -1468,6 +1469,7 @@ class Repository {
         search: search,
         education: education,
         medium: medium,
+        year: year
       );
       var getProfileModel = qualifiedPrizeModelFromJson(response.data);
       if (getProfileModel.status == 200) {

@@ -1,5 +1,4 @@
 import 'package:dhakaniya_gam/app/app.dart';
-import 'package:dhakaniya_gam/app/navigators/navigators.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -12,22 +11,6 @@ class BottomBarScreen extends StatelessWidget {
     return GetBuilder<BottomBarController>(
       builder: (controller) {
         return Scaffold(
-          // floatingActionButtonLocation:
-          //     FloatingActionButtonLocation.centerDocked,
-          // floatingActionButton: FloatingActionButton(
-          //   backgroundColor: ColorsValue.maincolor,
-          //   elevation: 0,
-          //   onPressed: () {
-          //     RouteManagement.goToSevaoScreen();
-          //   },
-          //   shape: RoundedRectangleBorder(
-          //     side: BorderSide(width: 5, color: ColorsValue.lightMainColor),
-          //     borderRadius: BorderRadius.circular(100),
-          //   ),
-          //   child: SvgPicture.asset(
-          //     AssetConstants.ic_service,
-          //   ),
-          // ),
           bottomNavigationBar: BottomNavigationBar(
             showSelectedLabels: false,
             showUnselectedLabels: false,
@@ -51,20 +34,85 @@ class BottomBarScreen extends StatelessWidget {
                 label: "Home",
               ),
               BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  AssetConstants.ic_outline_noti,
-                  colorFilter: ColorFilter.mode(
-                    ColorsValue.maincolor,
-                    BlendMode.srcIn,
-                  ),
+                icon: Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    SvgPicture.asset(
+                      AssetConstants.ic_outline_noti,
+                      colorFilter: ColorFilter.mode(
+                        ColorsValue.maincolor,
+                        BlendMode.srcIn,
+                      ),
+                    ),
+                    // if (count  0)
+                    Positioned(
+                      right: -6,
+                      top: -4,
+                      child: Container(
+                        padding: const EdgeInsets.all(3),
+                        decoration: const BoxDecoration(
+                          color: Colors.red,
+                          shape: BoxShape.circle,
+                        ),
+                        constraints: const BoxConstraints(
+                          minWidth: 16,
+                          minHeight: 16,
+                        ),
+                        child: Text(
+                          Utility.notificationCount > 99
+                              ? '99+'
+                              : '${Utility.notificationCount}',
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 9,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                activeIcon: SvgPicture.asset(
-                  AssetConstants.ic_notification,
-                  colorFilter: ColorFilter.mode(
-                    ColorsValue.maincolor,
-                    BlendMode.srcIn,
-                  ),
-                ),
+                activeIcon: Obx(() {
+                  final count = controller.notificationCount.value;
+                  return Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      SvgPicture.asset(
+                        AssetConstants.ic_notification,
+                        colorFilter: ColorFilter.mode(
+                          ColorsValue.maincolor,
+                          BlendMode.srcIn,
+                        ),
+                      ),
+                      if (count > 0)
+                        Positioned(
+                          right: -6,
+                          top: -4,
+                          child: Container(
+                            padding: const EdgeInsets.all(3),
+                            decoration: const BoxDecoration(
+                              color: Colors.red,
+                              shape: BoxShape.circle,
+                            ),
+                            constraints: const BoxConstraints(
+                              minWidth: 16,
+                              minHeight: 16,
+                            ),
+                            child: Text(
+                              count > 99 ? '99+' : '$count',
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 9,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                    ],
+                  );
+                }),
                 label: "Notification",
               ),
             ],

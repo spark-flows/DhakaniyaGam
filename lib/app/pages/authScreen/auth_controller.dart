@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:dhakaniya_gam/app/app.dart';
 import 'package:dhakaniya_gam/app/navigators/navigators.dart';
@@ -123,7 +124,7 @@ class AuthController extends GetxController {
       // }
     } else {
       isLoginLoading = false;
-      Utility.errorMessage(response?.message ?? "");
+      Utility.errorMessage(jsonDecode(response?.message ?? "")['Message']);
     }
     update();
   }

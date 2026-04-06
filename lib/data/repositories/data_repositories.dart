@@ -752,6 +752,7 @@ class DataRepository extends DomainRepository {
     required String search,
     required String education,
     required String medium,
+    required int year,
   }) async =>
       connectHelper.postQualifiedPrizes(
         page: page,
@@ -759,6 +760,7 @@ class DataRepository extends DomainRepository {
         search: search,
         education: education,
         medium: medium,
+        year: year
       );
 
   Future<ResponseModel> postQualifiedStationery({

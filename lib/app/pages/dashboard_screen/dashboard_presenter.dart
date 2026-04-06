@@ -198,6 +198,7 @@ class DashboardPresenter {
     required String search,
     required String education,
     required String medium,
+    required int year,
     bool isLoading = false,
   }) async =>
       await dashboardUsecases.postQualifiedPrizes(
@@ -206,6 +207,7 @@ class DashboardPresenter {
         search: search,
         education: education,
         medium: medium,
+        year: year,
         isLoading: isLoading,
       );
 

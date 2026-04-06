@@ -161,6 +161,7 @@ class DashboardUsecases {
     required String search,
     required String education,
     required String medium,
+    required int year,
     bool isLoading = false,
   }) async =>
       await repository.postQualifiedPrizes(
@@ -169,6 +170,7 @@ class DashboardUsecases {
         search: search,
         education: education,
         medium: medium,
+        year: year,
         isLoading: isLoading,
       );
 

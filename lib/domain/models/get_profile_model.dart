@@ -89,6 +89,7 @@ class GetProfileData {
   String? other;
   String? residentialType;
   int? userNumber;
+  int? notificationCount;
 
   GetProfileData({
     this.id,
@@ -139,6 +140,7 @@ class GetProfileData {
     this.other,
     this.residentialType,
     this.userNumber,
+    this.notificationCount,
   });
 
   factory GetProfileData.fromJson(Map<String, dynamic> json) => GetProfileData(
@@ -209,6 +211,7 @@ class GetProfileData {
         other: json["other"],
         residentialType: json["residential_type"],
         userNumber: json["user_number"],
+        notificationCount: json["notification_count"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -262,6 +265,7 @@ class GetProfileData {
         "other": other,
         "residential_type": residentialType,
         "user_number": userNumber,
+        "notification_count": notificationCount,
       };
 }
 

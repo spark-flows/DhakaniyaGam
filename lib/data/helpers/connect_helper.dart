@@ -1206,6 +1206,7 @@ class ConnectHelper {
     required String search,
     required String education,
     required String medium,
+    required int year,
   }) async {
     var data = {
       "page": page,
@@ -1213,6 +1214,7 @@ class ConnectHelper {
       "search": search,
       "education": education,
       "medium": medium,
+      "year": year,
     };
     var response = await apiWrapper.makeRequest(
       EndPoints.postQualifiedPrizes,

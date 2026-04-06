@@ -16,6 +16,22 @@ class NotificationController extends GetxController {
   int selectPage = 0;
   int selectNotificationPage = 0;
 
+  GetProfileData? getProfileData = GetProfileData();
+
+  Future<void> getProfileApi() async {
+    var response = await notificationPresenter.getProfileApi(
+      isLoading: false,
+    );
+    Utility.profileData = null;
+    if (response != null) {
+      Utility.notificationCount = response.data?.notificationCount ?? 0;
+      Utility.profileData = response.data;
+      Utility.prifilePic = response.data?.profilePic ?? "";
+      getProfileData = response.data;
+    }
+    update();
+  }
+
   Future<void> getAllNotification(pageKey) async {
     var response = await notificationPresenter.getAllNotification(
       page: pageKey,

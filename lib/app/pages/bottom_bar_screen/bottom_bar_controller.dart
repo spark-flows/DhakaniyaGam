@@ -23,6 +23,7 @@ class BottomBarController extends GetxController {
   }
 
   int selectedIndex = 0;
+  RxInt notificationCount = 0.obs;
   List<Widget> widgetOptions = <Widget>[
     DashboardScreen(),
     NotificationScreen(),
@@ -42,7 +43,8 @@ class BottomBarController extends GetxController {
     if (response != null) {
       Utility.profileData = response.data;
       Utility.prifilePic = response.data?.profilePic ?? "";
-
+      Utility.notificationCount = response.data?.notificationCount ?? 0;
+      Get.forceAppUpdate();
       // getProfileData = response.data;
     }
     update();

@@ -773,6 +773,8 @@ class DashboardController extends GetxController {
   // "Master Sem 6",
   // "Master Sem 8",
 
+  int selectYear = DateTime.now().year;
+
   Future<void> postQualifiedPrizes(int pageKey) async {
     var response = await dashboardPresenter.postQualifiedPrizes(
       page: pageKey,
@@ -837,6 +839,7 @@ class DashboardController extends GetxController {
                                                                                                   ? "master_sem_6"
                                                                                                   : "master_sem_8",
       medium: isMedium ? "gujarati" : "english",
+      year: selectYear,
       isLoading: false,
     );
     if (response != null) {

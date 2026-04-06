@@ -30,6 +30,7 @@ abstract class Utility {
 
   static GetProfileData? profileData;
   static String? prifilePic;
+  static int notificationCount = 0;
 
   /// common header for All api
   static Map<String, String> commonHeader({

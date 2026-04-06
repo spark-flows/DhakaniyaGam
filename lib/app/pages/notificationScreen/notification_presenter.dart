@@ -3,9 +3,10 @@ import 'package:dhakaniya_gam/domain/models/models.dart';
 import 'package:dhakaniya_gam/domain/usecases/usecases.dart';
 
 class NotificationPresenter {
-  NotificationPresenter(this.notificationUsecases);
+  NotificationPresenter(this.notificationUsecases, this.commonUsecases);
 
   final NotificationUsecases notificationUsecases;
+  final CommonUsecases commonUsecases;
 
   Future<GetAllMessageModel?> getAllNotification({
     required int page,
@@ -26,6 +27,13 @@ class NotificationPresenter {
   }) async =>
       await notificationUsecases.postGetOneNotification(
         messageId: messageId,
+        isLoading: isLoading,
+      );
+
+  Future<GetProfileModel?> getProfileApi({
+    bool isLoading = false,
+  }) async =>
+      await commonUsecases.getProfileApi(
         isLoading: isLoading,
       );
 }
