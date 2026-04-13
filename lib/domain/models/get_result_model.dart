@@ -41,7 +41,7 @@ class GetResultData {
   String? parent;
   Familymember? familymember;
   int? year;
-  String? education;
+  Education? education;
   String? medium;
   int? totalMarks;
   int? obtainedMarks;
@@ -76,7 +76,9 @@ class GetResultData {
             ? null
             : Familymember.fromJson(json["familymember"]),
         year: json["year"],
-        education: json["education"],
+        education: json["education"] == null
+            ? null
+            : Education.fromJson(json["education"]),
         medium: json["medium"],
         totalMarks: json["total_marks"],
         obtainedMarks: json["obtained_marks"],
@@ -95,7 +97,7 @@ class GetResultData {
         "parent": parent,
         "familymember": familymember?.toJson(),
         "year": year,
-        "education": education,
+        "education": education?.toJson(),
         "medium": medium,
         "total_marks": totalMarks,
         "obtained_marks": obtainedMarks,
@@ -105,6 +107,34 @@ class GetResultData {
         "stationery": stationery,
         "create_timestamp": createTimestamp,
         "createdAt": createdAt?.toIso8601String(),
+      };
+}
+
+class Education {
+  String? id;
+  String? englishName;
+  String? gujaratiName;
+  bool? status;
+
+  Education({
+    this.id,
+    this.englishName,
+    this.gujaratiName,
+    this.status,
+  });
+
+  factory Education.fromJson(Map<String, dynamic> json) => Education(
+        id: json["_id"],
+        englishName: json["english_name"],
+        gujaratiName: json["gujarati_name"],
+        status: json["status"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "_id": id,
+        "english_name": englishName,
+        "gujarati_name": gujaratiName,
+        "status": status,
       };
 }
 

@@ -13,7 +13,8 @@ class DonorsDetailsScreen extends StatelessWidget {
     return GetBuilder<DashboardController>(
       initState: (state) {
         var controller = Get.find<DashboardController>();
-        controller.postDonators(Get.arguments ?? "");
+        controller.postDonators(Get.arguments[0] ?? "");
+        controller.donarName = Get.arguments[1] ?? "";
       },
       builder: (controller) {
         return Scaffold(
@@ -29,7 +30,8 @@ class DonorsDetailsScreen extends StatelessWidget {
             elevation: Dimens.ten,
             centerTitle: true,
             leading: InkWell(
-              onTap: () {Navigator.pop(context);
+              onTap: () {
+                Navigator.pop(context);
               },
               child: Padding(
                 padding: Dimens.edgeInsets12,
@@ -39,7 +41,7 @@ class DonorsDetailsScreen extends StatelessWidget {
               ),
             ),
             title: Text(
-              'donors'.tr,
+              controller.donarName ?? 'donors'.tr,
               style: Styles.mainGuj90020,
             ),
           ),
@@ -87,12 +89,7 @@ class DonorsDetailsScreen extends StatelessWidget {
                                   ),
                                   Dimens.boxHeight6,
                                   Text(
-                                    controller
-                                            .getOneDonarData
-                                            ?.majorDonators?[index]
-                                            .village
-                                            ?.gujaratiName ??
-                                        "",
+                                    "${controller.getOneDonarData?.majorDonators?[index].year}",
                                     style: Styles.blackGuj60014,
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
@@ -169,7 +166,7 @@ class DonorsDetailsScreen extends StatelessWidget {
                                 ),
                                 Dimens.boxHeight6,
                                 Text(
-                                  item?.village?.gujaratiName ?? "",
+                                  "${item?.year}",
                                   style: Styles.blackGuj60012,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,

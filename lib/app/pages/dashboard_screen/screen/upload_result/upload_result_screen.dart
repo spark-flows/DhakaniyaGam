@@ -14,10 +14,14 @@ class UploadResultScreen extends StatelessWidget {
       initState: (state) {
         var controller = Get.find<DashboardController>();
         controller.getFullFamily();
+        controller.getStudiesResult();
         controller.percentController.clear();
         controller.totalMarksController.clear();
         controller.obtainedController.clear();
         controller.searchController.clear();
+        controller.selectStudyResult = null;
+        controller.selectFullFamilyValue = null;
+        controller.profilePic = null;
       },
       builder: (controller) {
         return Scaffold(
@@ -94,11 +98,13 @@ class UploadResultScreen extends StatelessWidget {
                   },
                 ),
               ),
-              Dimens.boxHeight10,
-              Text(
-                '* પહેલા ફેમિલી મેમ્બર દાખલ કરો.'.tr,
-                style: Styles.redGuj50012,
-              ),
+              if (controller.selectFullFamilyLists.isEmpty) ...[
+                Dimens.boxHeight10,
+                Text(
+                  '* પહેલા ફેમિલી મેમ્બર દાખલ કરો.'.tr,
+                  style: Styles.redGuj50012,
+                ),
+              ],
               Dimens.boxHeight20,
               Align(
                 alignment: Alignment.centerLeft,
@@ -198,15 +204,15 @@ class UploadResultScreen extends StatelessWidget {
                   icon: SvgPicture.asset(
                     AssetConstants.ic_down_arrow,
                   ),
-                  value: controller.selectValue,
-                  items: controller.categoryLists
+                  value: controller.selectStudyResult,
+                  items: controller.selectStudyResultLists
                       .map((value) => DropdownMenuItem(
-                            value: value,
-                            child: Text(value),
+                            value: value.id,
+                            child: Text(value.gujaratiName ?? ""),
                           ))
                       .toList(),
                   onChanged: (newValue) {
-                    controller.selectValue = newValue;
+                    controller.selectStudyResult = newValue;
                     controller.update();
                   },
                 ),

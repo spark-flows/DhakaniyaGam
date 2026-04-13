@@ -73,71 +73,119 @@ class DashboardScreen extends StatelessWidget {
           padding: Dimens.edgeInsets20_0_20_20,
           children: [
             if (controller.adsList.isNotEmpty) ...[
-              // Stack(
-              //   children: [
               SizedBox(
                 height: Dimens.twoHundredNintyOne,
                 width: double.maxFinite,
-                child: PageView.builder(
-                  itemCount: controller.adsList.length,
-                  onPageChanged: (value) {
-                    controller.selectAds = value;
-                    controller.update();
+                child: NotificationListener<ScrollNotification>(
+                  onNotification: (notification) {
+                    if (notification is ScrollStartNotification) {
+                      controller.stopAutoScroll();
+                    } else if (notification is ScrollEndNotification) {
+                      controller.startAutoScroll();
+                    }
+                    return false;
                   },
-                  itemBuilder: (context, index) {
-                    return InkWell(
-                      onTap: () {
-                        RouteManagement.goToShowFullScareenImage(
-                            controller.adsList[index].banner ?? "", "IMG");
-                      },
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(Dimens.six),
-                        child: CachedNetworkImage(
-                          imageUrl: ApiWrapper.imageUrl +
-                              (controller.adsList[index].banner ?? ""),
-                          fit: BoxFit.cover,
-                          width: double.maxFinite,
-                          placeholder: (context, url) => Center(
-                            child: Image.asset(
-                              AssetConstants.placeholder,
-                              fit: BoxFit.cover,
-                              width: double.maxFinite,
-                            ),
+                  child: PageView.builder(
+                    controller: controller.pageController,
+                    itemCount: controller.adsList.length,
+                    onPageChanged: (value) {
+                      controller.selectAds = value;
+                      controller.update();
+                    },
+                    allowImplicitScrolling: true,
+                    itemBuilder: (context, index) {
+                      final isActive = controller.selectAds == index;
+                      return AnimatedScale(
+                        scale: isActive ? 1.0 : 0.92,
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.easeOutCubic,
+                        child: AnimatedContainer(
+                          duration: const Duration(milliseconds: 300),
+                          margin: EdgeInsets.symmetric(
+                            horizontal: Dimens.four,
+                            vertical: isActive ? 0 : Dimens.twelve,
                           ),
-                          errorWidget: (context, url, error) => Center(
-                            child: Image.asset(
-                              AssetConstants.placeholder,
-                              fit: BoxFit.cover,
-                              width: double.maxFinite,
-                            ),
+                          decoration: BoxDecoration(
+                            color: ColorsValue.white,
+                            borderRadius: BorderRadius.circular(Dimens.sixteen),
+                            boxShadow: isActive
+                                ? [
+                                    BoxShadow(
+                                      color: ColorsValue.maincolor
+                                          .withOpacity(0.25),
+                                      blurRadius: Dimens.twelve,
+                                      offset: const Offset(0, 6),
+                                    ),
+                                  ]
+                                : [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.08),
+                                      blurRadius: Dimens.four,
+                                      offset: const Offset(0, 2),
+                                    ),
+                                  ],
                           ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
-              Dimens.boxHeight10,
-              Center(
-                child: Wrap(
-                  children: controller.adsList.asMap().entries.map(
-                    (e) {
-                      return Container(
-                        margin: Dimens.edgeInsetsRight6,
-                        height: Dimens.ten,
-                        width: Dimens.ten,
-                        decoration: BoxDecoration(
-                          color: controller.selectAds == e.key
-                              ? ColorsValue.maincolor
-                              : ColorsValue.lightMainColor,
-                          borderRadius: BorderRadius.circular(
-                            Dimens.hundred,
+                          child: InkWell(
+                            onTap: () {
+                              RouteManagement.goToShowFullScareenImage(
+                                  controller.adsList[index].banner ?? "",
+                                  "IMG");
+                            },
+                            child: ClipRRect(
+                              borderRadius:
+                                  BorderRadius.circular(Dimens.sixteen),
+                              child: CachedNetworkImage(
+                                imageUrl: ApiWrapper.imageUrl +
+                                    (controller.adsList[index].banner ?? ""),
+                                fit: BoxFit.cover,
+                                width: double.maxFinite,
+                                height: double.maxFinite,
+                                placeholder: (context, url) => Center(
+                                  child: Image.asset(
+                                    AssetConstants.placeholder,
+                                    fit: BoxFit.cover,
+                                    width: double.maxFinite,
+                                  ),
+                                ),
+                                errorWidget: (context, url, error) => Center(
+                                  child: Image.asset(
+                                    AssetConstants.placeholder,
+                                    fit: BoxFit.cover,
+                                    width: double.maxFinite,
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       );
                     },
-                  ).toList(),
+                  ),
                 ),
+              ),
+              Dimens.boxHeight12,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: controller.adsList.asMap().entries.map(
+                  (e) {
+                    final isActive = controller.selectAds == e.key;
+                    return AnimatedContainer(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                      margin: Dimens.edgeInsetsRight6,
+                      height: Dimens.eight,
+                      width: isActive ? Dimens.twentyFour : Dimens.eight,
+                      decoration: BoxDecoration(
+                        color: isActive
+                            ? ColorsValue.maincolor
+                            : ColorsValue.lightMainColor,
+                        borderRadius: BorderRadius.circular(
+                          Dimens.hundred,
+                        ),
+                      ),
+                    );
+                  },
+                ).toList(),
               )
             ],
             ListView.builder(

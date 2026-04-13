@@ -64,7 +64,7 @@ class DonorsListScreen extends StatelessWidget {
                     var item = controller.donarList[index];
                     return InkWell(
                       onTap: () {
-                        RouteManagement.goToDonorsDetails(item.id ?? "");
+                        RouteManagement.goToDonorsDetails(item.id ?? "",item.gujaratiName ?? "");
                       },
                       child: Padding(
                         padding: Dimens.edgeInsets00_10_00_10,

@@ -20,7 +20,6 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
-import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -660,51 +659,47 @@ abstract class Utility {
   }
 
   static Future<void> downloadAndSavePDF(
-    String url, String folderName, int invoiceNo) async {
+      String url, String folderName, int invoiceNo) async {
+    try {
+      String fileName = url.split('/').last;
 
-  try {
-    String fileName = url.split('/').last;
+      final response = await http.get(Uri.parse(ApiWrapper.imageUrl + url));
 
-    final response = await http.get(Uri.parse(ApiWrapper.imageUrl + url));
+      if (response.statusCode == 200) {
+        Directory directory;
 
-    if (response.statusCode == 200) {
+        if (Platform.isAndroid) {
+          directory = Directory('/storage/emulated/0/Download/$folderName');
 
-      Directory directory;
-
-      if (Platform.isAndroid) {
-        directory = Directory('/storage/emulated/0/Download/$folderName');
-
-        if (!await directory.exists()) {
-          await directory.create(recursive: true);
+          if (!await directory.exists()) {
+            await directory.create(recursive: true);
+          }
+        } else {
+          directory = await getApplicationDocumentsDirectory();
         }
+
+        String filePath = '${directory.path}/$fileName';
+
+        File file = File(filePath);
+        await file.writeAsBytes(response.bodyBytes);
+
+        // 🔔 Notification
+        AwesomeNotifications().createNotification(
+          content: NotificationContent(
+            id: invoiceNo,
+            channelKey: "high_importance_channel",
+            title: fileName,
+            body: "PDF downloaded successfully",
+            payload: {"file_path": filePath},
+          ),
+        );
       } else {
-        directory = await getApplicationDocumentsDirectory();
+        print("Download failed: ${response.statusCode}");
       }
-
-      String filePath = '${directory.path}/$fileName';
-
-      File file = File(filePath);
-      await file.writeAsBytes(response.bodyBytes);
-
-      // 🔔 Notification
-      AwesomeNotifications().createNotification(
-        content: NotificationContent(
-          id: invoiceNo,
-          channelKey: "high_importance_channel",
-          title: fileName,
-          body: "PDF downloaded successfully",
-          payload: {"file_path": filePath},
-        ),
-      );
-
-    } else {
-      print("Download failed: ${response.statusCode}");
+    } catch (e) {
+      print("Error: $e");
     }
-
-  } catch (e) {
-    print("Error: $e");
   }
-}
 
   static bool comparePasswords(String password, String confirmPassword) {
     if (password == confirmPassword) {

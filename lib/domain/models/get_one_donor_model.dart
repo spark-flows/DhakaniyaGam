@@ -70,22 +70,22 @@ class MajorDonator {
   String? photo;
   String? englishName;
   String? gujaratiName;
-  GetOneDonarFund? village;
   List<Fund>? funds;
+  int? year;
   bool? majorDonor;
   bool? status;
   int? createTimestamp;
-  DateTime? createdAt;
+  String? createdAt;
 
   MajorDonator({
     this.id,
     this.photo,
     this.englishName,
     this.gujaratiName,
-    this.village,
     this.funds,
     this.majorDonor,
     this.status,
+    this.year,
     this.createTimestamp,
     this.createdAt,
   });
@@ -95,18 +95,14 @@ class MajorDonator {
         photo: json["photo"],
         englishName: json["english_name"],
         gujaratiName: json["gujarati_name"],
-        village: json["village"] == null
-            ? null
-            : GetOneDonarFund.fromJson(json["village"]),
         funds: json["funds"] == null
             ? []
             : List<Fund>.from(json["funds"]!.map((x) => Fund.fromJson(x))),
+        year: json["year"],
         majorDonor: json["major_donor"],
         status: json["status"],
         createTimestamp: json["create_timestamp"],
-        createdAt: json["createdAt"] == null
-            ? null
-            : DateTime.parse(json["createdAt"]),
+        createdAt: json["createdAt"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -114,30 +110,58 @@ class MajorDonator {
         "photo": photo,
         "english_name": englishName,
         "gujarati_name": gujaratiName,
-        "village": village?.toJson(),
         "funds": funds == null
             ? []
             : List<dynamic>.from(funds!.map((x) => x.toJson())),
+        "year": year,
         "major_donor": majorDonor,
         "status": status,
         "create_timestamp": createTimestamp,
-        "createdAt": createdAt?.toIso8601String(),
+        "createdAt": createdAt,
       };
 }
 
 class Fund {
-  String? fund;
+  FundFund? fund;
 
   Fund({
     this.fund,
   });
 
   factory Fund.fromJson(Map<String, dynamic> json) => Fund(
-        fund: json["fund"],
+        fund: json["fund"] == null ? null : FundFund.fromJson(json["fund"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "fund": fund,
+        "fund": fund?.toJson(),
+      };
+}
+
+class FundFund {
+  String? id;
+  String? englishName;
+  String? gujaratiName;
+  bool? status;
+
+  FundFund({
+    this.id,
+    this.englishName,
+    this.gujaratiName,
+    this.status,
+  });
+
+  factory FundFund.fromJson(Map<String, dynamic> json) => FundFund(
+        id: json["_id"],
+        englishName: json["english_name"],
+        gujaratiName: json["gujarati_name"],
+        status: json["status"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "_id": id,
+        "english_name": englishName,
+        "gujarati_name": gujaratiName,
+        "status": status,
       };
 }
 

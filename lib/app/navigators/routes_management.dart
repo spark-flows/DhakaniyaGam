@@ -43,13 +43,13 @@ abstract class RouteManagement {
   static void goToVillageRepresentativScreen() =>
       Get.toNamed<void>(Routes.villageRepresentativScreen);
   static void goToDonorsScreen() => Get.toNamed<void>(Routes.donorsScreen);
-  static void goToDonorsDetails(String fundsId) =>
-      Get.toNamed<void>(Routes.donorsDetails, arguments: fundsId);
+  static void goToDonorsDetails(String fundsId, String name) =>
+      Get.toNamed<void>(Routes.donorsDetails, arguments: [fundsId, name]);
   static void goToUploadResultScreen() =>
       Get.toNamed<void>(Routes.uploadResultScreen);
   static void goToUploadResultListScreen() =>
       Get.toNamed<void>(Routes.uploadResultListScreen);
-  static void goToQualifyPrizeScreen(String std, bool isGujarati) =>
+  static void goToQualifyPrizeScreen(String std, String isGujarati) =>
       Get.toNamed<void>(Routes.qualifyPrizeScreen,
           arguments: [std, isGujarati]);
   static void goToQualifyPrizeListScreen() =>

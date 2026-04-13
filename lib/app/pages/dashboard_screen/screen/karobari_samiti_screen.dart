@@ -21,7 +21,7 @@ class TalukaRepresentativeScreen extends StatelessWidget {
       controller.pagingCommitteeController = PagingController(firstPageKey: 1);
       controller.pagingCommitteeController
           .addPageRequestListener((pageKey) async {
-        await controller.postCommitteemembers(pageKey, "executive");
+        await controller.postCommitteemembers(pageKey, "karobari");
       });
     }, builder: (controller) {
       return Scaffold(
@@ -38,7 +38,6 @@ class TalukaRepresentativeScreen extends StatelessWidget {
           centerTitle: true,
           leading: InkWell(
             onTap: () {
-
               Navigator.pop(context);
             },
             child: Padding(

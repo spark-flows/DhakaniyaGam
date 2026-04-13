@@ -10,11 +10,10 @@ class QualifyPrizeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _debouncer = Debouncer(milliseconds: 500);
     return GetBuilder<DashboardController>(initState: (state) {
       var controller = Get.find<DashboardController>();
-      controller.std = Get.arguments[0] ?? "";
-      controller.isMedium = Get.arguments[1] ?? false;
+      controller.education = Get.arguments[0] ?? "";
+      controller.educationName = Get.arguments[1] ?? false;
       controller.qualifyPrizePagingController =
           PagingController(firstPageKey: 1);
       controller.qualifyPrizePagingController
@@ -36,7 +35,8 @@ class QualifyPrizeScreen extends StatelessWidget {
           elevation: Dimens.ten,
           centerTitle: true,
           leading: InkWell(
-            onTap: () {Navigator.pop(context);
+            onTap: () {
+              Navigator.pop(context);
             },
             child: Padding(
               padding: Dimens.edgeInsets12,
@@ -46,7 +46,7 @@ class QualifyPrizeScreen extends StatelessWidget {
             ),
           ),
           title: Text(
-            'qualify_for_prizes'.tr,
+            controller.educationName ?? 'qualify_for_prizes'.tr,
             style: Styles.mainGuj90020,
           ),
         ),
@@ -129,7 +129,7 @@ class QualifyPrizeScreen extends StatelessWidget {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          item.percentage.toString(),
+                                          "${item.percentage.toString()} %",
                                           style: Styles.mainGuj60016,
                                         ),
                                       ),

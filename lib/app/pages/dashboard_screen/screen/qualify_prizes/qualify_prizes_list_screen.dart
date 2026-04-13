@@ -1,8 +1,10 @@
 import 'package:dhakaniya_gam/app/app.dart';
 import 'package:dhakaniya_gam/app/navigators/navigators.dart';
+import 'package:dhakaniya_gam/domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 class QualifyPrizeListScreen extends StatelessWidget {
   const QualifyPrizeListScreen({super.key});
@@ -11,8 +13,12 @@ class QualifyPrizeListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<DashboardController>(initState: (state) {
       var controller = Get.find<DashboardController>();
-      controller.educationDataList.clear();
-      controller.postStudiesList();
+      controller.qualifyPrizeMainPagingController =
+          PagingController(firstPageKey: 1);
+      controller.qualifyPrizeMainPagingController
+          .addPageRequestListener((pagekey) async {
+        await controller.postQualifiedPrizesList(pagekey);
+      });
     }, builder: (controller) {
       return Scaffold(
         backgroundColor: Colors.white,
@@ -47,8 +53,44 @@ class QualifyPrizeListScreen extends StatelessWidget {
           child: Column(
             children: [
               Row(
+                spacing: Dimens.ten,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
+                  Container(
+                    height: Dimens.fourty,
+                    width: Dimens.hundredTen,
+                    padding: Dimens.edgeInsets10_00_10_00,
+                    decoration: BoxDecoration(
+                      color: ColorsValue.lightMainColor,
+                      borderRadius: BorderRadius.circular(Dimens.ten),
+                      border: Border.all(
+                        color: ColorsValue.maincolor,
+                        width: Dimens.one,
+                      ),
+                    ),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                        value: controller.selectMeduium,
+                        isExpanded: true,
+                        icon: Icon(
+                          Icons.keyboard_arrow_down_rounded,
+                          color: ColorsValue.maincolor,
+                        ),
+                        style: Styles.mainGuj60016,
+                        items: controller.mediumList.map((year) {
+                          return DropdownMenuItem<String>(
+                            value: year,
+                            child: Text(year.toString()),
+                          );
+                        }).toList(),
+                        onChanged: (newYear) {
+                          controller.selectMeduium = newYear!;
+                          controller.qualifyPrizePagingController.refresh();
+                          controller.update();
+                        },
+                      ),
+                    ),
+                  ),
                   Container(
                     height: Dimens.fourty,
                     width: Dimens.hundred,
@@ -92,60 +134,76 @@ class QualifyPrizeListScreen extends StatelessWidget {
                 ],
               ),
               Expanded(
-                child: ListView.builder(
-                  itemCount: controller.educationDataList.length,
-                  itemBuilder: (context, index) {
-                    var item = controller.educationDataList[index];
-                    return InkWell(
-                      onTap: () {
-                        if (controller.categoryGiftLists[index]
-                                    .split(' ')
-                                    .first ==
-                                "Std" ||
-                            controller.categoryGiftLists[index]
-                                    .split(' ')
-                                    .first ==
-                                "College") {
-                          RouteManagement.goToQualifyPrizeScreen(
-                              controller.categoryGiftLists[index], false);
-                        } else {
-                          RouteManagement.goToQualifyPrizeScreen(
-                              controller.categoryGiftLists[index], true);
-                        }
+                child: RefreshIndicator(
+                  onRefresh: () => Future.sync(
+                    () => controller.qualifyPrizeMainPagingController.refresh(),
+                  ),
+                  child: PagedListView<int, QualifiedPrizeDoc>(
+                    pagingController:
+                        controller.qualifyPrizeMainPagingController,
+                    builderDelegate:
+                        PagedChildBuilderDelegate<QualifiedPrizeDoc>(
+                      noItemsFoundIndicatorBuilder: (context) {
+                        return Center(
+                          child: Text("No data found...!"),
+                        );
                       },
-                      child: Padding(
-                        padding: Dimens.edgeInsets00_10_00_10,
-                        child: Container(
-                          height: Dimens.sixtySix,
-                          padding: Dimens.edgeInsets20_00_20_00,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(
-                              Dimens.six,
-                            ),
-                            border: Border.all(
-                              color: ColorsValue.maincolor,
-                              width: Dimens.one,
-                            ),
-                          ),
-                          child: Center(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  item.gujaratiName ?? "",
-                                  style: Styles.mainGuj90018,
+                      itemBuilder: (context, item, index) {
+                        return InkWell(
+                          onTap: () {
+                            if (controller.categoryGiftLists[index]
+                                        .split(' ')
+                                        .first ==
+                                    "Std" ||
+                                controller.categoryGiftLists[index]
+                                        .split(' ')
+                                        .first ==
+                                    "College") {
+                              RouteManagement.goToQualifyPrizeScreen(
+                                  item.education?.id ?? "",
+                                  item.education?.gujaratiName ?? "");
+                            } else {
+                              RouteManagement.goToQualifyPrizeScreen(
+                                  item.education?.id ?? "",
+                                  item.education?.gujaratiName ?? "");
+                            }
+                          },
+                          child: Padding(
+                            padding: Dimens.edgeInsets00_10_00_10,
+                            child: Container(
+                              height: Dimens.sixtySix,
+                              padding: Dimens.edgeInsets20_00_20_00,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(
+                                  Dimens.six,
                                 ),
-                                SvgPicture.asset(
-                                  AssetConstants.ic_arrow_right,
-                                )
-                              ],
+                                border: Border.all(
+                                  color: ColorsValue.maincolor,
+                                  width: Dimens.one,
+                                ),
+                              ),
+                              child: Center(
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      item.education?.gujaratiName ?? "",
+                                      style: Styles.mainGuj90018,
+                                    ),
+                                    SvgPicture.asset(
+                                      AssetConstants.ic_arrow_right,
+                                    )
+                                  ],
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                      ),
-                    );
-                  },
+                        );
+                      },
+                    ),
+                  ),
                 ),
               ),
             ],

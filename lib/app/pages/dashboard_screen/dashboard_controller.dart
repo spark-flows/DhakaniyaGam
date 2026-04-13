@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:dhakaniya_gam/app/app.dart';
@@ -20,7 +21,28 @@ class DashboardController extends GetxController {
     super.onInit();
   }
 
-  final pageController = PageController(viewportFraction: 0.9);
+  final pageController = PageController(viewportFraction: 0.85);
+
+  Timer? _autoScrollTimer;
+
+  void startAutoScroll() {
+    _autoScrollTimer?.cancel();
+    if (adsList.length <= 1) return;
+    _autoScrollTimer = Timer.periodic(const Duration(seconds: 3), (_) {
+      if (pageController.hasClients) {
+        final nextPage = (selectAds + 1) % adsList.length;
+        pageController.animateToPage(
+          nextPage,
+          duration: const Duration(milliseconds: 500),
+          curve: Curves.easeInOut,
+        );
+      }
+    });
+  }
+
+  void stopAutoScroll() {
+    _autoScrollTimer?.cancel();
+  }
 
   final DashboardPresenter dashboardPresenter;
 
@@ -166,6 +188,32 @@ class DashboardController extends GetxController {
     update();
   }
 
+  String? selectStudyResult;
+
+  List<EducationData> selectStudyResultLists = [
+    EducationData(
+      gujaratiName: "Select Education",
+      id: '',
+    ),
+  ];
+
+  Future<void> getStudiesResult() async {
+    var response = await dashboardPresenter.getStudies(
+      isLoading: true,
+    );
+    selectStudyResultLists.clear();
+    if (response?.status == 200) {
+      selectStudyResultLists = [
+        EducationData(
+          gujaratiName: "Select Education",
+          id: '',
+        ),
+      ];
+      selectStudyResultLists.addAll(response?.data ?? []);
+      update();
+    }
+  }
+
   String? selectFullFamilyValue = "";
 
   List<GetFamilyData> selectFullFamilyLists = [
@@ -304,68 +352,14 @@ class DashboardController extends GetxController {
 
   Future<void> postAddResult() async {
     var response = await dashboardPresenter.postAddResult(
-      familyMemberId: selectFullFamilyValue ?? "",
-      education: selectValue == 'ધોરણ 1'
-          ? "std_1"
-          : selectValue == 'ધોરણ 2'
-              ? "std_2"
-              : selectValue == 'ધોરણ 3'
-                  ? "std_3"
-                  : selectValue == 'ધોરણ 4'
-                      ? "std_4"
-                      : selectValue == 'ધોરણ 5'
-                          ? "std_5"
-                          : selectValue == 'ધોરણ 6'
-                              ? "std_6"
-                              : selectValue == 'ધોરણ 7'
-                                  ? "std_7"
-                                  : selectValue == 'ધોરણ 8'
-                                      ? "std_8"
-                                      : selectValue == 'ધોરણ 9'
-                                          ? "std_9"
-                                          : selectValue == 'ધોરણ 10'
-                                              ? "std_10"
-                                              : selectValue == 'ધોરણ 11 કોમર્સ'
-                                                  ? "std_11_com"
-                                                  : selectValue ==
-                                                          'ધોરણ 11 સાયન્સ'
-                                                      ? "std_11_sci"
-                                                      : selectValue ==
-                                                              'ધોરણ 11 આર્ટસ'
-                                                          ? "std_11_arts"
-                                                          : selectValue ==
-                                                                  'ધોરણ 12 કોમર્સ'
-                                                              ? "std_12_com"
-                                                              : selectValue ==
-                                                                      'ધોરણ 12 સાયન્સ'
-                                                                  ? "std_12_sci"
-                                                                  : selectValue ==
-                                                                          'ધોરણ 12 આર્ટસ'
-                                                                      ? "std_12_arts"
-                                                                      : selectValue ==
-                                                                              'બેચલર સેમ 2'
-                                                                          ? "bachelor_sem_2"
-                                                                          : selectValue == 'બેચલર સેમ 4'
-                                                                              ? "bachelor_sem_4"
-                                                                              : selectValue == 'બેચલર સેમ 6'
-                                                                                  ? "bachelor_sem_6"
-                                                                                  : selectValue == 'બેચલર સેમ 8'
-                                                                                      ? "bachelor_sem_8"
-                                                                                      : selectValue == 'માસ્ટર સેમ 2'
-                                                                                          ? "bachelor_sem_2"
-                                                                                          : selectValue == 'માસ્ટર સેમ 4'
-                                                                                              ? "master_sem_4"
-                                                                                              : selectValue == 'માસ્ટર સેમ 6'
-                                                                                                  ? "master_sem_6"
-                                                                                                  : selectValue == 'માસ્ટર સેમ 8'
-                                                                                                      ? "master_sem_8"
-                                                                                                      : selectValue ?? "",
-      medium: selectedOption == 1 ? "gujarati" : "english",
-      totalMarks: int.parse(totalMarksController.text),
-      obtainedMarks: int.parse(obtainedController.text),
-      percentage: double.parse(percentController.text),
-      result: profilePic ?? "",
-    );
+        familyMemberId: selectFullFamilyValue ?? "",
+        education: selectStudyResult ?? "",
+        medium: selectedOption == 1 ? "gujarati" : "english",
+        totalMarks: int.parse(totalMarksController.text),
+        obtainedMarks: int.parse(obtainedController.text),
+        percentage: double.parse(percentController.text),
+        result: profilePic ?? "",
+        isLoading: true);
     if (response?.status == 200) {
       Get.back();
       getAllResult();
@@ -523,7 +517,7 @@ class DashboardController extends GetxController {
 
   Future<void> postDonatorsList() async {
     var response = await dashboardPresenter.postDonatorsList(
-      isLoading: false,
+      isLoading: true,
     );
     donarList.clear();
     if (response != null) {
@@ -533,7 +527,7 @@ class DashboardController extends GetxController {
   }
 
   GetOneDonarData? getOneDonarData = GetOneDonarData();
-
+  String? donarName;
   Future<void> postDonators(fundId) async {
     var response = await dashboardPresenter.postDonators(
       fundId: fundId,
@@ -633,6 +627,7 @@ class DashboardController extends GetxController {
     if (response != null) {
       adsList.addAll(response.data ?? []);
       update();
+      startAutoScroll();
     }
   }
 
@@ -756,6 +751,43 @@ class DashboardController extends GetxController {
   TextEditingController qualifyPrizeController = TextEditingController();
   TextEditingController qualifyStationeryController = TextEditingController();
 
+  PagingController<int, QualifiedPrizeDoc> qualifyPrizeMainPagingController =
+      PagingController(firstPageKey: 1);
+
+  List<QualifiedPrizeDoc> qualifyPrizeMainList = [];
+
+  String selectMeduium = "ગુજરાતી";
+  List<String> mediumList = ["ગુજરાતી", "અંગ્રેજી"];
+
+  Future<void> postQualifiedPrizesList(int pageKey) async {
+    var response = await dashboardPresenter.postQualifiedPrizes(
+      page: pageKey,
+      limit: qualifyPrizeLimit,
+      search: qualifyPrizeController.text,
+      education: "",
+      medium: "",
+      year: selectYear,
+      isLoading: false,
+    );
+    if (response != null) {
+      if (pageKey == 1) {
+        qualifyPrizeMainList.clear();
+        qualifyPrizeMainPagingController.itemList?.clear();
+      }
+      qualifyPrizeMainList = response.data?.docs ?? [];
+
+      final isLastPage = qualifyPrizeMainList.length < qualifyPrizeLimit;
+      if (isLastPage) {
+        qualifyPrizeMainPagingController.appendLastPage(qualifyPrizeMainList);
+      } else {
+        var nextPageKey = pageKey + 1;
+        qualifyPrizeMainPagingController.appendPage(
+            qualifyPrizeMainList, nextPageKey);
+      }
+      update();
+    }
+  }
+
   PagingController<int, QualifiedPrizeDoc> qualifyPrizePagingController =
       PagingController(firstPageKey: 1);
 
@@ -774,71 +806,16 @@ class DashboardController extends GetxController {
   // "Master Sem 8",
 
   int selectYear = DateTime.now().year;
+  String? education;
+  String? educationName;
 
   Future<void> postQualifiedPrizes(int pageKey) async {
     var response = await dashboardPresenter.postQualifiedPrizes(
       page: pageKey,
       limit: qualifyPrizeLimit,
       search: qualifyPrizeController.text,
-      education: std == 'ધોરણ 1' || std == 'Std 1'
-          ? "std_1"
-          : std == 'ધોરણ 2' || std == 'Std 2'
-              ? "std_2"
-              : std == 'ધોરણ 3' || std == 'Std 3'
-                  ? "std_3"
-                  : std == 'ધોરણ 4' || std == 'Std 4'
-                      ? "std_4"
-                      : std == 'ધોરણ 5' || std == 'Std 5'
-                          ? "std_5"
-                          : std == 'ધોરણ 6' || std == 'Std 6'
-                              ? "std_6"
-                              : std == 'ધોરણ 7' || std == 'Std 7'
-                                  ? "std_7"
-                                  : std == 'ધોરણ 8' || std == 'Std 8'
-                                      ? "std_8"
-                                      : std == 'ધોરણ 9' || std == 'Std 9'
-                                          ? "std_9"
-                                          : std == 'ધોરણ 10' || std == 'Std 10'
-                                              ? "std_10"
-                                              : std == 'ધોરણ 11 કોમર્સ' ||
-                                                      std == 'Std 11 Commerce'
-                                                  ? "std_11_com"
-                                                  : std == 'ધોરણ 11 સાયન્સ' ||
-                                                          std ==
-                                                              'Std 11 Science'
-                                                      ? "std_11_sci"
-                                                      : std == 'ધોરણ 11 આર્ટસ' ||
-                                                              std == 'Std 11'
-                                                          ? "std_11_arts"
-                                                          : std == 'ધોરણ 12 કોમર્સ' ||
-                                                                  std ==
-                                                                      'Std 12 Commerce'
-                                                              ? "std_12_com"
-                                                              : std == 'ધોરણ 12 સાયન્સ' ||
-                                                                      std ==
-                                                                          'Std 12 Science'
-                                                                  ? "std_12_sci"
-                                                                  : std == 'ધોરણ 12 આર્ટસ' ||
-                                                                          std ==
-                                                                              'Std 12 Arts'
-                                                                      ? "std_12_arts"
-                                                                      : std == 'બેચલર સેમ 2' ||
-                                                                              std == 'Bachelor Sem 2'
-                                                                          ? "bachelor_sem_2"
-                                                                          : std == 'બેચલર સેમ 4' || std == 'Bachelor Sem 4'
-                                                                              ? "bachelor_sem_4"
-                                                                              : std == 'બેચલર સેમ 6' || std == 'Bachelor Sem 6'
-                                                                                  ? "bachelor_sem_6"
-                                                                                  : std == 'બેચલર સેમ 8' || std == 'Bachelor Sem 8'
-                                                                                      ? "bachelor_sem_8"
-                                                                                      : std == 'માસ્ટર સેમ 2' || std == 'Master Sem 2'
-                                                                                          ? "master_sem_2"
-                                                                                          : std == 'માસ્ટર સેમ 4' || std == 'Master Sem 4'
-                                                                                              ? "master_sem_4"
-                                                                                              : std == 'માસ્ટર સેમ 6' || std == 'Master Sem 6'
-                                                                                                  ? "master_sem_6"
-                                                                                                  : "master_sem_8",
-      medium: isMedium ? "gujarati" : "english",
+      education: education ?? "",
+      medium: selectMeduium == "ગુજરાતી" ? "gujarati" : "english",
       year: selectYear,
       isLoading: false,
     );
@@ -949,5 +926,12 @@ class DashboardController extends GetxController {
       }
       update();
     }
+  }
+
+  @override
+  void onClose() {
+    _autoScrollTimer?.cancel();
+    pageController.dispose();
+    super.onClose();
   }
 }

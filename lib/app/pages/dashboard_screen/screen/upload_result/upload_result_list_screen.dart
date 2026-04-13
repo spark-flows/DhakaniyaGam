@@ -127,7 +127,7 @@ class UploadResultListScreen extends StatelessWidget {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          item.education ?? "",
+                                          item.education?.gujaratiName ?? "",
                                           style: Styles.mainGuj60016,
                                         ),
                                       ),

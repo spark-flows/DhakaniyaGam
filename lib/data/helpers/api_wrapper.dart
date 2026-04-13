@@ -229,8 +229,8 @@ class ApiWrapper {
               request.headers.addAll(headers);
 
               http.StreamedResponse response = await request.send().timeout(
-                const Duration(seconds: 120),
-              );
+                    const Duration(seconds: 120),
+                  );
               if (isLoading) Utility.closeDialog();
               var bytesToString = await response.stream.bytesToString();
               var res = ResponseModel(
@@ -275,8 +275,8 @@ class ApiWrapper {
               request.headers.addAll(headers);
 
               http.StreamedResponse response = await request.send().timeout(
-                const Duration(seconds: 120),
-              );
+                    const Duration(seconds: 120),
+                  );
               if (isLoading) Utility.closeDialog();
               var bytesToString = await response.stream.bytesToString();
               var res = ResponseModel(
@@ -321,8 +321,8 @@ class ApiWrapper {
               request.headers.addAll(headers);
 
               http.StreamedResponse response = await request.send().timeout(
-                const Duration(seconds: 120),
-              );
+                    const Duration(seconds: 120),
+                  );
               if (isLoading) Utility.closeDialog();
               var bytesToString = await response.stream.bytesToString();
               var res = ResponseModel(
@@ -367,8 +367,8 @@ class ApiWrapper {
               request.headers.addAll(headers);
 
               http.StreamedResponse response = await request.send().timeout(
-                const Duration(seconds: 120),
-              );
+                    const Duration(seconds: 120),
+                  );
               if (isLoading) Utility.closeDialog();
               var bytesToString = await response.stream.bytesToString();
               var res = ResponseModel(
@@ -413,8 +413,8 @@ class ApiWrapper {
               request.headers.addAll(headers);
 
               http.StreamedResponse response = await request.send().timeout(
-                const Duration(seconds: 120),
-              );
+                    const Duration(seconds: 120),
+                  );
               if (isLoading) Utility.closeDialog();
               var bytesToString = await response.stream.bytesToString();
               var res = ResponseModel(
@@ -459,8 +459,8 @@ class ApiWrapper {
               request.headers.addAll(headers);
 
               http.StreamedResponse response = await request.send().timeout(
-                const Duration(seconds: 120),
-              );
+                    const Duration(seconds: 120),
+                  );
               if (isLoading) Utility.closeDialog();
               var bytesToString = await response.stream.bytesToString();
               var res = ResponseModel(
@@ -505,8 +505,8 @@ class ApiWrapper {
               request.headers.addAll(headers);
 
               http.StreamedResponse response = await request.send().timeout(
-                const Duration(seconds: 120),
-              );
+                    const Duration(seconds: 120),
+                  );
               if (isLoading) Utility.closeDialog();
               var bytesToString = await response.stream.bytesToString();
               var res = ResponseModel(
@@ -551,8 +551,8 @@ class ApiWrapper {
               request.headers.addAll(headers);
 
               http.StreamedResponse response = await request.send().timeout(
-                const Duration(seconds: 120),
-              );
+                    const Duration(seconds: 120),
+                  );
               if (isLoading) Utility.closeDialog();
               var bytesToString = await response.stream.bytesToString();
               var res = ResponseModel(
@@ -597,8 +597,8 @@ class ApiWrapper {
               request.headers.addAll(headers);
 
               http.StreamedResponse response = await request.send().timeout(
-                const Duration(seconds: 120),
-              );
+                    const Duration(seconds: 120),
+                  );
               if (isLoading) Utility.closeDialog();
               var bytesToString = await response.stream.bytesToString();
               var res = ResponseModel(
@@ -668,8 +668,7 @@ class ApiWrapper {
                   await http.MultipartFile.fromPath(
                     fileData.fieldName,
                     fileData.filePath,
-                    contentType:
-                        fileData.mediaType ??
+                    contentType: fileData.mediaType ??
                         media_type.MediaType("application", "image"),
                   ),
                 );
@@ -680,8 +679,8 @@ class ApiWrapper {
               request.fields.addAll(data);
 
               http.StreamedResponse response = await request.send().timeout(
-                const Duration(seconds: 120),
-              );
+                    const Duration(seconds: 120),
+                  );
               if (isLoading) Utility.closeDialog();
               var bytesToString = await response.stream.bytesToString();
               var res = ResponseModel(
@@ -726,8 +725,8 @@ class ApiWrapper {
               request.headers.addAll(headers);
 
               http.StreamedResponse response = await request.send().timeout(
-                const Duration(seconds: 120),
-              );
+                    const Duration(seconds: 120),
+                  );
               if (isLoading) Utility.closeDialog();
               var bytesToString = await response.stream.bytesToString();
               var res = ResponseModel(
@@ -749,6 +748,7 @@ class ApiWrapper {
           }
       }
     }
+
     /// If there is no network available then instead of print can show the no internet widget too
     else {
       return ResponseModel(
