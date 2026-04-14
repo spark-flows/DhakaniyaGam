@@ -14,7 +14,9 @@ class GalleryDetailsScreen extends StatelessWidget {
     return GetBuilder<DashboardController>(
       initState: (state) {
         var controller = Get.find<DashboardController>();
+        controller.galleryDoc = null;
         controller.postGetOneGallery(Get.arguments ?? "");
+        controller.selectGalleryPage = 0;
       },
       builder: (controller) {
         return Scaffold(
@@ -30,7 +32,8 @@ class GalleryDetailsScreen extends StatelessWidget {
               elevation: Dimens.ten,
               centerTitle: true,
               leading: InkWell(
-                onTap: () {Navigator.pop(context);
+                onTap: () {
+                  Navigator.pop(context);
                 },
                 child: Padding(
                   padding: Dimens.edgeInsets12,

@@ -127,9 +127,8 @@ class DashboardScreen extends StatelessWidget {
                           ),
                           child: InkWell(
                             onTap: () {
-                              RouteManagement.goToShowFullScareenImage(
-                                  controller.adsList[index].banner ?? "",
-                                  "IMG");
+                              RouteManagement.goToAdsDetailsScreen(
+                                  controller.adsList[index].otherImages ?? []);
                             },
                             child: ClipRRect(
                               borderRadius:

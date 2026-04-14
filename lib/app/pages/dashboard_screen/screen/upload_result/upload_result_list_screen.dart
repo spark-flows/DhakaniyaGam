@@ -166,229 +166,229 @@ class UploadResultListScreen extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    Container(
-                                      width: Dimens.one,
-                                      height: Dimens.twentyTwo,
-                                      color: ColorsValue.greyDDDD,
-                                    ),
-                                    Expanded(
-                                      child: InkWell(
-                                        onTap: item.stationery ?? false
-                                            ? () async {
-                                                // showDialog(
-                                                //   context: context,
-                                                //   builder: (context) {
-                                                //     return StatefulBuilder(
-                                                //       builder: (context, setState) {
-                                                //         return Column(
-                                                //           mainAxisSize:
-                                                //               MainAxisSize.min,
-                                                //           mainAxisAlignment:
-                                                //               MainAxisAlignment
-                                                //                   .center,
-                                                //           children: [
-                                                //             Padding(
-                                                //               padding:
-                                                //                   Dimens.edgeInsets20,
-                                                //               child: Container(
-                                                //                 padding: Dimens
-                                                //                     .edgeInsets20,
-                                                //                 decoration:
-                                                //                     BoxDecoration(
-                                                //                   color: ColorsValue
-                                                //                       .white,
-                                                //                   borderRadius:
-                                                //                       BorderRadius
-                                                //                           .circular(
-                                                //                     Dimens.twelve,
-                                                //                   ),
-                                                //                 ),
-                                                //                 child: Column(
-                                                //                   crossAxisAlignment:
-                                                //                       CrossAxisAlignment
-                                                //                           .start,
-                                                //                   mainAxisSize:
-                                                //                       MainAxisSize
-                                                //                           .min,
-                                                //                   children: [
-                                                //                     Text(
-                                                //                       "શ્રી બૃહદ ધંધુકા તાલુકા પટેલ પ્રગતિ મંડળ-સુરત.",
-                                                //                       style: Styles
-                                                //                           .blackGuj70018,
-                                                //                     ),
-                                                //                     Dimens
-                                                //                         .boxHeight20,
-                                                //                     Row(
-                                                //                       children: [
-                                                //                         Image.asset(
-                                                //                           AssetConstants
-                                                //                               .app_logo,
-                                                //                           height: Dimens
-                                                //                               .fiftySeven,
-                                                //                           width: Dimens
-                                                //                               .eightyFour,
-                                                //                         ),
-                                                //                         Dimens
-                                                //                             .boxWidth10,
-                                                //                         Column(
-                                                //                           crossAxisAlignment:
-                                                //                               CrossAxisAlignment
-                                                //                                   .start,
-                                                //                           children: [
-                                                //                             Text(
-                                                //                               "નોટબુક વિતરણ કુપન",
-                                                //                               style: Styles
-                                                //                                   .blackGuj60020,
-                                                //                             ),
-                                                //                             Row(
-                                                //                               children: [
-                                                //                                 Text(
-                                                //                                   "કુપન નં.: ",
-                                                //                                   style:
-                                                //                                       Styles.blackGuj60016,
-                                                //                                 ),
-                                                //                                 Text(
-                                                //                                   "8596",
-                                                //                                   style:
-                                                //                                       Styles.mainGuj60016,
-                                                //                                 ),
-                                                //                               ],
-                                                //                             )
-                                                //                           ],
-                                                //                         )
-                                                //                       ],
-                                                //                     ),
-                                                //                     Dimens
-                                                //                         .boxHeight20,
-                                                //                     Row(
-                                                //                       mainAxisAlignment:
-                                                //                           MainAxisAlignment
-                                                //                               .spaceBetween,
-                                                //                       children: [
-                                                //                         Text(
-                                                //                           "સભ્યનું નામ:",
-                                                //                           style: Styles
-                                                //                               .blackGuj50016,
-                                                //                         ),
-                                                //                         Text(
-                                                //                           "ધનજી આર. પટેલ",
-                                                //                           style: Styles
-                                                //                               .mainGuj50016,
-                                                //                         ),
-                                                //                       ],
-                                                //                     ),
-                                                //                     Dimens
-                                                //                         .boxHeight10,
-                                                //                     Row(
-                                                //                       mainAxisAlignment:
-                                                //                           MainAxisAlignment
-                                                //                               .spaceBetween,
-                                                //                       children: [
-                                                //                         Text(
-                                                //                           "વિદ્યાર્થીનું નામ:",
-                                                //                           style: Styles
-                                                //                               .blackGuj50016,
-                                                //                         ),
-                                                //                         Text(
-                                                //                           "ધનજી આર. પટેલ",
-                                                //                           style: Styles
-                                                //                               .mainGuj50016,
-                                                //                         ),
-                                                //                       ],
-                                                //                     ),
-                                                //                     Dimens
-                                                //                         .boxHeight10,
-                                                //                     Row(
-                                                //                       mainAxisAlignment:
-                                                //                           MainAxisAlignment
-                                                //                               .spaceBetween,
-                                                //                       children: [
-                                                //                         Text(
-                                                //                           "વિદ્યાર્થીનું નવું ધોરણ:",
-                                                //                           style: Styles
-                                                //                               .blackGuj50016,
-                                                //                         ),
-                                                //                         Text(
-                                                //                           "09",
-                                                //                           style: Styles
-                                                //                               .mainGuj50016,
-                                                //                         ),
-                                                //                       ],
-                                                //                     ),
-                                                //                     Dimens
-                                                //                         .boxHeight10,
-                                                //                     Row(
-                                                //                       mainAxisAlignment:
-                                                //                           MainAxisAlignment
-                                                //                               .spaceBetween,
-                                                //                       children: [
-                                                //                         Text(
-                                                //                           "ગામ:",
-                                                //                           style: Styles
-                                                //                               .blackGuj50016,
-                                                //                         ),
-                                                //                         Text(
-                                                //                           "ધંધુકા",
-                                                //                           style: Styles
-                                                //                               .mainGuj50016,
-                                                //                         ),
-                                                //                       ],
-                                                //                     ),
-                                                //                     // Dimens.boxHeight30,
-                                                //                     // Row(
-                                                //                     //   children:
-                                                //                     //       List.generate(
-                                                //                     //           150 ~/ 2,
-                                                //                     //           (index) =>
-                                                //                     //               Expanded(
-                                                //                     //                 child:
-                                                //                     //                     Container(
-                                                //                     //                   color: index % 2 == 0
-                                                //                     //                       ? Colors.transparent
-                                                //                     //                       : ColorsValue.grey9BA0A8,
-                                                //                     //                   height:
-                                                //                     //                       Dimens.one,
-                                                //                     //                 ),
-                                                //                     //               )),
-                                                //                     // ),
-                                                //                     // Dimens.boxHeight30,
-                                                //                     // Center(
-                                                //                     //   child: Container(
-                                                //                     //     height:
-                                                //                     //         Dimens.ninty,
-                                                //                     //     width: Dimens.ninty,
-                                                //                     //     decoration:
-                                                //                     //         BoxDecoration(
-                                                //                     //       color:
-                                                //                     //           Colors.black,
-                                                //                     //       borderRadius:
-                                                //                     //           BorderRadius
-                                                //                     //               .circular(
-                                                //                     //         Dimens.ten,
-                                                //                     //       ),
-                                                //                     //     ),
-                                                //                     //   ),
-                                                //                     // )
-                                                //                   ],
-                                                //                 ),
-                                                //               ),
-                                                //             ),
-                                                //           ],
-                                                //         );
-                                                //       },
-                                                //     );
-                                                //   },
-                                                // );
-                                              }
-                                            : null,
-                                        child: Center(
-                                          child: Text(
-                                            "download_stationery_coupons".tr,
-                                            style: Styles.redD4363AGuj70012,
-                                          ),
-                                        ),
-                                      ),
-                                    )
+                                    // Container(
+                                    //   width: Dimens.one,
+                                    //   height: Dimens.twentyTwo,
+                                    //   color: ColorsValue.greyDDDD,
+                                    // ),
+                                    // Expanded(
+                                    //   child: InkWell(
+                                    //     onTap: item.stationery ?? false
+                                    //         ? () async {
+                                    //             // showDialog(
+                                    //             //   context: context,
+                                    //             //   builder: (context) {
+                                    //             //     return StatefulBuilder(
+                                    //             //       builder: (context, setState) {
+                                    //             //         return Column(
+                                    //             //           mainAxisSize:
+                                    //             //               MainAxisSize.min,
+                                    //             //           mainAxisAlignment:
+                                    //             //               MainAxisAlignment
+                                    //             //                   .center,
+                                    //             //           children: [
+                                    //             //             Padding(
+                                    //             //               padding:
+                                    //             //                   Dimens.edgeInsets20,
+                                    //             //               child: Container(
+                                    //             //                 padding: Dimens
+                                    //             //                     .edgeInsets20,
+                                    //             //                 decoration:
+                                    //             //                     BoxDecoration(
+                                    //             //                   color: ColorsValue
+                                    //             //                       .white,
+                                    //             //                   borderRadius:
+                                    //             //                       BorderRadius
+                                    //             //                           .circular(
+                                    //             //                     Dimens.twelve,
+                                    //             //                   ),
+                                    //             //                 ),
+                                    //             //                 child: Column(
+                                    //             //                   crossAxisAlignment:
+                                    //             //                       CrossAxisAlignment
+                                    //             //                           .start,
+                                    //             //                   mainAxisSize:
+                                    //             //                       MainAxisSize
+                                    //             //                           .min,
+                                    //             //                   children: [
+                                    //             //                     Text(
+                                    //             //                       "શ્રી બૃહદ ધંધુકા તાલુકા પટેલ પ્રગતિ મંડળ-સુરત.",
+                                    //             //                       style: Styles
+                                    //             //                           .blackGuj70018,
+                                    //             //                     ),
+                                    //             //                     Dimens
+                                    //             //                         .boxHeight20,
+                                    //             //                     Row(
+                                    //             //                       children: [
+                                    //             //                         Image.asset(
+                                    //             //                           AssetConstants
+                                    //             //                               .app_logo,
+                                    //             //                           height: Dimens
+                                    //             //                               .fiftySeven,
+                                    //             //                           width: Dimens
+                                    //             //                               .eightyFour,
+                                    //             //                         ),
+                                    //             //                         Dimens
+                                    //             //                             .boxWidth10,
+                                    //             //                         Column(
+                                    //             //                           crossAxisAlignment:
+                                    //             //                               CrossAxisAlignment
+                                    //             //                                   .start,
+                                    //             //                           children: [
+                                    //             //                             Text(
+                                    //             //                               "નોટબુક વિતરણ કુપન",
+                                    //             //                               style: Styles
+                                    //             //                                   .blackGuj60020,
+                                    //             //                             ),
+                                    //             //                             Row(
+                                    //             //                               children: [
+                                    //             //                                 Text(
+                                    //             //                                   "કુપન નં.: ",
+                                    //             //                                   style:
+                                    //             //                                       Styles.blackGuj60016,
+                                    //             //                                 ),
+                                    //             //                                 Text(
+                                    //             //                                   "8596",
+                                    //             //                                   style:
+                                    //             //                                       Styles.mainGuj60016,
+                                    //             //                                 ),
+                                    //             //                               ],
+                                    //             //                             )
+                                    //             //                           ],
+                                    //             //                         )
+                                    //             //                       ],
+                                    //             //                     ),
+                                    //             //                     Dimens
+                                    //             //                         .boxHeight20,
+                                    //             //                     Row(
+                                    //             //                       mainAxisAlignment:
+                                    //             //                           MainAxisAlignment
+                                    //             //                               .spaceBetween,
+                                    //             //                       children: [
+                                    //             //                         Text(
+                                    //             //                           "સભ્યનું નામ:",
+                                    //             //                           style: Styles
+                                    //             //                               .blackGuj50016,
+                                    //             //                         ),
+                                    //             //                         Text(
+                                    //             //                           "ધનજી આર. પટેલ",
+                                    //             //                           style: Styles
+                                    //             //                               .mainGuj50016,
+                                    //             //                         ),
+                                    //             //                       ],
+                                    //             //                     ),
+                                    //             //                     Dimens
+                                    //             //                         .boxHeight10,
+                                    //             //                     Row(
+                                    //             //                       mainAxisAlignment:
+                                    //             //                           MainAxisAlignment
+                                    //             //                               .spaceBetween,
+                                    //             //                       children: [
+                                    //             //                         Text(
+                                    //             //                           "વિદ્યાર્થીનું નામ:",
+                                    //             //                           style: Styles
+                                    //             //                               .blackGuj50016,
+                                    //             //                         ),
+                                    //             //                         Text(
+                                    //             //                           "ધનજી આર. પટેલ",
+                                    //             //                           style: Styles
+                                    //             //                               .mainGuj50016,
+                                    //             //                         ),
+                                    //             //                       ],
+                                    //             //                     ),
+                                    //             //                     Dimens
+                                    //             //                         .boxHeight10,
+                                    //             //                     Row(
+                                    //             //                       mainAxisAlignment:
+                                    //             //                           MainAxisAlignment
+                                    //             //                               .spaceBetween,
+                                    //             //                       children: [
+                                    //             //                         Text(
+                                    //             //                           "વિદ્યાર્થીનું નવું ધોરણ:",
+                                    //             //                           style: Styles
+                                    //             //                               .blackGuj50016,
+                                    //             //                         ),
+                                    //             //                         Text(
+                                    //             //                           "09",
+                                    //             //                           style: Styles
+                                    //             //                               .mainGuj50016,
+                                    //             //                         ),
+                                    //             //                       ],
+                                    //             //                     ),
+                                    //             //                     Dimens
+                                    //             //                         .boxHeight10,
+                                    //             //                     Row(
+                                    //             //                       mainAxisAlignment:
+                                    //             //                           MainAxisAlignment
+                                    //             //                               .spaceBetween,
+                                    //             //                       children: [
+                                    //             //                         Text(
+                                    //             //                           "ગામ:",
+                                    //             //                           style: Styles
+                                    //             //                               .blackGuj50016,
+                                    //             //                         ),
+                                    //             //                         Text(
+                                    //             //                           "ધંધુકા",
+                                    //             //                           style: Styles
+                                    //             //                               .mainGuj50016,
+                                    //             //                         ),
+                                    //             //                       ],
+                                    //             //                     ),
+                                    //             //                     // Dimens.boxHeight30,
+                                    //             //                     // Row(
+                                    //             //                     //   children:
+                                    //             //                     //       List.generate(
+                                    //             //                     //           150 ~/ 2,
+                                    //             //                     //           (index) =>
+                                    //             //                     //               Expanded(
+                                    //             //                     //                 child:
+                                    //             //                     //                     Container(
+                                    //             //                     //                   color: index % 2 == 0
+                                    //             //                     //                       ? Colors.transparent
+                                    //             //                     //                       : ColorsValue.grey9BA0A8,
+                                    //             //                     //                   height:
+                                    //             //                     //                       Dimens.one,
+                                    //             //                     //                 ),
+                                    //             //                     //               )),
+                                    //             //                     // ),
+                                    //             //                     // Dimens.boxHeight30,
+                                    //             //                     // Center(
+                                    //             //                     //   child: Container(
+                                    //             //                     //     height:
+                                    //             //                     //         Dimens.ninty,
+                                    //             //                     //     width: Dimens.ninty,
+                                    //             //                     //     decoration:
+                                    //             //                     //         BoxDecoration(
+                                    //             //                     //       color:
+                                    //             //                     //           Colors.black,
+                                    //             //                     //       borderRadius:
+                                    //             //                     //           BorderRadius
+                                    //             //                     //               .circular(
+                                    //             //                     //         Dimens.ten,
+                                    //             //                     //       ),
+                                    //             //                     //     ),
+                                    //             //                     //   ),
+                                    //             //                     // )
+                                    //             //                   ],
+                                    //             //                 ),
+                                    //             //               ),
+                                    //             //             ),
+                                    //             //           ],
+                                    //             //         );
+                                    //             //       },
+                                    //             //     );
+                                    //             //   },
+                                    //             // );
+                                    //           }
+                                    //         : null,
+                                    //     child: Center(
+                                    //       child: Text(
+                                    //         "download_stationery_coupons".tr,
+                                    //         style: Styles.redD4363AGuj70012,
+                                    //       ),
+                                    //     ),
+                                    //   ),
+                                    // )
                                   ],
                                 ),
                               ),

@@ -98,23 +98,17 @@ class GalleryScreen extends StatelessWidget {
                                 style: Styles.colorACACAC60012,
                               ),
                               Dimens.boxHeight30,
-                              SizedBox(
-                                height: Dimens.twoHundredFifty,
-                                child: PageView.builder(
-                                  itemCount: item.documents?.length,
-                                  onPageChanged: (value) {
-                                    controller.selectGalleryListPage = value;
-                                    controller.update();
-                                  },
-                                  itemBuilder: (context, index) {
-                                    var itemImg = item.documents?[index];
-                                    return ClipRRect(
+                              Center(
+                                child: SizedBox(
+                                    width: double.maxFinite,
+                                    height: Dimens.twoHundredFifty,
+                                    child: ClipRRect(
                                       borderRadius: BorderRadius.circular(
                                         Dimens.ten,
                                       ),
                                       child: CachedNetworkImage(
                                         imageUrl: ApiWrapper.imageUrl +
-                                            (itemImg?.path ?? ""),
+                                            (item.primary?.path ?? ""),
                                         fit: BoxFit.cover,
                                         placeholder: (context, url) {
                                           return Image.asset(
@@ -129,37 +123,7 @@ class GalleryScreen extends StatelessWidget {
                                           );
                                         },
                                       ),
-                                    );
-                                  },
-                                ),
-                              ),
-                              Dimens.boxHeight10,
-                              Center(
-                                child: Wrap(
-                                  children: item.documents
-                                          ?.asMap()
-                                          .entries
-                                          .map((e) {
-                                        return Padding(
-                                          padding: Dimens.edgeInsetsLeft5,
-                                          child: Container(
-                                            width: Dimens.ten,
-                                            height: Dimens.ten,
-                                            decoration: BoxDecoration(
-                                              color: controller
-                                                          .selectGalleryListPage ==
-                                                      e.key
-                                                  ? ColorsValue.maincolor
-                                                  : ColorsValue.lightMainColor,
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      Dimens.twenty),
-                                            ),
-                                          ),
-                                        );
-                                      }).toList() ??
-                                      [],
-                                ),
+                                    )),
                               ),
                               Dimens.boxHeight10,
                               Text(

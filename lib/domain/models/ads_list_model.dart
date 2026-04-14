@@ -41,13 +41,21 @@ class AdsListData {
   String? banner;
   bool? status;
   int? createTimestamp;
-  DateTime? createdAt;
+  String? startDate;
+  String? endDate;
+  String? link;
+  List<String>? otherImages;
+  String? createdAt;
 
   AdsListData({
     this.id,
     this.banner,
     this.status,
     this.createTimestamp,
+    this.startDate,
+    this.endDate,
+    this.link,
+    this.otherImages,
     this.createdAt,
   });
 
@@ -56,9 +64,13 @@ class AdsListData {
         banner: json["banner"],
         status: json["status"],
         createTimestamp: json["create_timestamp"],
-        createdAt: json["createdAt"] == null
-            ? null
-            : DateTime.parse(json["createdAt"]),
+        startDate: json["startDate"],
+        endDate: json["endDate"],
+        link: json["link"],
+        otherImages: json["other_images"] == null
+            ? []
+            : List<String>.from(json["other_images"]!.map((x) => x)),
+        createdAt: json["createdAt"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -66,6 +78,12 @@ class AdsListData {
         "banner": banner,
         "status": status,
         "create_timestamp": createTimestamp,
-        "createdAt": createdAt?.toIso8601String(),
+        "startDate": startDate,
+        "endDate": endDate,
+        "link": link,
+        "other_images": otherImages == null
+            ? []
+            : List<dynamic>.from(otherImages!.map((x) => x)),
+        "createdAt": createdAt,
       };
 }

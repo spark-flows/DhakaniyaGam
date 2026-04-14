@@ -78,6 +78,7 @@ abstract class Routes {
   static const villageYadiDetailScreen = _Paths.villageYadiDetailScreen;
   static const galleryDetailsScreen = _Paths.galleryDetailsScreen;
   static const notificationDetailsScreen = _Paths.notificationDetailsScreen;
+  static const adsDetailsScreen = _Paths.adsDetailsScreen;
 }
 
 abstract class _Paths {
@@ -152,4 +153,5 @@ abstract class _Paths {
   static const galleryDetailsScreen = '/galleryDetailsScreen';
   static const villageYadiDetailScreen = '/villageYadiDetailScreen';
   static const notificationDetailsScreen = '/notificationDetailsScreen';
+  static const adsDetailsScreen = '/adsDetailsScreen';
 }

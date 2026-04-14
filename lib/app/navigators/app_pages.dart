@@ -1,6 +1,7 @@
 // coverage:ignore-file
 
 import 'package:dhakaniya_gam/app/app.dart';
+import 'package:dhakaniya_gam/app/pages/dashboard_screen/screen/ads_details_screen.dart';
 import 'package:get/get.dart';
 
 part 'app_routes.dart';
@@ -22,6 +23,13 @@ class AppPages {
       transitionDuration: transitionDuration,
       page: SplashScreen.new,
       binding: SplashBinding(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage<AdsDetailsScreen>(
+      name: _Paths.adsDetailsScreen,
+      transitionDuration: transitionDuration,
+      page: AdsDetailsScreen.new,
+      binding: DashboardBinding(),
       transition: Transition.fadeIn,
     ),
     GetPage<IntroFirstScreen>(

@@ -21,6 +21,35 @@ class DashboardController extends GetxController {
     super.onInit();
   }
 
+  int selectGalleryAdsPage = 0;
+
+  List<String> imageList = [];
+
+  final pageAdsController = PageController(viewportFraction: 0.85);
+
+  Timer? _autoAdsScrollTimer;
+
+  int selectAdsDetails = 0;
+
+  void startAutoScrollAds() {
+    _autoAdsScrollTimer?.cancel();
+    if (imageList.length <= 1) return;
+    _autoAdsScrollTimer = Timer.periodic(const Duration(seconds: 3), (_) {
+      if (pageAdsController.hasClients) {
+        final nextPage = (selectAdsDetails + 1) % imageList.length;
+        pageAdsController.animateToPage(
+          nextPage,
+          duration: const Duration(milliseconds: 500),
+          curve: Curves.easeInOut,
+        );
+      }
+    });
+  }
+
+  void stopAutoScrollAds() {
+    _autoAdsScrollTimer?.cancel();
+  }
+
   final pageController = PageController(viewportFraction: 0.85);
 
   Timer? _autoScrollTimer;

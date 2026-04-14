@@ -141,4 +141,6 @@ abstract class RouteManagement {
       Get.toNamed<void>(Routes.galleryDetailsScreen, arguments: id);
   static void goToNotificationDetailsScreen(String id) =>
       Get.toNamed<void>(Routes.notificationDetailsScreen, arguments: id);
+  static void goToAdsDetailsScreen(List<String> id) =>
+      Get.toNamed<void>(Routes.adsDetailsScreen, arguments: id);
 }

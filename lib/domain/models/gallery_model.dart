@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:dhakaniya_gam/domain/domain.dart';
-
 GalleryModel galleryModelFromJson(String str) =>
     GalleryModel.fromJson(json.decode(str));
 
@@ -97,12 +95,14 @@ class GalleryDoc {
   String? subject;
   DateTime? date;
   int? dateTimestamp;
-  List<Document>? documents;
+  List<Primary>? documents;
   String? description;
   bool? status;
   int? createTimestamp;
-  DateTime? createdAt;
+  Primary? primary;
+  String? createdAt;
   String? docId;
+
   GalleryDoc({
     this.id,
     this.subject,
@@ -112,6 +112,7 @@ class GalleryDoc {
     this.description,
     this.status,
     this.createTimestamp,
+    this.primary,
     this.createdAt,
     this.docId,
   });
@@ -123,14 +124,14 @@ class GalleryDoc {
         dateTimestamp: json["date_timestamp"],
         documents: json["documents"] == null
             ? []
-            : List<Document>.from(
-                json["documents"]!.map((x) => Document.fromJson(x))),
+            : List<Primary>.from(
+                json["documents"]!.map((x) => Primary.fromJson(x))),
         description: json["description"],
         status: json["status"],
         createTimestamp: json["create_timestamp"],
-        createdAt: json["createdAt"] == null
-            ? null
-            : DateTime.parse(json["createdAt"]),
+        primary:
+            json["primary"] == null ? null : Primary.fromJson(json["primary"]),
+        createdAt: json["createdAt"],
         docId: json["id"],
       );
 
@@ -146,7 +147,28 @@ class GalleryDoc {
         "description": description,
         "status": status,
         "create_timestamp": createTimestamp,
-        "createdAt": createdAt?.toIso8601String(),
+        "primary": primary?.toJson(),
+        "createdAt": createdAt,
         "id": docId,
+      };
+}
+
+class Primary {
+  String? id;
+  String? path;
+
+  Primary({
+    this.id,
+    this.path,
+  });
+
+  factory Primary.fromJson(Map<String, dynamic> json) => Primary(
+        id: json["_id"],
+        path: json["path"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "_id": id,
+        "path": path,
       };
 }
