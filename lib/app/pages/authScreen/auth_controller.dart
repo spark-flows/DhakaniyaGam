@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:dhakaniya_gam/app/app.dart';
 import 'package:dhakaniya_gam/app/navigators/navigators.dart';
@@ -107,10 +106,9 @@ class AuthController extends GetxController {
   Future<void> loginApi(String phoneNumber, bool isSend) async {
     var response = await authPresenter.loginApi(
       mobile: isSend ? phoneNumber : phoneNumberController.text,
-      isLoading: false,
+      isLoading: true,
     );
     if (response?.status == 200) {
-      isLoginLoading = false;
       Get.find<Repository>()
           .saveValue(LocalKeys.authToken, response?.data?.accessToken);
       RouteManagement.goToBottomBarScreen();
@@ -123,8 +121,7 @@ class AuthController extends GetxController {
       //       phoneNumberController.text, response?.data?.key ?? "");
       // }
     } else {
-      isLoginLoading = false;
-      Utility.errorMessage(jsonDecode(response?.message ?? "")['Message']);
+      Utility.errorMessage(response?.message ?? "");
     }
     update();
   }

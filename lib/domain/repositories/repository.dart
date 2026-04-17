@@ -232,13 +232,12 @@ class Repository {
         village_representative: village_representative,
         front_aadhara: front_aadhara,
         back_aadhara: back_aadhara,
+        isLoading: isLoading
       );
       var loginModel = loginModelFromJson(response.data);
       if (loginModel.status == 200) {
         return loginModel;
       } else {
-        Utility.showMessage(
-            loginModel.message.toString(), MessageType.error, () => null, '');
         return loginModel;
       }
     } catch (e) {
@@ -1463,14 +1462,13 @@ class Repository {
   }) async {
     try {
       var response = await _dataRepository.postQualifiedPrizes(
-        isLoading: isLoading,
-        page: page,
-        limit: limit,
-        search: search,
-        education: education,
-        medium: medium,
-        year: year
-      );
+          isLoading: isLoading,
+          page: page,
+          limit: limit,
+          search: search,
+          education: education,
+          medium: medium,
+          year: year);
       var getProfileModel = qualifiedPrizeModelFromJson(response.data);
       if (getProfileModel.status == 200) {
         return getProfileModel;

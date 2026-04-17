@@ -37,7 +37,9 @@ class LoginModel {
 
   factory LoginModel.fromJson(Map<String, dynamic> json) => LoginModel(
         message: json["Message"],
-        data: json["Data"] == null ? null : Data.fromJson(json["Data"]),
+        data: json["Data"] == null || json["Data"] == 0
+            ? null
+            : Data.fromJson(json["Data"]),
         status: json["Status"],
         isSuccess: json["IsSuccess"],
       );

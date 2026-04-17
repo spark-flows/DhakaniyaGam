@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dhakaniya_gam/app/app.dart';
-import 'package:dhakaniya_gam/app/navigators/navigators.dart';
 import 'package:dhakaniya_gam/domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -144,7 +143,7 @@ class RegisterController extends GetxController {
     if (pickedFile != null) {
       var imageFile = File(pickedFile.path);
       backAdharPic = await registerPresenter.uploadAdharPic(
-          filePath: imageFile.path ?? "");
+          filePath: imageFile.path ?? "", isLoading: true);
     }
     update();
   }
@@ -166,12 +165,12 @@ class RegisterController extends GetxController {
       village_representative: selectCommitteeValue ?? "",
       front_aadhara: frontAdharPic ?? "",
       back_aadhara: backAdharPic ?? "",
+      isLoading: true,
     );
     if (response?.data != null) {
-      RouteManagement.goToOtpScreen(
-          mobileNumberController.text, response?.data?.accessToken ?? "");
+      Get.back();
     } else {
-      // Utility.errorMessage(response?.message ?? "");
+      Utility.errorMessage(response?.message ?? "");
     }
   }
 

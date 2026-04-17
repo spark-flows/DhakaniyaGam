@@ -68,8 +68,6 @@ class LoginScreen extends StatelessWidget {
                       Dimens.boxHeight50,
                       CustomButton(
                         onPressed: () {
-                          controller.isLoginLoading = true;
-                          controller.update();
                           if (controller.formKey.currentState!.validate()) {
                             controller.loginApi("", false);
                           }
