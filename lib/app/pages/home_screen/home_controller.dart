@@ -10,7 +10,6 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     postSettingApi();
-    villagesApi();
     getProfileApi();
     super.onInit();
   }

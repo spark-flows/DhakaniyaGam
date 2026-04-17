@@ -19,8 +19,7 @@ class ParivarikVigatController extends GetxController {
   @override
   onInit() {
     getProfileApi();
-    businessCategoriesApi();
-    getStudies();
+
     super.onInit();
   }
 
@@ -199,7 +198,7 @@ class ParivarikVigatController extends GetxController {
       nameController.text = getProfileData?.name ?? "";
       fatherNameController.text = getProfileData?.fathername ?? "";
       dobController.text = getProfileData?.dob?.isNotEmpty ?? false
-          ? Utility.getFormatedDateTime(getProfileData?.dob ?? "")
+          ? Utility.convertDateDDMMYYYY(getProfileData?.dob ?? "")
           : "";
       emailController.text = getProfileData?.email ?? "";
       if (getProfileData?.bloodGroup != "") {
@@ -230,8 +229,8 @@ class ParivarikVigatController extends GetxController {
       farmController.text = getProfileData?.firmName ?? "";
       businessAddresController.text = getProfileData?.businessAddress ?? "";
       businessDetailsController.text = getProfileData?.businessDetails ?? "";
-      marriedDatesController.text = getProfileData?.dob?.isNotEmpty ?? false
-          ? Utility.getFormatedDateTime(getProfileData?.dom ?? "")
+      marriedDatesController.text = getProfileData?.dom?.isNotEmpty ?? false
+          ? Utility.convertDateDDMMYYYY(getProfileData?.dom ?? "")
           : "";
       fatherLawSurnameController.text =
           getProfileData?.fatherInLaw?.surname ?? "";
@@ -245,10 +244,12 @@ class ParivarikVigatController extends GetxController {
       fatherLawDistrictController.text =
           getProfileData?.fatherInLaw?.district ?? "";
 
-      selectDobDate =
-          Utility.getFormatedDateTimeYYYYMMDD(getProfileData?.dob ?? "");
-      selectDomDate =
-          Utility.getFormatedDateTimeYYYYMMDD(getProfileData?.dom ?? "");
+      selectDobDate = getProfileData?.dob?.isNotEmpty ?? false
+          ? Utility.getFormatedDateTimeYYYYMMDD(getProfileData?.dob ?? "")
+          : "";
+      selectDomDate = getProfileData?.dom?.isNotEmpty ?? false
+          ? Utility.getFormatedDateTimeYYYYMMDD(getProfileData?.dom ?? "")
+          : "";
 
       getProfileData?.mediclaims?.forEach(
         (element) {
@@ -282,7 +283,9 @@ class ParivarikVigatController extends GetxController {
       optional_countryCode: dailCodeOptional,
       optional_mobile: mobileOtherController.text,
       email: emailController.text,
-      dob: selectDobDate ?? "",
+      dob: selectDobDate?.isNotEmpty ?? false
+          ? Utility.convertDateYYYYMMDD(selectDobDate ?? "")
+          : "",
       blood_group: selectBooldGroup ?? "",
       current_address: addressController.text,
       education: selectEducationValue == "other"

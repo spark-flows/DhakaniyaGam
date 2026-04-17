@@ -90,6 +90,14 @@ abstract class Utility {
     return format.format(dateTime);
   }
 
+  static String convertDateYYYYMMDD(String inputDate) {
+    final inputFormat = DateFormat('dd-MM-yyyy');
+    final outputFormat = DateFormat('yyyy-MM-dd');
+
+    DateTime date = inputFormat.parse(inputDate);
+    return outputFormat.format(date);
+  }
+
   static String parseTimeStamptoDDMMYY(int value) {
     var date = DateTime.fromMillisecondsSinceEpoch(value);
     var d12 = DateFormat('dd/MM/yyyy').format(date);
@@ -245,6 +253,14 @@ abstract class Utility {
   static String getFormatedDateTime(String datea) {
     var date = DateTime.parse(datea);
     return DateFormat('dd-MM-yyyy').format(date);
+  }
+
+ static String convertDateDDMMYYYY(String inputDate) {
+    final inputFormat = DateFormat('yyyy-MM-dd');
+    final outputFormat = DateFormat('dd-MM-yyyy');
+
+    DateTime date = inputFormat.parse(inputDate);
+    return outputFormat.format(date);
   }
 
   static String getFormatedDateTimeYYYYMMDD(String datea) {

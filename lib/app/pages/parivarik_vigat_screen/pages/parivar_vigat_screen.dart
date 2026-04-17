@@ -14,7 +14,11 @@ class ParivarikVigatScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<ParivarikVigatController>(builder: (controller) {
+    return GetBuilder<ParivarikVigatController>(initState: (state) {
+      var controller = Get.find<ParivarikVigatController>();
+      controller.getStudies();
+      controller.businessCategoriesApi();
+    }, builder: (controller) {
       return Scaffold(
         backgroundColor: ColorsValue.white,
         appBar: AppBar(
@@ -73,7 +77,8 @@ class ParivarikVigatScreen extends StatelessWidget {
                                         Align(
                                           alignment: Alignment.topRight,
                                           child: InkWell(
-                                            onTap: () {Navigator.pop(context);
+                                            onTap: () {
+                                              Navigator.pop(context);
                                             },
                                             child: const Icon(
                                               Icons.close,
@@ -85,7 +90,8 @@ class ParivarikVigatScreen extends StatelessWidget {
                                               MainAxisAlignment.center,
                                           children: [
                                             InkWell(
-                                              onTap: () async {Navigator.pop(context);
+                                              onTap: () async {
+                                                Navigator.pop(context);
                                                 if (await controller
                                                     .imagePermissionCheack(
                                                         context)) {
@@ -127,7 +133,8 @@ class ParivarikVigatScreen extends StatelessWidget {
                                             ),
                                             Dimens.boxWidth60,
                                             InkWell(
-                                              onTap: () async {Navigator.pop(context);
+                                              onTap: () async {
+                                                Navigator.pop(context);
                                                 if (await controller
                                                     .imagePermissionCheack(
                                                         context)) {
@@ -683,64 +690,64 @@ class ParivarikVigatScreen extends StatelessWidget {
                   //     },
                   //   ),
                   // ),
-                  // Dimens.boxHeight20,
-                  // CustomTextFormField(
-                  //   fillColor: ColorsValue.greyEEEEEE,
-                  //   text: 'beginning_married_life'.tr,
-                  //   isGujarati: true,
-                  //   textInputAction: TextInputAction.next,
-                  //   keybordtype: TextInputType.emailAddress,
-                  //   controller: controller.marriedDatesController,
-                  //   // validation: (value) {
-                  //   //   if (value!.isEmpty) {
-                  //   //     return 'enter_beginning_married_life'.tr;
-                  //   //   }
-                  //   //   return null;
-                  //   // },
-                  //   suffixIcon: InkWell(
-                  //     onTap: () async {
-                  //       final DateTime? picked = await showDatePicker(
-                  //         builder: (context, child) {
-                  //           return Theme(
-                  //             data: Theme.of(context).copyWith(
-                  //               colorScheme: ColorScheme.light(
-                  //                 primary: ColorsValue.maincolor,
-                  //                 onPrimary: ColorsValue.white,
-                  //                 onSurface: ColorsValue.maincolor,
-                  //               ),
-                  //               textButtonTheme: TextButtonThemeData(
-                  //                 style: TextButton.styleFrom(
-                  //                   foregroundColor: ColorsValue.maincolor,
-                  //                 ),
-                  //               ),
-                  //             ),
-                  //             child: child!,
-                  //           );
-                  //         },
-                  //         context: context,
-                  //         initialDate: controller.selectedMarriedDate,
-                  //         firstDate: DateTime(1920),
-                  //         lastDate: DateTime(2100),
-                  //       );
-                  //       if (picked != null &&
-                  //           picked != controller.selectedMarriedDate) {
-                  //         controller.selectedMarriedDate = picked;
-                  //         controller.marriedDatesController.text =
-                  //             DateFormat("dd-MM-yyyy")
-                  //                 .format(controller.selectedMarriedDate);
-                  //         controller.selectDomDate =
-                  //             DateFormat("yyyy-MM-dd").format(picked);
-                  //         controller.update();
-                  //       }
-                  //     },
-                  //     child: Padding(
-                  //       padding: Dimens.edgeInsets10,
-                  //       child: SvgPicture.asset(
-                  //         AssetConstants.ic_calendar,
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
+                  Dimens.boxHeight20,
+                  CustomTextFormField(
+                    fillColor: ColorsValue.greyEEEEEE,
+                    text: 'beginning_married_life'.tr,
+                    isGujarati: true,
+                    textInputAction: TextInputAction.next,
+                    keybordtype: TextInputType.emailAddress,
+                    controller: controller.marriedDatesController,
+                    // validation: (value) {
+                    //   if (value!.isEmpty) {
+                    //     return 'enter_beginning_married_life'.tr;
+                    //   }
+                    //   return null;
+                    // },
+                    suffixIcon: InkWell(
+                      onTap: () async {
+                        final DateTime? picked = await showDatePicker(
+                          builder: (context, child) {
+                            return Theme(
+                              data: Theme.of(context).copyWith(
+                                colorScheme: ColorScheme.light(
+                                  primary: ColorsValue.maincolor,
+                                  onPrimary: ColorsValue.white,
+                                  onSurface: ColorsValue.maincolor,
+                                ),
+                                textButtonTheme: TextButtonThemeData(
+                                  style: TextButton.styleFrom(
+                                    foregroundColor: ColorsValue.maincolor,
+                                  ),
+                                ),
+                              ),
+                              child: child!,
+                            );
+                          },
+                          context: context,
+                          initialDate: controller.selectedMarriedDate,
+                          firstDate: DateTime(1920),
+                          lastDate: DateTime(2100),
+                        );
+                        if (picked != null &&
+                            picked != controller.selectedMarriedDate) {
+                          controller.selectedMarriedDate = picked;
+                          controller.marriedDatesController.text =
+                              DateFormat("dd-MM-yyyy")
+                                  .format(controller.selectedMarriedDate);
+                          controller.selectDomDate =
+                              DateFormat("yyyy-MM-dd").format(picked);
+                          controller.update();
+                        }
+                      },
+                      child: Padding(
+                        padding: Dimens.edgeInsets10,
+                        child: SvgPicture.asset(
+                          AssetConstants.ic_calendar,
+                        ),
+                      ),
+                    ),
+                  ),
                   // Dimens.boxHeight20,
                   // CustomTextFormField(
                   //   fillColor: ColorsValue.greyEEEEEE,
