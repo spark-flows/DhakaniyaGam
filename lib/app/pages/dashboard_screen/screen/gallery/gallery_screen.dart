@@ -62,8 +62,8 @@ class GalleryScreen extends StatelessWidget {
                 noItemsFoundIndicatorBuilder: (_) {
                   return Center(
                     child: Text(
-                      "Data Not Found...!",
-                      style: Styles.main60018,
+                      "${'gallery'.tr} ડેટા મળ્યો નથી...!",
+                      style: Styles.mainGuj50014,
                     ),
                   );
                 },

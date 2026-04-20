@@ -180,8 +180,9 @@ class DonorsDetailsScreen extends StatelessWidget {
                   )
                 : Center(
                     child: Text(
-                      'Data Not Found!',
-                      style: Styles.black2E363F50014,
+                      "${controller.donarName ?? 'donors'.tr} ડેટા મળ્યો નથી...!",
+                      style: Styles.mainGuj50014,
+                      textAlign: TextAlign.center,
                     ),
                   ),
           ),

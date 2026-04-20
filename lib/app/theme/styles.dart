@@ -125,6 +125,12 @@ abstract class Styles {
     fontSize: Dimens.sixteen,
   );
 
+  static TextStyle mainGuj50014 = GoogleFonts.notoSerifGujarati(
+    color: ColorsValue.maincolor,
+    fontWeight: FontWeight.w500,
+    fontSize: Dimens.fourteen,
+  );
+
   static TextStyle mainGuj60012 = GoogleFonts.notoSerifGujarati(
     color: ColorsValue.maincolor,
     fontWeight: FontWeight.w600,

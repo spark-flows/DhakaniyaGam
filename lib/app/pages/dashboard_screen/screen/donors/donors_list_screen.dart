@@ -26,7 +26,8 @@ class DonorsListScreen extends StatelessWidget {
           elevation: Dimens.ten,
           centerTitle: true,
           leading: InkWell(
-            onTap: () {Navigator.pop(context);
+            onTap: () {
+              Navigator.pop(context);
             },
             child: Padding(
               padding: Dimens.edgeInsets12,
@@ -44,60 +45,69 @@ class DonorsListScreen extends StatelessWidget {
           padding: Dimens.edgeInsets20_00_20_00,
           child: Column(
             children: [
-              CustomTextFormField(
-                text: "",
-                hintText: 'Search',
-                fillColor: ColorsValue.greyEEEEEE,
-                prefixIcon: Padding(
-                  padding: Dimens.edgeInsets10,
-                  child: SvgPicture.asset(
-                    AssetConstants.ic_search,
-                  ),
-                ),
-              ),
-              Dimens.boxHeight20,
-              Flexible(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: controller.donarList.length,
-                  itemBuilder: (context, index) {
-                    var item = controller.donarList[index];
-                    return InkWell(
-                      onTap: () {
-                        RouteManagement.goToDonorsDetails(item.id ?? "",item.gujaratiName ?? "");
-                      },
-                      child: Padding(
-                        padding: Dimens.edgeInsets00_10_00_10,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(
-                              Dimens.six,
-                            ),
-                            border: Border.all(
-                              color: ColorsValue.maincolor,
-                              width: Dimens.one,
-                            ),
-                          ),
-                          child: Center(
-                            child: ListTile(
-                              contentPadding: Dimens.edgeInsets15_00_15_00,
-                              title: Text(
-                                item.gujaratiName ?? "",
-                                maxLines: 5,
-                                overflow: TextOverflow.ellipsis,
-                                style: Styles.mainGuj70018,
+              // CustomTextFormField(
+              //   text: "",
+              //   hintText: 'Search',
+              //   fillColor: ColorsValue.greyEEEEEE,
+              //   prefixIcon: Padding(
+              //     padding: Dimens.edgeInsets10,
+              //     child: SvgPicture.asset(
+              //       AssetConstants.ic_search,
+              //     ),
+              //   ),
+              // ),
+              // Dimens.boxHeight20,
+              Expanded(
+                child: controller.donarList.isNotEmpty
+                    ? ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: controller.donarList.length,
+                        itemBuilder: (context, index) {
+                          var item = controller.donarList[index];
+                          return InkWell(
+                            onTap: () {
+                              RouteManagement.goToDonorsDetails(
+                                  item.id ?? "", item.gujaratiName ?? "");
+                            },
+                            child: Padding(
+                              padding: Dimens.edgeInsets00_10_00_10,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(
+                                    Dimens.six,
+                                  ),
+                                  border: Border.all(
+                                    color: ColorsValue.maincolor,
+                                    width: Dimens.one,
+                                  ),
+                                ),
+                                child: Center(
+                                  child: ListTile(
+                                    contentPadding:
+                                        Dimens.edgeInsets15_00_15_00,
+                                    title: Text(
+                                      item.gujaratiName ?? "",
+                                      maxLines: 5,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: Styles.mainGuj70018,
+                                    ),
+                                    trailing: SvgPicture.asset(
+                                      AssetConstants.ic_arrow_right,
+                                    ),
+                                  ),
+                                ),
                               ),
-                              trailing: SvgPicture.asset(
-                                AssetConstants.ic_arrow_right,
-                              ),
                             ),
-                          ),
+                          );
+                        },
+                      )
+                    : Center(
+                        child: Text(
+                          "${'donors'.tr} ડેટા મળ્યો નથી...!",
+                          style: Styles.mainGuj50014,
                         ),
                       ),
-                    );
-                  },
-                ),
               )
             ],
           ),

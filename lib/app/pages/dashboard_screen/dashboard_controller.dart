@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:async';
 import 'dart:io';
 
@@ -146,6 +148,7 @@ class DashboardController extends GetxController {
     if (response != null) {
       if (pageKey == 1) {
         findFirendsListModel.clear();
+        pagingController.itemList?.clear();
       }
       findFirendsListModel = response.data?.docs ?? [];
 
@@ -193,14 +196,14 @@ class DashboardController extends GetxController {
     update();
   }
 
-  Future postDownloadStationery(String resultId) async {
+  Future postDownloadStationery(String resultId, BuildContext context) async {
     var response = await dashboardPresenter.postDownloadStationery(
       resultId: resultId,
       isLoading: true,
     );
     if (response?.data != null) {
       Utility.downloadAndSavePDF(
-          response?.data?.stationeryCouponPath ?? "", "DhakaniyaGam", 1);
+          response?.data?.stationeryCouponPath ?? "", "DhakaniyaGam");
     }
     update();
   }
@@ -212,7 +215,7 @@ class DashboardController extends GetxController {
     );
     if (response?.data != null) {
       Utility.downloadAndSavePDF(
-          response?.data?.prizeCouponPath ?? "", "DhakaniyaGam", 1);
+          response?.data?.prizeCouponPath ?? "", "DhakaniyaGam");
     }
     update();
   }
@@ -426,6 +429,7 @@ class DashboardController extends GetxController {
     } else {
       if (pageKey == 1) {
         committeeMemberListModel.clear();
+        pagingCommitteeController.itemList?.clear();
       }
       committeeMemberListModel = response.data?.docs ?? [];
 
@@ -588,6 +592,7 @@ class DashboardController extends GetxController {
     if (response != null) {
       if (pageKey == 1) {
         galleryListModel.clear();
+        galleryPagingController.itemList?.clear();
       }
       galleryListModel = response.data?.docs ?? [];
 
@@ -616,6 +621,7 @@ class DashboardController extends GetxController {
     if (response != null) {
       if (pageKey == 1) {
         serviceListModel.clear();
+        servicePagingController.itemList?.clear();
       }
       serviceListModel = response.data?.docs ?? [];
 
@@ -751,6 +757,7 @@ class DashboardController extends GetxController {
     if (response != null) {
       if (pageKey == 1) {
         committeeVillageMemberListModel.clear();
+        pagingVillageCommitteeController.itemList?.clear();
       }
       committeeVillageMemberListModel = response.data?.docs ?? [];
 
@@ -794,7 +801,7 @@ class DashboardController extends GetxController {
       limit: qualifyPrizeLimit,
       search: qualifyPrizeController.text,
       education: "",
-      medium: "",
+      medium: selectMeduium == "ગુજરાતી" ? "gujarati" : "english",
       year: selectYear,
       isLoading: false,
     );
@@ -851,6 +858,7 @@ class DashboardController extends GetxController {
     if (response != null) {
       if (pageKey == 1) {
         qualifyPrizeList.clear();
+        qualifyPrizePagingController.itemList?.clear();
       }
       qualifyPrizeList = response.data?.docs ?? [];
 
@@ -942,6 +950,7 @@ class DashboardController extends GetxController {
     if (response != null) {
       if (pageKey == 1) {
         qualifyStationeryList.clear();
+        qualifyStationeryPagingController.itemList?.clear();
       }
       qualifyStationeryList = response.data?.docs ?? [];
 

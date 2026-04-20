@@ -12,164 +12,165 @@ class ParivarSabhayVigatListScreen extends StatelessWidget {
     return GetBuilder<ParivarSabhayVigatController>(
       builder: (controller) {
         return Scaffold(
-          backgroundColor: ColorsValue.white,
-          appBar: AppBar(
-            centerTitle: true,
-            leading: InkWell(
-              onTap: () {Navigator.pop(context);
+            backgroundColor: ColorsValue.white,
+            appBar: AppBar(
+              centerTitle: true,
+              leading: InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Padding(
+                  padding: Dimens.edgeInsets12,
+                  child: SvgPicture.asset(
+                    AssetConstants.ic_left_arrow,
+                  ),
+                ),
+              ),
+              title: Text(
+                'parivar_sabhay_vigat'.tr,
+                style: Styles.mainGuj90020,
+              ),
+            ),
+            bottomNavigationBar: Padding(
+              padding: Dimens.edgeInsets20_00_20_20,
+              child: CustomButton(
+                onPressed: () {},
+                text: 'submit'.tr,
+              ),
+            ),
+            floatingActionButton: FloatingActionButton(
+              onPressed: () {
+                RouteManagement.goToParivarSabhayVigatScreen("", false);
               },
-              child: Padding(
-                padding: Dimens.edgeInsets12,
-                child: SvgPicture.asset(
-                  AssetConstants.ic_left_arrow,
+              backgroundColor: ColorsValue.maincolor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(
+                  Dimens.hundred,
                 ),
               ),
-            ),
-            title: Text(
-              'parivar_sabhay_vigat'.tr,
-              style: Styles.mainGuj90020,
-            ),
-          ),
-          bottomNavigationBar: Padding(
-            padding: Dimens.edgeInsets20_00_20_20,
-            child: CustomButton(
-              onPressed: () {},
-              text: 'submit'.tr,
-            ),
-          ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              RouteManagement.goToParivarSabhayVigatScreen("", false);
-            },
-            backgroundColor: ColorsValue.maincolor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(
-                Dimens.hundred,
+              child: Icon(
+                Icons.add,
+                size: Dimens.twentyFour,
+                color: ColorsValue.white,
               ),
             ),
-            child: Icon(
-              Icons.add,
-              size: Dimens.twentyFour,
-              color: ColorsValue.white,
-            ),
-          ),
-          body: controller.familyMembersList.isNotEmpty
-              ? RefreshIndicator(
-                  onRefresh: () {
-                    Future.delayed(Duration(seconds: 2));
-                    return controller.getFamilyMembers();
-                  },
-                  child: ListView.builder(
-                    itemCount: controller.familyMembersList.length,
-                    itemBuilder: (context, index) {
-                      var item = controller.familyMembersList[index];
-                      return Padding(
-                        padding: Dimens.edgeInsets20_05_20_05,
-                        child: Container(
-                          padding: Dimens.edgeInsets20_15_20_15,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                              Dimens.six,
-                            ),
-                            color: ColorsValue.white,
-                            border: Border.all(
-                              width: Dimens.one,
-                              color: ColorsValue.maincolor,
-                            ),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(
-                                "${item.name} ${item.surname}",
-                                style: Styles.blackGuj60018,
-                              ),
-                              Dimens.boxHeight12,
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    padding: Dimens.edgeInsets12_04_12_04,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(
-                                        Dimens.four,
-                                      ),
-                                      color: ColorsValue.lightMainColor,
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        item.relation == "mother"
-                                            ? "મા"
-                                            : item.relation == "father"
-                                                ? "પિતા"
-                                                : item.relation == "wife"
-                                                    ? "પત્ની"
-                                                    : item.relation == "sister"
-                                                        ? "બહેન"
-                                                        : item.relation ==
-                                                                "brother"
-                                                            ? "ભાઈ"
-                                                            : item.relation ==
-                                                                    "daughter"
-                                                                ? "દીકરી"
-                                                                : "દીકરો",
-                                        style: Styles.mainGuj60016,
-                                      ),
-                                    ),
-                                  ),
-                                  Row(
-                                    children: [
-                                      InkWell(
-                                        onTap: () {
-                                          RouteManagement
-                                              .goToParivarSabhayVigatScreen(
-                                                  item.id ?? "", true);
-                                          controller.update();
-                                        },
-                                        child: SvgPicture.asset(
-                                          AssetConstants.ic_edit,
-                                        ),
-                                      ),
-                                      Dimens.boxWidth12,
-                                      Container(
-                                        width: Dimens.one,
-                                        height: Dimens.twenty,
-                                        color: ColorsValue.maincolor,
-                                      ),
-                                      Dimens.boxWidth12,
-                                      InkWell(
-                                        onTap: () {
-                                          controller.postDeleteFamilyMembers(
-                                              item.id ?? "");
-                                          controller.familyMembersList
-                                              .removeAt(index);
-                                          controller.update();
-                                        },
-                                        child: SvgPicture.asset(
-                                          AssetConstants.ic_delete_item,
-                                        ),
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
+            body: controller.familyMembersList.isNotEmpty
+                ? RefreshIndicator(
+                    onRefresh: () {
+                      Future.delayed(Duration(seconds: 2));
+                      return controller.getFamilyMembers();
                     },
-                  ),
-                )
-              : Center(
-                  child: Text(
-                    "Data not found...!",
-                    style: Styles.main60018,
-                  ),
-                ),
-        );
+                    child: ListView.builder(
+                      itemCount: controller.familyMembersList.length,
+                      itemBuilder: (context, index) {
+                        var item = controller.familyMembersList[index];
+                        return Padding(
+                          padding: Dimens.edgeInsets20_05_20_05,
+                          child: Container(
+                            padding: Dimens.edgeInsets20_15_20_15,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(
+                                Dimens.six,
+                              ),
+                              color: ColorsValue.white,
+                              border: Border.all(
+                                width: Dimens.one,
+                                color: ColorsValue.maincolor,
+                              ),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  "${item.name} ${item.surname}",
+                                  style: Styles.blackGuj60018,
+                                ),
+                                Dimens.boxHeight12,
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      padding: Dimens.edgeInsets12_04_12_04,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(
+                                          Dimens.four,
+                                        ),
+                                        color: ColorsValue.lightMainColor,
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          item.relation == "mother"
+                                              ? "મા"
+                                              : item.relation == "father"
+                                                  ? "પિતા"
+                                                  : item.relation == "wife"
+                                                      ? "પત્ની"
+                                                      : item.relation ==
+                                                              "sister"
+                                                          ? "બહેન"
+                                                          : item.relation ==
+                                                                  "brother"
+                                                              ? "ભાઈ"
+                                                              : item.relation ==
+                                                                      "daughter"
+                                                                  ? "દીકરી"
+                                                                  : "દીકરો",
+                                          style: Styles.mainGuj60016,
+                                        ),
+                                      ),
+                                    ),
+                                    Row(
+                                      children: [
+                                        InkWell(
+                                          onTap: () {
+                                            RouteManagement
+                                                .goToParivarSabhayVigatScreen(
+                                                    item.id ?? "", true);
+                                            controller.update();
+                                          },
+                                          child: SvgPicture.asset(
+                                            AssetConstants.ic_edit,
+                                          ),
+                                        ),
+                                        Dimens.boxWidth12,
+                                        Container(
+                                          width: Dimens.one,
+                                          height: Dimens.twenty,
+                                          color: ColorsValue.maincolor,
+                                        ),
+                                        Dimens.boxWidth12,
+                                        InkWell(
+                                          onTap: () {
+                                            controller.postDeleteFamilyMembers(
+                                                item.id ?? "");
+                                            controller.familyMembersList
+                                                .removeAt(index);
+                                            controller.update();
+                                          },
+                                          child: SvgPicture.asset(
+                                            AssetConstants.ic_delete_item,
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  )
+                : Center(
+                    child: Text(
+                      "${'parivar_sabhay_vigat'.tr} ડેટા મળ્યો નથી...!",
+                      style: Styles.mainGuj50014,
+                    ),
+                  ));
       },
     );
   }

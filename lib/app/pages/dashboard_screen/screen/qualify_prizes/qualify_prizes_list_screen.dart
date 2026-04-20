@@ -85,7 +85,7 @@ class QualifyPrizeListScreen extends StatelessWidget {
                         }).toList(),
                         onChanged: (newYear) {
                           controller.selectMeduium = newYear!;
-                          controller.qualifyPrizePagingController.refresh();
+                          controller.qualifyPrizeMainPagingController.refresh();
                           controller.update();
                         },
                       ),
@@ -124,7 +124,8 @@ class QualifyPrizeListScreen extends StatelessWidget {
                         onChanged: (int? newYear) {
                           if (newYear != null) {
                             controller.selectYear = newYear;
-                            controller.qualifyPrizePagingController.refresh();
+                            controller.qualifyPrizeMainPagingController
+                                .refresh();
                             controller.update();
                           }
                         },
@@ -145,7 +146,10 @@ class QualifyPrizeListScreen extends StatelessWidget {
                         PagedChildBuilderDelegate<QualifiedPrizeDoc>(
                       noItemsFoundIndicatorBuilder: (context) {
                         return Center(
-                          child: Text("No data found...!"),
+                          child: Text(
+                            "${'qualify_for_prizes'.tr} ડેટા મળ્યો નથી...!",
+                            style: Styles.mainGuj50014,
+                          ),
                         );
                       },
                       itemBuilder: (context, item, index) {

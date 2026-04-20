@@ -17,12 +17,13 @@ class SabhayYadiScreen extends StatelessWidget {
 
     return GetBuilder<DashboardController>(initState: (state) {
       var controller = Get.find<DashboardController>();
+      controller.searchController.clear();
+      controller.pagingController = PagingController(firstPageKey: 1);
       controller.pagingController.addPageRequestListener(
         (pagekey) async {
           await controller.getAllUsers(pagekey);
         },
       );
-      controller.searchController.clear();
     }, builder: (controller) {
       return Scaffold(
         backgroundColor: ColorsValue.white,
@@ -102,47 +103,6 @@ class SabhayYadiScreen extends StatelessWidget {
                                     Text(
                                       'filter'.tr,
                                       style: Styles.mainGuj90020,
-                                    ),
-                                    Dimens.boxHeight10,
-                                    Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: Text(
-                                        'villageName'.tr,
-                                        style: Styles.grey9BA0A8Guj90016,
-                                      ),
-                                    ),
-                                    Container(
-                                      height: Dimens.fifty,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(Dimens.six),
-                                          color: ColorsValue.greyEEEEEE),
-                                      child: DropdownButton<String>(
-                                        underline: Container(),
-                                        hint: Text(
-                                          'villageName'.tr,
-                                          style: Styles.grey9BA0A8Guj90016,
-                                        ),
-                                        padding: EdgeInsets.only(
-                                            left: Dimens.ten,
-                                            right: Dimens.ten),
-                                        isExpanded: true,
-                                        icon: SvgPicture.asset(
-                                            AssetConstants.ic_down_arrow),
-                                        value: controller.selectVillageValue,
-                                        items: controller.selectVillageLists
-                                            .map((value) => DropdownMenuItem(
-                                                  value: value.id,
-                                                  child: Text(
-                                                      value.gujaratiName ?? ''),
-                                                ))
-                                            .toList(),
-                                        onChanged: (newValue) {
-                                          controller.selectVillageValue =
-                                              newValue;
-                                          setState(() {});
-                                        },
-                                      ),
                                     ),
                                     Dimens.boxHeight20,
                                     Align(
@@ -414,6 +374,14 @@ class SabhayYadiScreen extends StatelessWidget {
                 child: PagedListView<int, GetAllUsersDoc>(
                   pagingController: controller.pagingController,
                   builderDelegate: PagedChildBuilderDelegate<GetAllUsersDoc>(
+                    noItemsFoundIndicatorBuilder: (context) {
+                      return Center(
+                        child: Text(
+                          "${'list_of_members'.tr} ડેટા મળ્યો નથી...!",
+                          style: Styles.mainGuj50014,
+                        ),
+                      );
+                    },
                     itemBuilder: (context, item, index) {
                       return InkWell(
                         onTap: () {

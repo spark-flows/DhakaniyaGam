@@ -107,24 +107,24 @@ class FirebaseApi {
           onlyAlertOnce: true,
           playSound: true,
           criticalAlerts: true,
-        ) 
+        )
       ],
       channelGroups: [
         NotificationChannelGroup(
-          channelGroupKey: 'high_importance_channel',
+          channelGroupKey: 'high_importance_channel_group',
           channelGroupName: 'Group 1',
         )
       ],
       debug: true,
     );
 
-    AwesomeNotifications().setListeners(
-      onActionReceivedMethod: (receivedAction) async {
-        handleNavigationOnNotification(
-          RemoteMessage(data: receivedAction.payload!),
-        );
-      },
-    );
+    // AwesomeNotifications().setListeners(
+    //   onActionReceivedMethod: (ReceivedAction receivedAction) async {
+    //     handleNavigationOnNotification(
+    //       RemoteMessage(data: receivedAction.payload!),
+    //     );
+    //   },
+    // );
 
     FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   }

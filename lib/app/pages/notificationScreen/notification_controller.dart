@@ -42,6 +42,7 @@ class NotificationController extends GetxController {
     if (response?.data != null) {
       if (pageKey == 1) {
         notificationList.clear();
+        pagingCommitteeController.itemList?.clear();
       }
       notificationList = response?.data?.docs ?? [];
 

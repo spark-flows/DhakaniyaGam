@@ -4,11 +4,9 @@ import 'dart:convert';
 import 'dart:io' show Directory, File, Platform;
 import 'dart:math';
 
-import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dhakaniya_gam/app/app.dart';
-import 'package:dhakaniya_gam/data/helpers/api_wrapper.dart';
 import 'package:dhakaniya_gam/domain/domain.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:file_picker/file_picker.dart';
@@ -20,6 +18,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
+import 'package:open_filex/open_filex.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -224,23 +223,23 @@ abstract class Utility {
   }
 
   /// Print the details of the [response].
-  static void printResponseDetails(Response? response) {
-    if (response != null) {
-      var isOkay = response.isOk;
-      var statusCode = response.statusCode;
-      var statusText = response.statusText;
-      var method = response.request?.method ?? '';
-      var path = response.request?.url.path ?? '';
-      var query = response.request?.url.queryParameters ?? '';
-      if (isOkay) {
-        printILog(
-            'Path: $path, Method: $method, Status Text: $statusText, Status Code: $statusCode, Query $query');
-      } else {
-        printELog(
-            'Path: $path, Method: $method, Status Text: $statusText, Status Code: $statusCode, Query $query');
-      }
-    }
-  }
+  // static void printResponseDetails(Response? response) {
+  //   if (response != null) {
+  //     var isOkay = response.isOk;
+  //     var statusCode = response.statusCode;
+  //     var statusText = response.statusText;
+  //     var method = response.request?.method ?? '';
+  //     var path = response.request?.url.path ?? '';
+  //     var query = response.request?.url.queryParameters ?? '';
+  //     if (isOkay) {
+  //       printILog(
+  //           'Path: $path, Method: $method, Status Text: $statusText, Status Code: $statusCode, Query $query');
+  //     } else {
+  //       printELog(
+  //           'Path: $path, Method: $method, Status Text: $statusText, Status Code: $statusCode, Query $query');
+  //     }
+  //   }
+  // }
 
   /// returns the date time in particular given formate
   static String getWeekDayMonthNumYear(DateTime dateTime) =>
@@ -255,7 +254,7 @@ abstract class Utility {
     return DateFormat('dd-MM-yyyy').format(date);
   }
 
- static String convertDateDDMMYYYY(String inputDate) {
+  static String convertDateDDMMYYYY(String inputDate) {
     final inputFormat = DateFormat('yyyy-MM-dd');
     final outputFormat = DateFormat('dd-MM-yyyy');
 
@@ -675,40 +674,35 @@ abstract class Utility {
   }
 
   static Future<void> downloadAndSavePDF(
-      String url, String folderName, int invoiceNo) async {
+    String url,
+    String folderName,
+  ) async {
     try {
-      String fileName = url.split('/').last;
-
-      final response = await http.get(Uri.parse(ApiWrapper.imageUrl + url));
+      final response = await http.get(Uri.parse(url));
 
       if (response.statusCode == 200) {
         Directory directory;
 
         if (Platform.isAndroid) {
-          directory = Directory('/storage/emulated/0/Download/$folderName');
-
+          directory = Directory("/storage/emulated/0/Download");
           if (!await directory.exists()) {
-            await directory.create(recursive: true);
+            directory = await getExternalStorageDirectory() ??
+                await getApplicationDocumentsDirectory();
           }
         } else {
           directory = await getApplicationDocumentsDirectory();
         }
 
-        String filePath = '${directory.path}/$fileName';
+        String fileName = url.split('/').last;
+        String filePath = "${directory.path}/$fileName";
 
         File file = File(filePath);
         await file.writeAsBytes(response.bodyBytes);
 
-        // 🔔 Notification
-        AwesomeNotifications().createNotification(
-          content: NotificationContent(
-            id: invoiceNo,
-            channelKey: "high_importance_channel",
-            title: fileName,
-            body: "PDF downloaded successfully",
-            payload: {"file_path": filePath},
-          ),
-        );
+        Utility.snacBar("$fileName downloaded", ColorsValue.primaryColor);
+
+        // ✅ Open LOCAL file (NOT URL)
+        await OpenFilex.open(filePath);
       } else {
         print("Download failed: ${response.statusCode}");
       }

@@ -144,6 +144,7 @@ class DashboardScreen extends StatelessWidget {
                                     AssetConstants.placeholder,
                                     fit: BoxFit.cover,
                                     width: double.maxFinite,
+                                    height: double.maxFinite,
                                   ),
                                 ),
                                 errorWidget: (context, url, error) => Center(
@@ -151,6 +152,7 @@ class DashboardScreen extends StatelessWidget {
                                     AssetConstants.placeholder,
                                     fit: BoxFit.cover,
                                     width: double.maxFinite,
+                                    height: double.maxFinite,
                                   ),
                                 ),
                               ),

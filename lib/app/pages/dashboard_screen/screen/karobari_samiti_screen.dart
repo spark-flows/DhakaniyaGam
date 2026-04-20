@@ -90,8 +90,8 @@ class TalukaRepresentativeScreen extends StatelessWidget {
                       noItemsFoundIndicatorBuilder: (_) {
                         return Center(
                           child: Text(
-                            "Data Not Found...!",
-                            style: Styles.main60018,
+                            "${'executive'.tr} ડેટા મળ્યો નથી...!",
+                            style: Styles.mainGuj50014,
                           ),
                         );
                       },
