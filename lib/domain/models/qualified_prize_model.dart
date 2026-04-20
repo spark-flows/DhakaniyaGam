@@ -95,79 +95,142 @@ class QualifiedPrizeData {
 }
 
 class QualifiedPrizeDoc {
-  String? id;
-  Familymember? parent;
-  Familymember? familymember;
-  Village? village;
-  int? year;
   Education? education;
-  String? medium;
-  num? percentage;
-  String? action;
-  bool? prize;
-  int? createTimestamp;
-  DateTime? createdAt;
-  bool? stationery;
-  String? docId;
+  List<Student>? students;
 
   QualifiedPrizeDoc({
-    this.id,
-    this.parent,
-    this.familymember,
-    this.village,
-    this.year,
     this.education,
-    this.medium,
-    this.percentage,
-    this.action,
-    this.prize,
-    this.createTimestamp,
-    this.createdAt,
-    this.stationery,
-    this.docId,
+    this.students,
   });
 
   factory QualifiedPrizeDoc.fromJson(Map<String, dynamic> json) =>
       QualifiedPrizeDoc(
-        id: json["_id"],
-        parent: json["parent"] == null
-            ? null
-            : Familymember.fromJson(json["parent"]),
-        familymember: json["familymember"] == null
-            ? null
-            : Familymember.fromJson(json["familymember"]),
-        village:
-            json["village"] == null ? null : Village.fromJson(json["village"]),
-        year: json["year"],
         education: json["education"] == null
             ? null
             : Education.fromJson(json["education"]),
+        students: json["students"] == null
+            ? []
+            : List<Student>.from(
+                json["students"]!.map((x) => Student.fromJson(x))),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "education": education?.toJson(),
+        "students": students == null
+            ? []
+            : List<dynamic>.from(students!.map((x) => x.toJson())),
+      };
+}
+
+class Student {
+  String? id;
+  FamilymemberQulity? parent;
+  FamilymemberQulity? familymember;
+  int? year;
+  String? medium;
+  int? totalMarks;
+  int? obtainedMarks;
+  double? percentage;
+  String? result;
+  String? action;
+  bool? stationery;
+  bool? prize;
+  int? createTimestamp;
+  String? createdAt;
+  String? studentId;
+
+  Student({
+    this.id,
+    this.parent,
+    this.familymember,
+    this.year,
+    this.medium,
+    this.totalMarks,
+    this.obtainedMarks,
+    this.percentage,
+    this.result,
+    this.action,
+    this.stationery,
+    this.prize,
+    this.createTimestamp,
+    this.createdAt,
+    this.studentId,
+  });
+
+  factory Student.fromJson(Map<String, dynamic> json) => Student(
+        id: json["_id"],
+        parent: json["parent"] == null
+            ? null
+            : FamilymemberQulity.fromJson(json["parent"]),
+        familymember: json["familymember"] == null
+            ? null
+            : FamilymemberQulity.fromJson(json["familymember"]),
+        year: json["year"],
         medium: json["medium"],
-        percentage: json["percentage"],
+        totalMarks: json["total_marks"],
+        obtainedMarks: json["obtained_marks"],
+        percentage: json["percentage"]?.toDouble(),
+        result: json["result"],
         action: json["action"],
+        stationery: json["stationery"],
         prize: json["prize"],
         createTimestamp: json["create_timestamp"],
-        createdAt: json["createdAt"] == null
-            ? null
-            : DateTime.parse(json["createdAt"]),
-        stationery: json["stationery"],
-        docId: json["id"],
+        createdAt: json["createdAt"],
+        studentId: json["id"],
       );
 
   Map<String, dynamic> toJson() => {
         "_id": id,
         "parent": parent?.toJson(),
         "familymember": familymember?.toJson(),
-        "village": village?.toJson(),
         "year": year,
-        "education": education?.toJson(),
         "medium": medium,
+        "total_marks": totalMarks,
+        "obtained_marks": obtainedMarks,
         "percentage": percentage,
+        "result": result,
         "action": action,
+        "stationery": stationery,
         "prize": prize,
         "create_timestamp": createTimestamp,
-        "createdAt": createdAt?.toIso8601String(),
-        "stationery": stationery,
-        "id": docId,
+        "createdAt": createdAt,
+        "id": studentId,
+      };
+}
+
+class FamilymemberQulity {
+  String? id;
+  String? relation;
+  String? surname;
+  String? name;
+  String? fathername;
+  String? mobile;
+
+  FamilymemberQulity({
+    this.id,
+    this.relation,
+    this.surname,
+    this.name,
+    this.fathername,
+    this.mobile,
+  });
+
+  factory FamilymemberQulity.fromJson(Map<String, dynamic> json) =>
+      FamilymemberQulity(
+        id: json["_id"],
+        relation: json["relation"],
+        surname: json["surname"],
+        name: json["name"],
+        fathername: json["fathername"],
+        mobile: json["mobile"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "_id": id,
+        "relation": relation,
+        "surname": surname,
+        "name": name,
+        "fathername": fathername,
+        "mobile": mobile,
       };
 }

@@ -1,6 +1,7 @@
 // coverage:ignore-file
 
 import 'package:dhakaniya_gam/app/navigators/app_pages.dart';
+import 'package:dhakaniya_gam/domain/domain.dart';
 import 'package:get/get.dart';
 
 /// A chunk of routes taken in the application.
@@ -49,9 +50,8 @@ abstract class RouteManagement {
       Get.toNamed<void>(Routes.uploadResultScreen);
   static void goToUploadResultListScreen() =>
       Get.toNamed<void>(Routes.uploadResultListScreen);
-  static void goToQualifyPrizeScreen(String std, String isGujarati) =>
-      Get.toNamed<void>(Routes.qualifyPrizeScreen,
-          arguments: [std, isGujarati]);
+  static void goToQualifyPrizeScreen(List<Student>? studentList) =>
+      Get.toNamed<void>(Routes.qualifyPrizeScreen, arguments: studentList);
   static void goToQualifyPrizeListScreen() =>
       Get.toNamed<void>(Routes.qualifyPrizeListScreen);
   static void goToQualifyStationeryScreen(String std, bool isGujarati) =>

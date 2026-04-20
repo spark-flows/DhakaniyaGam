@@ -155,22 +155,8 @@ class QualifyPrizeListScreen extends StatelessWidget {
                       itemBuilder: (context, item, index) {
                         return InkWell(
                           onTap: () {
-                            if (controller.categoryGiftLists[index]
-                                        .split(' ')
-                                        .first ==
-                                    "Std" ||
-                                controller.categoryGiftLists[index]
-                                        .split(' ')
-                                        .first ==
-                                    "College") {
-                              RouteManagement.goToQualifyPrizeScreen(
-                                  item.education?.id ?? "",
-                                  item.education?.gujaratiName ?? "");
-                            } else {
-                              RouteManagement.goToQualifyPrizeScreen(
-                                  item.education?.id ?? "",
-                                  item.education?.gujaratiName ?? "");
-                            }
+                            RouteManagement.goToQualifyPrizeScreen(
+                                item.students ?? []);
                           },
                           child: Padding(
                             padding: Dimens.edgeInsets00_10_00_10,

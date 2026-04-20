@@ -824,14 +824,11 @@ class DashboardController extends GetxController {
     }
   }
 
-  PagingController<int, QualifiedPrizeDoc> qualifyPrizePagingController =
-      PagingController(firstPageKey: 1);
+  List<Student> studentList = [];
 
-  List<QualifiedPrizeDoc> qualifyPrizeList = [];
   int qualifyPrizeLimit = 10;
   String std = "";
   bool isMedium = false;
-
   //   "Bachelor Sem 2",
   // "Bachelor Sem 4",
   // "Bachelor Sem 6",
@@ -844,34 +841,6 @@ class DashboardController extends GetxController {
   int selectYear = DateTime.now().year;
   String? education;
   String? educationName;
-
-  Future<void> postQualifiedPrizes(int pageKey) async {
-    var response = await dashboardPresenter.postQualifiedPrizes(
-      page: pageKey,
-      limit: qualifyPrizeLimit,
-      search: qualifyPrizeController.text,
-      education: education ?? "",
-      medium: selectMeduium == "ગુજરાતી" ? "gujarati" : "english",
-      year: selectYear,
-      isLoading: false,
-    );
-    if (response != null) {
-      if (pageKey == 1) {
-        qualifyPrizeList.clear();
-        qualifyPrizePagingController.itemList?.clear();
-      }
-      qualifyPrizeList = response.data?.docs ?? [];
-
-      final isLastPage = qualifyPrizeList.length < qualifyPrizeLimit;
-      if (isLastPage) {
-        qualifyPrizePagingController.appendLastPage(qualifyPrizeList);
-      } else {
-        var nextPageKey = pageKey + 1;
-        qualifyPrizePagingController.appendPage(qualifyPrizeList, nextPageKey);
-      }
-      update();
-    }
-  }
 
   PagingController<int, QualifiedPrizeDoc> qualifyStationeryPagingController =
       PagingController(firstPageKey: 1);
