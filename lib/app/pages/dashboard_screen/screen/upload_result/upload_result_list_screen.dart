@@ -150,34 +150,36 @@ class UploadResultListScreen extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Expanded(
-                                      child: InkWell(
-                                        onTap: item.prize ?? false
-                                            ? () {
-                                                controller.postDownloadPrize(
-                                                    item.id ?? "");
-                                              }
-                                            : null,
-                                        child: Center(
-                                          child: Text(
-                                            "download_coupon".tr,
-                                            style: Styles.redD4363AGuj70012,
+                                    if (item.prize ?? false) ...[
+                                      Expanded(
+                                        child: InkWell(
+                                          onTap: item.prize ?? false
+                                              ? () {
+                                                  controller.postDownloadPrize(
+                                                      item.id ?? "");
+                                                }
+                                              : null,
+                                          child: Center(
+                                            child: Text(
+                                              "download_coupon".tr,
+                                              style: Styles.redD4363AGuj70012,
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                    Container(
-                                      width: Dimens.one,
-                                      height: Dimens.twentyTwo,
-                                      color: ColorsValue.greyDDDD,
-                                    ),
+                                      Container(
+                                        width: Dimens.one,
+                                        height: Dimens.twentyTwo,
+                                        color: ColorsValue.greyDDDD,
+                                      ),
+                                    ],
                                     Expanded(
                                       child: InkWell(
                                         onTap: item.stationery ?? false
                                             ? () async {
                                                 controller
                                                     .postDownloadStationery(
-                                                        item.id ?? "",context);
+                                                        item.id ?? "", context);
                                               }
                                             : null,
                                         child: Center(
